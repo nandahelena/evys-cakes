@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useActionState, useMemo, useState } from 'react';
 import { createOrder, type OrderState } from '@/app/actions';
+import { useAgentDraftValues } from '@/lib/agent/handoff';
 import { setLine, useCart } from '@/lib/cart';
 import { BY_ID } from '@/lib/catalog';
 import { brl } from '@/lib/labels';
@@ -20,7 +21,8 @@ export function Checkout() {
 
   const lines = useMemo(() => raw.filter((l) => BY_ID.has(l.id) && l.qty > 0), [raw]);
   const quote = useMemo(() => calculateQuote(lines), [lines]);
-  const v = state.values ?? {};
+  const fromChat = useAgentDraftValues(); // o que a cliente contou na conversa com a assistente (/conversa)
+  const v = state.values ?? fromChat ?? {};
   const shownError = state.error ?? dateErr;
 
   if (!ready) return <div className="pw"><p className="small" style={{ padding: 40 }}>Carregando o seu orçamento…</p></div>;
@@ -76,6 +78,7 @@ export function Checkout() {
 
       <fieldset className="fs" style={{ border: '1px solid var(--linha)' }}>
         <h2>Seus dados</h2>
+        {fromChat && !state.values && <p className="hint">Já preenchemos com o que você contou para a assistente. Confira antes de gerar.</p>}
         <label className="field">
           Nome
           <input name="name" autoComplete="name" required maxLength={80} defaultValue={v.name} />

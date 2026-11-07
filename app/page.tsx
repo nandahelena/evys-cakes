@@ -30,6 +30,10 @@ export default function Home() {
                 <Icon name="i-cake" />
                 Fazer meu orçamento
               </Link>
+              <Link className="btn btn-s btn-lg" href="/conversa">
+                <Icon name="i-chat" />
+                Conversar com a assistente
+              </Link>
               <a className="btn btn-o btn-lg" href="#historia">
                 Conhecer a Evy
               </a>
