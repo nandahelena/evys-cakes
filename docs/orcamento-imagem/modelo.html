@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Modelo de orçamento em imagem (WhatsApp)</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..800,0..100,0..1&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* Imagem de 1080 px de largura: no celular ela encolhe ~3x, por isso nada abaixo de 26 px. Dados de exemplo. */
+:root{
+  --primaria:#B83A73; --primaria-escura:#8F2A58; --suave:#F4A9C4; --superficie:#FCE4EC; --fundo:#FFF8F4;
+  --tinta:#33182E; --tinta-2:#7C5568; --linha:#F1D3DD;
+  --urg:#D98E4A; --urg-fundo:#FFF0D6; --urg-texto:#7A4B00; --ok:#2F6B47; --ok-fundo:#E3F1E7;
+  --ft:"Fraunces",Georgia,serif; --fc:"Figtree",system-ui,sans-serif; --fs:"Great Vibes",cursive;
+}
+*{box-sizing:border-box;margin:0}
+body{width:1080px;background:var(--fundo);color:var(--tinta);font:500 32px/1.35 var(--fc);-webkit-font-smoothing:antialiased}
+.card{position:relative;overflow:hidden}
+
+/* topo */
+.top{display:flex;align-items:center;justify-content:space-between;padding:54px 64px 34px}
+.brand{display:flex;align-items:center;gap:18px}
+.medal{width:84px;height:84px}
+.brand .nm{font:400 70px/1 var(--fs);color:var(--primaria)}
+.no{text-align:right;font:700 24px/1.35 var(--fc);letter-spacing:.14em;color:var(--tinta-2)}
+.no b{display:block;font:700 40px/1.1 var(--ft);letter-spacing:0;color:var(--tinta);font-variation-settings:"SOFT" 100}
+.scal{height:30px;background:radial-gradient(circle at 22px 0,var(--superficie) 21px,transparent 22px) 0 0/44px 30px repeat-x}
+
+.body{padding:10px 64px 0}
+.hi{font:400 124px/1 var(--fs);color:var(--primaria);margin-top:18px}
+.sub{font-size:34px;color:var(--tinta-2);margin:10px 0 36px;line-height:1.35}
+.sub b{color:var(--tinta);font-weight:700}
+
+/* data / convidados / retirada */
+.ticket{display:grid;grid-template-columns:1.2fr 1fr 1fr;background:#fff;border:2px solid var(--linha);border-radius:34px;padding:26px 0}
+.ticket div{text-align:center;border-right:3px dashed var(--linha);padding:0 10px}
+.ticket div:last-child{border:0}
+.ticket small{display:block;font:700 24px var(--fc);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+.ticket b{display:block;font:700 46px/1.15 var(--ft);font-variation-settings:"SOFT" 100;margin-top:6px}
+
+.sec{display:flex;align-items:center;gap:14px;font:700 26px var(--fc);letter-spacing:.16em;text-transform:uppercase;color:var(--primaria);margin:48px 0 8px}
+.sec::after{content:"";flex:1;height:3px;background:var(--linha);border-radius:3px}
+
+/* itens */
+.li{display:flex;align-items:center;gap:26px;padding:22px 0;border-bottom:2px solid var(--linha)}
+.li:last-child{border-bottom:0}
+.li img{width:128px;height:128px;border-radius:30px;object-fit:cover;flex:none}
+.li .t{flex:1;min-width:0}
+.li b{display:block;font:700 36px/1.15 var(--fc)}
+.li small{display:block;color:var(--tinta-2);font:500 29px/1.3 var(--fc);margin-top:4px}
+.li .v{font:700 40px var(--ft);font-variation-settings:"SOFT" 100;white-space:nowrap}
+
+/* totais */
+.sum{background:#fff;border:2px solid var(--linha);border-radius:38px;padding:34px 38px;margin-top:14px;box-shadow:0 14px 40px color-mix(in srgb,var(--primaria) 10%,transparent)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;color:var(--tinta-2);font-size:32px;padding:6px 0}
+.row.tot{color:var(--tinta);border-bottom:3px dashed var(--suave);padding-bottom:20px;margin-bottom:12px}
+.row.tot span{font-weight:700;font-size:36px}
+.row.tot b{font:700 92px/1 var(--ft);color:var(--primaria);font-variation-settings:"SOFT" 100}
+.row.ent{background:var(--superficie);color:var(--primaria-escura);font-weight:700;margin:10px -16px 6px;padding:22px 16px;border-radius:26px;font-size:34px}
+.row.ent b{font:700 56px/1 var(--ft);font-variation-settings:"SOFT" 100}
+.row.ent small{display:block;font:500 26px/1.2 var(--fc);color:var(--primaria-escura);opacity:.85;margin-top:4px}
+
+/* validade */
+.valid{margin-top:30px;background:var(--urg-fundo);color:var(--urg-texto);border-radius:34px;padding:30px 38px}
+.valid .h{display:flex;align-items:center;gap:16px;font-weight:700;font-size:38px}
+.valid .h svg{width:52px;height:52px;flex:none}
+.valid .h em{margin-left:auto;font-style:normal;font-size:34px;white-space:nowrap}
+.bar{height:16px;border-radius:12px;background:#fff;margin-top:20px;overflow:hidden}
+.bar i{display:block;height:100%;width:78%;background:var(--urg);border-radius:12px}
+.valid p{font-size:29px;margin-top:16px;line-height:1.35}
+
+/* como reservar */
+.how{list-style:none;padding:0;counter-reset:s}
+.how li{counter-increment:s;display:flex;gap:26px;align-items:flex-start;padding:16px 0}
+.how li::before{content:counter(s);flex:none;width:72px;height:72px;border-radius:50%;background:var(--primaria);color:#fff;font:700 38px/72px var(--ft);text-align:center}
+.how b{display:block;font:700 36px/1.2 var(--fc)}
+.how span{display:block;color:var(--tinta-2);font-size:29px;line-height:1.3;margin-top:2px}
+
+/* botão-dica: o clique é no WhatsApp, a imagem só aponta */
+.cta{margin-top:30px;background:var(--primaria);color:#fff;border-radius:999px;text-align:center;padding:32px 20px;font:700 40px/1.2 var(--fc);box-shadow:0 10px 0 var(--primaria-escura)}
+.cta small{display:block;font:500 28px var(--fc);opacity:.92;margin-top:4px}
+.fine{font-size:26px;color:var(--tinta-2);line-height:1.4;margin:34px 0 0;text-align:center}
+
+/* rodapé */
+.foot{margin-top:44px;background:var(--superficie);padding:0 64px 46px;position:relative}
+.foot::before{content:"";position:absolute;left:0;right:0;top:-30px;height:30px;background:radial-gradient(circle at 22px 30px,var(--superficie) 21px,transparent 22px) 0 0/44px 30px repeat-x}
+.foot .in{display:flex;align-items:center;gap:30px;padding-top:34px}
+.foot img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:6px solid #fff;flex:none}
+.foot .nm{font:400 62px/1 var(--fs);color:var(--primaria)}
+.foot p{font-size:28px;color:var(--tinta-2);margin-top:6px;line-height:1.3}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <symbol id="cake" viewBox="0 0 100 100"><g fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="31" y="58" width="38" height="12" rx="2"/><rect x="37" y="46" width="26" height="12" rx="2"/><rect x="43" y="36" width="14" height="10" rx="2"/>
+    <path d="M31 62q4.75 5 9.5 0q4.75 5 9.5 0q4.75 5 9.5 0q4.75 5 9.5 0M37 50q3.25 4 6.5 0q3.25 4 6.5 0q3.25 4 6.5 0q3.25 4 6.5 0"/>
+    <circle cx="50" cy="31" r="3.2" fill="#fff" stroke="none"/><path d="M50 28c0-2.5 1.5-4 4-4.5"/><path d="M26 70h48M50 70v4M42 76h16"/></g></symbol>
+</defs></svg>
+
+<div class="card">
+  <div class="top">
+    <div class="brand">
+      <svg class="medal" viewBox="-62 -62 124 124"><circle r="60" fill="none" stroke="#B83A73" stroke-width="1"/><circle r="52" fill="#B83A73"/><use href="#cake" x="-60" y="-60" width="120" height="120"/></svg>
+      <span class="nm">Evys Cakes</span>
+    </div>
+    <div class="no">ORÇAMENTO<b>Nº 7K2Q9F</b></div>
+  </div>
+  <div class="scal"></div>
+
+  <div class="body">
+    <div class="hi">Olá, Mariana!</div>
+    <p class="sub">Este é o orçamento do seu <b>aniversário</b>. Qualquer dúvida, é só responder aqui.</p>
+
+    <div class="ticket">
+      <div><small>Data</small><b>28 nov</b></div>
+      <div><small>Convidados</small><b>40</b></div>
+      <div><small>Entrega</small><b>Retirada</b></div>
+    </div>
+
+    <div class="sec">Seu pedido</div>
+    <div class="li"><img src="../../public/fotos/brigadeiro-azul.jpg" alt=""><div class="t"><b>Doces tradicionais</b><small>Brigadeiro · 100 un × R$ 1,45</small></div><div class="v">R$ 145,00</div></div>
+    <div class="li"><img src="../../public/fotos/flor-magenta.jpg" alt=""><div class="t"><b>Doces gourmet</b><small>Ninho com Nutella · 50 un × R$ 1,90</small></div><div class="v">R$ 95,00</div></div>
+    <div class="li"><img src="../../public/fotos/cupcake.jpg" alt=""><div class="t"><b>Cupcake</b><small>Chocolate, recheio ninho · 12 un × R$ 4,00</small></div><div class="v">R$ 48,00</div></div>
+    <div class="li"><img src="../../public/fotos/surpresa-de-uva.jpg" alt=""><div class="t"><b>Surpresa de uva</b><small>30 un × R$ 2,50</small></div><div class="v">R$ 75,00</div></div>
+
+    <div class="sum">
+      <div class="row tot"><span>Total</span><b>R$ 363,00</b></div>
+      <div class="row ent"><div>Entrada para reservar (60%)<small>Garante a sua data</small></div><b>R$ 217,80</b></div>
+      <div class="row"><span>Restante, na retirada</span><span>R$ 145,20</span></div>
+    </div>
+
+    <div class="valid">
+      <div class="h">
+        <svg viewBox="0 0 48 48" fill="none" stroke="#7A4B00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="25" r="16"/><path d="M24 15v10l7 4M19 5h10M35 9l3 3"/></svg>
+        <span>Válido até 14/11</span><em>faltam 7 dias</em>
+      </div>
+      <div class="bar"><i></i></div>
+      <p>Depois dessa data a Evy não garante a agenda para o dia 28/11. Para reservar, pague a entrada.</p>
+    </div>
+
+    <div class="sec">Como reservar</div>
+    <ol class="how">
+      <li><div><b>Pague a entrada de 60%</b><span>Pix, cartão ou dinheiro. A Evy te passa a chave aqui na conversa.</span></div></li>
+      <li><div><b>Combine os detalhes</b><span>Decoração, cores e topper, direto por aqui.</span></div></li>
+      <li><div><b>Retire e pague o restante</b><span>No dia combinado, com a Evy.</span></div></li>
+    </ol>
+
+    <div class="cta">Quer reservar? É só responder “quero reservar”<small>ou me conta o que quer ajustar</small></div>
+    <p class="fine">Em caso de desistência, a entrada não é devolvida. A entrega só ocorre com o pedido 100% pago.</p>
+  </div>
+
+  <div class="foot">
+    <div class="in">
+      <img src="../../public/fotos/evy.jpg" alt="">
+      <div><div class="nm">Evy</div><p>Evelyn Guimarães · confeitaria artesanal</p></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
