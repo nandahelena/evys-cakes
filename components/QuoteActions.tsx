@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { markViewed } from '@/app/actions';
 import { clearCart } from '@/lib/cart';
+import { drawReceipt, type ReceiptData } from '@/lib/receipt-image';
 import { waLink } from '@/lib/whatsapp';
 import { Icon } from './Icon';
 
@@ -17,18 +18,39 @@ export function ViewTracker({ token }: { token: string }) {
   return null;
 }
 
-export function NovoCard({ code }: { code: string }) {
+export function NovoCard({ code, receipt }: { code: string; receipt: ReceiptData }) {
+  const [busy, setBusy] = useState(false);
   useEffect(() => {
     clearCart(); // o orçamento foi gerado: esvazia o carrinho deste navegador
   }, []);
+
+  const send = async () => {
+    const text = `Oie, Evy! Fiz meu orçamento pelo site e gostaria de continuar negociando o meu pedido.
+Orçamento ${code}
+${here()}`;
+    setBusy(true);
+    try {
+      const file = new File([await drawReceipt(receipt)], `orcamento-${code}.png`, { type: 'image/png' });
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file], text }); // celular: a cliente escolhe o WhatsApp da Evy na folha de compartilhar
+        return;
+      }
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') return; // cancelou a folha de compartilhar
+    } finally {
+      setBusy(false);
+    }
+    openWhatsApp(text); // sem compartilhar arquivo (computador): abre o WhatsApp só com o texto e o link
+  };
+
   return (
     <div className="novo">
       <b>Seu orçamento está pronto!</b>
       Envie para a Evy no WhatsApp para ela já acompanhar o seu pedido.
       <br />
-      <button className="btn btn-p btn-sm" onClick={() => openWhatsApp(`Oi, Evy! Acabei de gerar o orçamento ${code} pelo site.\n${here()}`)}>
+      <button className="btn btn-p btn-sm" onClick={send} disabled={busy}>
         <Icon name="i-chat" />
-        Enviar para a Evy
+        {busy ? 'Preparando…' : 'Enviar para a Evy'}
       </button>
     </div>
   );

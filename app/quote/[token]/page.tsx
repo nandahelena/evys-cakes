@@ -66,6 +66,7 @@ async function Quote({ params, searchParams }: Pick<PageProps<"/quote/[token]">,
   const { lines, entradaPct } = q.breakdown;
   const total = Number(q.total);
   const entrada = Math.round(total * entradaPct * 100) / 100;
+  const restante = Math.round((total - entrada) * 100) / 100;
   const code = token.slice(0, 6).toUpperCase();
 
   const expiresAt = Date.parse(q.sent_at) + VALIDADE_DIAS * DAY;
@@ -94,7 +95,26 @@ async function Quote({ params, searchParams }: Pick<PageProps<"/quote/[token]">,
           <div><small>Entrega</small><b>Retirada</b></div>
         </div>
 
-        {novo && !expired && <NovoCard code={code} />}
+        {novo && !expired && (
+          <NovoCard
+            code={code}
+            receipt={{
+              code,
+              customer: o.customers.name,
+              eventLabel: EVENT_TYPE_LABEL[o.event_type],
+              dateLabel: dayMonth(o.event_date),
+              dateShort: dmy(o.event_date),
+              guests: o.guests,
+              lines: lines.map((l) => ({ name: l.name, sub: `${l.choice ? `${l.choice} · ` : ""}${qtyLabel(l)}`, subtotal: brl(l.subtotal) })),
+              total: brl(total),
+              entradaPct,
+              entrada: brl(entrada),
+              restante: brl(restante),
+              until,
+              daysLeft,
+            }}
+          />
+        )}
 
         <div className="sec">Seu pedido</div>
         {lines.map((l) => (
@@ -113,7 +133,7 @@ async function Quote({ params, searchParams }: Pick<PageProps<"/quote/[token]">,
         <div className="sum">
           <div className="tot"><span>Total</span><b>{brl(total)}</b></div>
           <div className="ent"><span>Entrada para reservar ({Math.round(entradaPct * 100)}%)</span><span>{brl(entrada)}</span></div>
-          <div><span>Restante, na retirada</span><span>{brl(Math.round((total - entrada) * 100) / 100)}</span></div>
+          <div><span>Restante, na retirada</span><span>{brl(restante)}</span></div>
         </div>
 
         {expired ? (
