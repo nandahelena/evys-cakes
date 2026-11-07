@@ -14,11 +14,11 @@ import { computeMissing, mergeDraft } from '@/lib/agent/schema';
 // POST não é cacheado.
 
 const GENERIC_ERROR =
-  'Tive um probleminha aqui. Você pode tentar de novo ou falar com a Evelyn pelo WhatsApp.';
+  'Tive um probleminha aqui. Você pode tentar de novo ou falar com a Evy pelo WhatsApp.';
 const BUSY_ERROR =
-  'Estou com muitas conversas agora. Tente de novo em instantes ou fale com a Evelyn pelo WhatsApp.';
+  'Estou com muitas conversas agora. Tente de novo em instantes ou fale com a Evy pelo WhatsApp.';
 const LIMIT_REPLY =
-  'Nossa conversa já ficou longa por aqui. Para continuar, você pode usar o formulário (o que já respondeu fica preenchido) ou falar com a Evelyn pelo WhatsApp.';
+  'Nossa conversa já ficou longa por aqui. Para continuar, você pode usar o formulário (o que já respondeu fica preenchido) ou falar com a Evy pelo WhatsApp.';
 
 // Rate limit simples em memória, por IP: 20 requisições a cada 10 minutos.
 // Em produção (várias instâncias serverless) isto seria Upstash/Redis,

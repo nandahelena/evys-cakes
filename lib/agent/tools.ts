@@ -23,12 +23,11 @@ export const updateOrderDraftTool: OpenAI.Chat.Completions.ChatCompletionTool = 
         },
         guests: {
           type: 'integer',
-          description: 'Número de convidados, inteiro entre 1 e 500.',
+          description: 'Número de convidados, inteiro entre 1 e 5000.',
         },
         decor: {
           type: 'string',
-          enum: ['simple', 'elaborate', 'premium'],
-          description: 'Nível de decoração: simples (simple), elaborada (elaborate) ou premium (premium).',
+          description: 'Estilo e decoração da festa em texto curto: tema, cores, se os doces vão para a mesa decorada.',
         },
         venue: { type: 'string', description: 'Local do evento (nome do espaço, bairro ou cidade).' },
         notes: {

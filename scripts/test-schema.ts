@@ -101,8 +101,10 @@ function check(name: string, cond: boolean) {
     { today: TODAY },
   ).draft;
   check('rascunho completo está ready', isReady(full, TODAY));
-  check('rascunho vazio lista os 6 obrigatórios', computeMissing({}, TODAY).length === 6);
-  check('venue/notes/email são opcionais', computeMissing(full, TODAY).length === 0);
+  check('rascunho vazio lista os 5 obrigatórios', computeMissing({}, TODAY).length === 5);
+  check('decor/venue/notes/email são opcionais', computeMissing(full, TODAY).length === 0);
+  check('decor aceita texto livre', mergeDraft({}, { decor: 'Tema safari, verde e amarelo' }, { today: TODAY }).draft.decor === 'Tema safari, verde e amarelo');
+  check('convidados até 5000 (como o formulário)', mergeDraft({}, { guests: 1200 }, { today: TODAY }).draft.guests === 1200 && !!mergeDraft({}, { guests: 6000 }, { today: TODAY }).errors.guests);
 }
 
 console.log(failed === 0 ? '\nTodos os testes passaram.' : `\n${failed} teste(s) falharam.`);

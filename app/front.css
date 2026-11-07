@@ -1,0 +1,205 @@
+/* Front: landing, cardápio em cards, folha de detalhes, revisão do orçamento. Usa os tokens de brand.css.
+   Pensado primeiro para o celular; o bloco "min-width: 700px" no fim ajusta tablet e desktop. */
+
+h1, h2 { font-weight: 600; }
+button, .btn, a { -webkit-tap-highlight-color: transparent; }
+button, .btn { touch-action: manipulation; }
+
+/* molduras do guia */
+.ph .in { position: absolute; inset: 0; background: var(--suave); }
+.ph.ring { background: var(--primaria); clip-path: url(#clip-sc); }
+.ph.ring .in { inset: 8px; clip-path: url(#clip-sc); }
+.ph.arch { border-radius: 999px 999px 22px 22px; overflow: hidden; border: 4px solid var(--primaria); background: var(--suave); }
+.ph.sq { border-radius: 18px; overflow: hidden; background: var(--suave); }
+
+/* botões: sombra suave (o degrau duro do guia pesava na landing) */
+.btn-p { box-shadow: 0 8px 20px color-mix(in srgb, var(--primaria) 26%, transparent); }
+.btn-p:disabled { box-shadow: none; }
+.btn-lg { padding: 16px 30px; font-size: 17px; min-height: 54px; }
+.btn-o { background: transparent; color: var(--primaria-escura); border: 1.5px solid var(--primaria-escura); }
+.btn-o:hover { background: var(--primaria-escura); color: #fff; }
+.btn-w { background: #fff; color: var(--primaria-escura); box-shadow: 0 8px 20px color-mix(in srgb, #000 16%, transparent); }
+.ico.big { width: 56px; height: 56px; }
+
+/* selo */
+.stk { position: relative; aspect-ratio: 1; display: grid; place-items: center; transform: rotate(-8deg); }
+.stk svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.stk span { position: relative; text-align: center; color: #fff; font: 400 clamp(15px, 4.4vw, 24px) / 0.95 var(--fs); }
+.stk small { display: block; font: 600 7px / 1 var(--fc); letter-spacing: 0.16em; text-transform: uppercase; margin-top: 4px; white-space: nowrap; }
+
+/* hero */
+.hero2 { position: relative; overflow: hidden; background: linear-gradient(180deg, var(--superficie), color-mix(in srgb, var(--superficie) 40%, var(--fundo))); padding: 44px 0 44px; }
+.hero2 .bg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.2; }
+.hero-grid { position: relative; display: grid; gap: 32px; align-items: center; text-align: center; }
+.kicker { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 20px; font: 600 12px / 1 var(--fc); letter-spacing: 0.32em; text-transform: uppercase; color: var(--primaria-escura); }
+.kicker::before, .kicker::after { content: ""; width: 34px; height: 1px; background: var(--primaria); }
+.hero2 h1 { font-size: clamp(38px, 9.4vw, 64px); line-height: 1.04; text-wrap: balance; }
+.hero2 h1 em { display: block; font: 400 1.2em / 0.95 var(--fs); color: var(--primaria); font-style: normal; margin-top: 8px; letter-spacing: 0; }
+.hero2 .sub { max-width: 44ch; margin: 18px auto 26px; color: var(--tinta-2); font-size: 17px; }
+.hero2 .cta { display: flex; flex-direction: column; gap: 12px; }
+.hero2 .cta .btn { width: 100%; }
+.collage { position: relative; width: min(84%, 340px); aspect-ratio: 1; margin: 0 auto; }
+.collage > * { position: absolute; }
+.collage .c-arch { left: 2%; top: 4%; width: 46%; height: 70%; box-shadow: 0 16px 34px color-mix(in srgb, var(--primaria) 18%, transparent); }
+.collage .c-ring { right: 0; top: 0; width: 50%; height: 50%; filter: drop-shadow(0 12px 18px color-mix(in srgb, var(--primaria) 20%, transparent)); }
+.collage .c-circ { right: 6%; bottom: 2%; width: 46%; height: 46%; }
+.collage .c-stk { left: 4%; bottom: 0; width: 32%; }
+
+/* "Conheça nosso trabalho" + faixa de fotos em movimento (não pausa ao passar o mouse) */
+.work { padding: 44px 0 36px; }
+.work-title { text-align: center; font-size: clamp(28px, 7vw, 42px); padding: 0 16px; }
+.marq { overflow: hidden; padding: 24px 0 8px; mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent); }
+.marq-track { display: flex; gap: 16px; width: max-content; animation: marq 24s linear infinite; padding-left: 16px; }
+.marq .ph { width: 144px; height: 144px; border-width: 3px; box-shadow: 0 0 0 2px var(--suave); }
+@keyframes marq { to { transform: translateX(-50%); } }
+
+/* história da Evy: uma coluna só */
+.story { position: relative; overflow: hidden; background: var(--superficie); padding: 56px 0; }
+.story > .bg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.16; }
+.narrow { position: relative; max-width: 680px; }
+.story .eyebrow { justify-content: center; }
+.story h2 { text-align: center; }
+.quote-script { margin: 10px 0 36px; text-align: center; font: 400 clamp(32px, 8vw, 48px) / 1.05 var(--fs); color: var(--primaria); }
+.chap { position: relative; padding: 0 0 30px 40px; border-left: 2px dashed var(--suave); margin-left: 14px; }
+.chap:last-of-type { border-left-color: transparent; padding-bottom: 10px; }
+.chap .dot { position: absolute; left: -17px; top: 0; width: 32px; height: 32px; border-radius: 50%; background: #fff; border: 2px solid var(--primaria); display: grid; place-items: center; }
+.chap .dot .ico { width: 18px; height: 18px; --ia: none; --ib: none; --ic: none; }
+.chap .k { font: 700 11px var(--fc); letter-spacing: 0.14em; text-transform: uppercase; color: var(--primaria); }
+.chap h3 { font-size: 21px; margin: 4px 0 6px; }
+.chap p { color: var(--tinta-2); font-size: 16px; }
+.sign { font: 400 clamp(32px, 9vw, 44px) / 1.1 var(--fs); color: var(--primaria); text-align: center; margin-top: 14px; }
+.portrait { width: 190px; height: 250px; margin: 0 auto 26px; box-shadow: 0 20px 44px color-mix(in srgb, var(--primaria) 22%, transparent); }
+.portrait img { object-position: 60% 28%; }
+
+/* faixa final */
+.band { position: relative; overflow: hidden; background: var(--primaria); color: #fff; text-align: center; padding: 56px 0; }
+.band .bg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.1; color: #fff; }
+.band .w { position: relative; }
+.band h2 { color: #fff; font-size: clamp(30px, 7vw, 46px); }
+.band p { color: var(--superficie); margin: 8px 0 24px; }
+.band .btn { width: 100%; max-width: 360px; }
+
+/* aparece ao rolar (só onde o navegador suporta; sem JS) */
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 40%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { animation: none; }
+  .marq-track { animation: none; overflow-x: auto; }
+  .sheet[open] { animation: none; }
+}
+
+/* cardápio: no celular, cada item é uma linha com foto à esquerda (como no iFood) */
+.menu-page { padding-bottom: 130px; }
+.menu-head { padding: 22px 0 4px; }
+.menu-head h1 { font-size: clamp(30px, 8vw, 44px); }
+.mgrid { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 16px; }
+.pcard { display: flex; flex-direction: row; align-items: stretch; padding: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; background: #fff; border: 1px solid var(--linha); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 16px color-mix(in srgb, var(--primaria) 7%, transparent); scroll-margin-top: 70px; }
+.pcard .pic { position: relative; display: block; width: 116px; min-height: 116px; flex: none; background: var(--suave); }
+.pcard .pic img { object-fit: cover; }
+.noimg { position: relative; display: grid; place-items: center; background: var(--superficie); width: 100%; height: 100%; }
+.noimg .bg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.5; }
+.noimg .ico { position: relative; width: 48px; height: 48px; }
+.pcard .badge-n { position: absolute; top: 8px; left: 8px; background: var(--ok); color: #fff; font: 600 11.5px var(--fc); padding: 4px 9px; border-radius: var(--r-pill); z-index: 2; }
+.pcard .add { position: absolute; right: 8px; bottom: 8px; width: 34px; height: 34px; border-radius: 50%; background: var(--primaria); color: #fff; display: grid; place-items: center; font: 700 22px / 1 var(--fc); z-index: 2; }
+.pcard .info { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; flex: 1; min-width: 0; }
+.pcard h3 { font-size: 18px; margin: 0; }
+.pcard .desc { color: var(--tinta-2); font-size: 13.5px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pcard .meta { margin-top: auto; display: flex; flex-direction: column; }
+.pcard .meta b { font: 700 15.5px var(--ft); color: var(--primaria); }
+.pcard .meta small { color: var(--tinta-2); font-size: 12.5px; }
+
+/* folha de detalhes: no celular sobe da base e ocupa quase a tela toda (as duas declarações de altura são o plano B para navegadores sem "dvh") */
+.sheet { border: 0; padding: 0; background: #fff; width: 100%; max-width: 100%; height: 92vh; height: 92dvh; max-height: none; margin: auto 0 0; border-radius: 24px 24px 0 0; overflow: hidden; color: var(--tinta); }
+.sheet[open] { display: flex; flex-direction: column; animation: sheet-up 0.28s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.sheet::backdrop { background: color-mix(in srgb, var(--tinta) 55%, transparent); }
+body:has(dialog.sheet[open]) { overflow: hidden; }
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+.sheet-photo { position: relative; flex: none; width: 100%; height: clamp(150px, 26vh, 230px); background: var(--suave); }
+.sheet-photo img { object-fit: cover; }
+.sheet-grab { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 44px; height: 5px; border-radius: 9px; background: rgb(255 255 255 / 0.85); z-index: 3; }
+.sheet-x { position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: var(--tinta); font: 400 28px / 1 var(--fc); cursor: pointer; box-shadow: 0 4px 14px color-mix(in srgb, var(--tinta) 25%, transparent); z-index: 3; }
+.sheet-body { flex: 1; min-height: 0; overflow-y: auto; padding: 16px 16px 12px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.sheet-body h2 { font-size: 26px; margin: 0; }
+.sheet-foot { flex: none; padding: 12px 16px calc(14px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--linha); }
+.sheet-foot .btn { width: 100%; }
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+.tag-s { background: var(--superficie); color: var(--primaria-escura); font: 600 13px var(--fc); padding: 6px 12px; border-radius: var(--r-pill); }
+.stepper button { width: 44px; height: 44px; }
+.stepper input { width: 62px; min-height: 44px; }
+.opts { grid-template-columns: 1fr; }
+
+/* revisão do orçamento */
+.pw { padding: 0 14px 140px; }
+.fs { padding: 16px 14px; }
+.field input, .field select, .field textarea { min-height: 50px; }
+.cl { display: grid; grid-template-columns: auto 1fr auto; gap: 8px 12px; align-items: center; padding: 14px 0; border-top: 1px dashed var(--linha); }
+.cl b { display: block; font-size: 15.5px; line-height: 1.2; }
+.cl small { display: block; color: var(--tinta-2); font-size: 13px; margin-top: 2px; }
+.cl .v { font: 700 16px var(--ft); white-space: nowrap; }
+.cl .ctrl { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.rm { background: none; border: 0; color: var(--tinta-2); text-decoration: underline; cursor: pointer; font: 600 14px var(--fc); min-height: 44px; padding: 0 6px; }
+
+/* página do orçamento: "Como reservar" em lista simples, sem bolinhas; galeria em quadrados */
+.how { list-style: none; counter-reset: s; margin: 8px 0 0; padding: 0; }
+.how li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; column-gap: 12px; padding: 12px 0; border-top: 1px solid var(--linha); }
+.how li:first-child { border-top: 0; }
+.how li::before { content: counter(s); grid-row: span 2; font: 400 38px / 1 var(--fs); color: var(--primaria); }
+.how b { font-size: 15.5px; line-height: 1.25; }
+.how span { color: var(--tinta-2); font-size: 14px; line-height: 1.35; }
+.gal .ph { width: 150px; height: 150px; }
+.gal { gap: 12px; }
+
+/* barra fixa (total) e botão do WhatsApp: respeitam a área segura do iPhone */
+.dock { padding-bottom: calc(14px + env(safe-area-inset-bottom)); }
+.dock.wide { width: min(100%, 640px); }
+.fab { bottom: calc(18px + env(safe-area-inset-bottom)); }
+body:has(.dock) .fab { bottom: calc(96px + env(safe-area-inset-bottom)); }
+body:has(.menu-page) .fab span, body:has(.pw) .fab span { display: none; }
+body:has(.menu-page) .fab, body:has(.pw) .fab { padding: 12px; }
+.foot { padding-bottom: 96px; }
+
+/* celular pequeno */
+@media (max-width: 400px) {
+  .w { padding: 0 16px; }
+  .top-in .brand { width: 128px; }
+  .top-in .btn { padding: 9px 14px; font-size: 14px; min-height: 40px; }
+}
+
+/* a partir de tablet */
+@media (min-width: 700px) {
+  .hero2 { padding: 72px 0 64px; }
+  .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 40px; text-align: left; }
+  .kicker { justify-content: flex-start; }
+  .kicker::before { display: none; }
+  .kicker::after { width: 56px; }
+  .hero2 .sub { margin-left: 0; }
+  .hero2 .cta { flex-direction: row; }
+  .hero2 .cta .btn { width: auto; }
+  .collage { width: min(100%, 470px); }
+  .work { padding: 72px 0 56px; }
+  .marq { padding-top: 32px; }
+  .marq-track { gap: 24px; padding-left: 24px; animation-duration: 32s; }
+  .marq .ph { width: 220px; height: 220px; }
+  .story { padding: 84px 0; }
+  .portrait { width: 230px; height: 300px; }
+  .chap { padding-left: 46px; margin-left: 16px; }
+  .chap .dot { left: -18px; width: 34px; height: 34px; }
+  .band { padding: 72px 0; }
+  .menu-head { padding-top: 30px; }
+  .mgrid { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 18px; margin-top: 22px; }
+  .pcard { flex-direction: column; border-radius: var(--r-card); transition: transform 0.2s, box-shadow 0.2s; }
+  .pcard:hover { transform: translateY(-3px); box-shadow: 0 14px 32px color-mix(in srgb, var(--primaria) 16%, transparent); }
+  .pcard .pic { width: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .pcard .add { right: 14px; bottom: -20px; width: 42px; height: 42px; font-size: 26px; }
+  .pcard .info { padding: 22px 16px 16px; gap: 6px; }
+  .pcard h3 { font-size: 21px; }
+  .pcard .desc { font-size: 14.5px; -webkit-line-clamp: 3; }
+  .pcard .meta b { font-size: 17px; }
+  .sheet { width: min(100%, 560px); height: auto; max-height: min(90vh, 780px); margin: auto; border-radius: 26px; }
+  .sheet-photo { height: auto; aspect-ratio: 16 / 9; }
+  .sheet-grab { display: none; }
+  .opts { grid-template-columns: 1fr 1fr; }
+  .pw { padding: 0 16px 150px; }
+}

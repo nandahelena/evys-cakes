@@ -55,14 +55,14 @@ async function main() {
       user(
         'Oi! Meu nome é Carla Mendes, meu WhatsApp é (11) 98765-4321. Quero doces para o aniversário da minha filha ' +
           'no dia 20 de dezembro do ano que vem... na verdade, no dia 20 de dezembro de 2027, para 60 convidados, ' +
-          'com decoração elaborada, no salão de festas do meu prédio.',
+          'tema jardim com flores em tons de rosa, no salão de festas do meu prédio.',
       ),
     ]);
     return {
       'ready=true': r.ready,
       'eventType=birthday': r.draft.eventType === 'birthday',
       'guests=60': r.draft.guests === 60,
-      'decor=elaborate': r.draft.decor === 'elaborate',
+      'decor registrada (texto)': /jardim|flor|rosa/i.test(r.draft.decor ?? ''),
       'phone normalizado': r.draft.phone === '11987654321',
       'resposta limpa': cleanReply(r.reply),
     };
@@ -126,7 +126,7 @@ async function main() {
     return {
       'notes preenchido': !!r.draft.notes,
       'notes menciona alergia': /alergia|noz|nozes/i.test(r.draft.notes ?? ''),
-      'sugere WhatsApp/Evelyn': /whatsapp|evelyn/i.test(r.reply),
+      'sugere WhatsApp/Evy': /whatsapp|evy|evelyn/i.test(r.reply),
       'resposta limpa': cleanReply(r.reply),
     };
   });

@@ -2,14 +2,14 @@ import { z } from 'zod';
 import type { OrderDraft } from '../types';
 
 export type Draft = Partial<OrderDraft>;
-export type DraftField = keyof OrderDraft;
+// `items` (o carrinho) não é coletado pelo agente: a cliente escolhe os doces no cardápio.
+export type DraftField = Exclude<keyof OrderDraft, 'items'>;
 export type DraftErrors = Partial<Record<DraftField, string>>;
 
 export const REQUIRED_FIELDS = [
   'eventType',
   'eventDate',
   'guests',
-  'decor',
   'name',
   'phone',
 ] as const satisfies readonly DraftField[];
@@ -66,28 +66,29 @@ const strip = (s: string) => s.replace(/[<>]/g, '').trim();
 
 const fieldSchemas = {
   eventType: z.enum(['wedding', 'birthday', 'corporate', 'other']),
-  decor: z.enum(['simple', 'elaborate', 'premium']),
-  guests: z.number().int().min(1).max(500),
+  // Mesmos limites do formulário do site (/pedido), para o rascunho preencher o formulário sem erro.
+  decor: z.string().transform(strip).pipe(z.string().min(1).max(600)),
+  guests: z.number().int().min(1).max(5000),
   name: z.string().transform(strip).pipe(z.string().min(2).max(80)),
   phone: z
     .string()
     .transform((s) => s.replace(/\D/g, ''))
     .pipe(z.string().min(10).max(13)),
   email: z.string().trim().toLowerCase().pipe(z.email()).pipe(z.string().max(120)),
-  venue: z.string().transform(strip).pipe(z.string().min(1).max(300)),
-  notes: z.string().transform(strip).pipe(z.string().min(1).max(500)),
+  venue: z.string().transform(strip).pipe(z.string().min(1).max(200)),
+  notes: z.string().transform(strip).pipe(z.string().min(1).max(600)),
 } as const;
 
 const FIELD_ERRORS: Record<DraftField, string> = {
   eventDate: 'a data é inválida',
   eventType: 'o tipo de festa precisa ser casamento, aniversário, corporativo ou outro',
-  guests: 'o número de convidados precisa ser um inteiro entre 1 e 500',
-  decor: 'a decoração precisa ser simples, elaborada ou premium',
+  guests: 'o número de convidados precisa ser um inteiro entre 1 e 5000',
+  decor: 'a descrição da decoração pode ter no máximo 600 caracteres',
   name: 'o nome precisa ter de 2 a 80 caracteres',
   phone: 'o telefone precisa ter de 10 a 13 dígitos (com DDD)',
   email: 'o e-mail é inválido',
-  venue: 'o local pode ter no máximo 300 caracteres',
-  notes: 'as observações podem ter no máximo 500 caracteres',
+  venue: 'o local pode ter no máximo 200 caracteres',
+  notes: 'as observações podem ter no máximo 600 caracteres',
 };
 
 /** Schema de patch: todos os campos opcionais, validados campo a campo em mergeDraft. */
@@ -95,7 +96,7 @@ export const DraftPatchSchema = z.object({
   eventDate: z.string().optional(),
   eventType: fieldSchemas.eventType.optional(),
   guests: z.number().optional(),
-  decor: fieldSchemas.decor.optional(),
+  decor: z.string().optional(),
   venue: z.string().optional(),
   notes: z.string().optional(),
   name: z.string().optional(),

@@ -37,7 +37,7 @@ lib/agent/run.ts  runAgentTurn()  --(openai SDK, baseURL Groq)--> Groq chat.comp
 - Provedor: Groq via API compatível com OpenAI. Trocar de provedor mexe só em `lib/agent/run.ts`.
 - `tool_use_failed` (chamada malformada): repete uma vez; se falhar, segue sem ferramenta e extrai os campos com uma chamada separada (`json_object`), validada pelo mesmo schema.
 - Modelos `gpt-oss` raciocinam antes de responder e isso conta nos `max_tokens`; por isso enviamos `reasoning_effort: 'low'` (sem isso a resposta pode sair vazia).
-- Se um turno grava/altera `notes` e a resposta não cita a Evelyn ou o WhatsApp, o servidor acrescenta essa orientação (não depende do modelo).
+- Se um turno grava/altera `notes` e a resposta não cita a Evy ou o WhatsApp, o servidor acrescenta essa orientação (não depende do modelo).
 - Texto com cara de chamada de ferramenta vazada é descartado e trocado por uma frase padrão.
 - Logs só com contagens, tokens, latência e modelo; nunca o conteúdo das mensagens.
 - Cache Components está ligado, então a rota não exporta `runtime`/`dynamic` (incompatíveis). POST não é cacheado.
