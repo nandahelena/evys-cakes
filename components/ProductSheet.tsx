@@ -65,6 +65,7 @@ function SheetBody({ category, onClose }: { category: string; onClose: () => voi
             <Icon name="i-topper" />
           </div>
         )}
+        <span className="sheet-grab" aria-hidden="true" />
         <button type="button" className="sheet-x" aria-label="Fechar" onClick={onClose}>
           ×
         </button>
