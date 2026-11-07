@@ -7,12 +7,6 @@ export const EVENT_TYPE_LABEL: Record<OrderDraft['eventType'], string> = {
   other: 'Outro',
 };
 
-export const DECOR_LABEL: Record<OrderDraft['decor'], string> = {
-  simple: 'Simples',
-  elaborate: 'Elaborada',
-  premium: 'Premium',
-};
-
 export const STATUS_LABEL = {
   quote_sent: 'Orçamento enviado',
   viewed: 'Orçamento visualizado',
