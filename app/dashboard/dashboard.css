@@ -104,3 +104,17 @@ body:has(.dash) .fab { display: none; }
   .detail-grid { grid-template-columns: 1fr 1fr; }
   .dcard.wide { grid-column: 1 / -1; }
 }
+
+/* ---------- Precisam de atenção ---------- */
+.attn { margin-bottom: 22px; padding: 16px; background: var(--urg-fundo); border: 1px solid color-mix(in srgb, var(--urg) 45%, transparent); border-radius: var(--r-card); }
+.attn-title { font-size: 21px; margin: 0; display: flex; align-items: center; gap: 10px; color: var(--urg-texto); }
+.attn-title span { display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 8px; border-radius: var(--r-pill); background: var(--urg); color: #2b1700; font: 700 14px var(--fc); }
+.attn-lead { margin: 4px 0 12px; color: var(--urg-texto); }
+.attn-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.attn-card .ord-card-bottom { flex-wrap: wrap; align-items: center; }
+.attn-card .ord-card-bottom b { font-size: 18px; }
+.attn-card .btn { margin-left: auto; }
+.attn-card .ord-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+@media (min-width: 860px) {
+  .attn-list { grid-template-columns: 1fr 1fr; }
+}

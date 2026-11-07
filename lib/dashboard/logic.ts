@@ -98,7 +98,7 @@ const EVENT_NOUN: Record<DashOrder['eventType'], string> = {
 };
 export const eventNoun = (t: DashOrder['eventType']) => EVENT_NOUN[t];
 
-export function followUpMessage(o: DashOrder, quoteUrl: string): string {
+export function followUpMessage(o: Pick<DashOrder, 'customer' | 'eventType'>, quoteUrl: string): string {
   const first = o.customer.name.split(' ')[0];
   if (o.eventType === 'wedding') {
     return (

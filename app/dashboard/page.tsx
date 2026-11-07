@@ -1,9 +1,10 @@
 import { connection } from 'next/server';
 import { Suspense } from 'react';
+import { AttentionList } from '@/components/dashboard/AttentionList';
 import { FilterChips } from '@/components/dashboard/FilterChips';
 import { OrdersList } from '@/components/dashboard/OrdersList';
 import { fetchOrders } from '@/lib/dashboard/data';
-import { applyFilter, parseFilter, type Filter } from '@/lib/dashboard/logic';
+import { applyFilter, parseFilter, staleOrders, type Filter } from '@/lib/dashboard/logic';
 
 export default function DashboardPage({ searchParams }: PageProps<'/dashboard'>) {
   return (
@@ -37,6 +38,7 @@ async function Orders({ searchParams }: Pick<PageProps<'/dashboard'>, 'searchPar
 
   return (
     <>
+      <AttentionList orders={staleOrders(all, now)} now={now} />
       <FilterChips current={filter} counts={counts} />
       <OrdersList orders={applyFilter(all, filter, now)} now={now} filter={filter} />
     </>
