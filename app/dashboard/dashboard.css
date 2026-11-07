@@ -185,3 +185,18 @@ body:has(.dash) .fab { display: none; }
 .cal-sum dt { color: var(--tinta-2); }
 .cal-sum dd { margin: 0; font-weight: 600; }
 .dlg-actions a.btn { text-decoration: none; }
+
+/* ---------- Contadores ---------- */
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 20px; }
+.stat { background: #fff; border: 1px solid var(--linha); border-radius: 18px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; box-shadow: 0 4px 14px color-mix(in srgb, var(--primaria) 6%, transparent); }
+.stat dt { order: 1; font: 600 13px/1.25 var(--fc); color: var(--tinta-2); }
+.stat dd { order: 2; margin: 0; font: 700 28px/1.1 var(--ft); color: var(--tinta); overflow-wrap: anywhere; }
+.stat small { order: 3; font-size: 12.5px; color: var(--tinta-2); line-height: 1.3; }
+.stat-ok { background: var(--ok-fundo); border-color: color-mix(in srgb, var(--ok) 30%, transparent); }
+.stat-ok dd { color: var(--ok); }
+.stat-warn { background: var(--urg-fundo); border-color: var(--urg); }
+.stat-warn dt, .stat-warn small, .stat-warn dd { color: var(--urg-texto); }
+.stat-muted dd { font-size: 24px; color: #5f4153; }
+@media (min-width: 860px) {
+  .stats { grid-template-columns: repeat(3, 1fr); }
+}
