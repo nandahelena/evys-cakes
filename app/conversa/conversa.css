@@ -1,0 +1,67 @@
+/* Conversa com a assistente de IA. Usa os tokens de brand.css. */
+body:has(.chat) .fab { display: none; } /* o botão flutuante cobriria o campo de mensagem */
+
+.chat-page { max-width: 720px; padding-bottom: 24px; }
+.chat { display: flex; flex-direction: column; min-height: calc(100dvh - 90px); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Cabeçalho */
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 8px 0 12px; }
+.chat-avatar { width: 46px; height: 46px; flex: none; }
+.chat-head h1 { font-size: 21px; margin: 0; }
+.chat-head p { font-size: 14px; color: var(--tinta-2); }
+.chat-restart { margin-left: auto; min-height: 44px; padding: 0 14px; border: 1.5px solid var(--linha); border-radius: var(--r-pill); background: #fff; color: var(--primaria-escura); font: 600 14px var(--fc); cursor: pointer; }
+
+/* Progresso */
+.chat-progress { background: #fff; border: 1px solid var(--linha); border-radius: 16px; margin-bottom: 12px; }
+.chat-progress summary { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; cursor: pointer; font: 600 14px var(--fc); color: var(--tinta-2); list-style: none; }
+.chat-progress summary::-webkit-details-marker { display: none; }
+.chat-progress summary::after { content: "▾"; margin-left: auto; color: var(--primaria); }
+.chat-progress[open] summary::after { content: "▴"; }
+.chat-progress .bar { flex: 0 0 72px; height: 8px; border-radius: 99px; background: var(--superficie); overflow: hidden; }
+.chat-progress .bar i { display: block; height: 100%; background: var(--primaria); border-radius: 99px; transition: width 0.3s; }
+.chat-progress dl { margin: 0; padding: 0 14px 10px; }
+.chat-progress dl div { display: grid; grid-template-columns: 120px 1fr; gap: 8px; padding: 7px 0; border-top: 1px dashed var(--linha); font-size: 14px; }
+.chat-progress dt { color: var(--tinta-2); }
+.chat-progress dt small { font-size: 12px; }
+.chat-progress dd { margin: 0; overflow-wrap: anywhere; color: var(--tinta-2); }
+.chat-progress div.ok dd { color: var(--tinta); font-weight: 600; }
+
+/* Mensagens */
+.chat-log { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 4px 0 12px; }
+.bub { max-width: 85%; padding: 11px 15px; border-radius: 20px; font-size: 16px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.bub.bot { align-self: flex-start; background: #fff; border: 1px solid var(--linha); border-bottom-left-radius: 6px; box-shadow: 0 4px 14px color-mix(in srgb, var(--primaria) 6%, transparent); }
+.bub.me { align-self: flex-end; background: var(--primaria); color: #fff; border-bottom-right-radius: 6px; }
+.typing { display: inline-flex; gap: 5px; align-items: center; padding: 15px 16px; }
+.typing i { width: 8px; height: 8px; border-radius: 50%; background: var(--suave); animation: chat-dot 1s infinite ease-in-out; }
+.typing i:nth-child(2) { animation-delay: 0.15s; }
+.typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes chat-dot { 0%, 80%, 100% { transform: translateY(0); opacity: 0.5; } 40% { transform: translateY(-4px); opacity: 1; } }
+
+.chat-quick { display: flex; flex-wrap: wrap; gap: 8px; }
+.chat-quick button { min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); border: 1.5px solid var(--primaria); background: #fff; color: var(--primaria-escura); font: 600 15px var(--fc); cursor: pointer; }
+.chat-quick button:hover { background: var(--superficie); }
+
+.chat-done { align-self: stretch; background: var(--ok-fundo); border: 1px solid color-mix(in srgb, var(--ok) 30%, transparent); border-radius: 20px; padding: 16px; display: grid; gap: 10px; }
+.chat-done b { font: 700 19px var(--ft); color: var(--ok); }
+.chat-done p { font-size: 15px; color: var(--tinta); }
+.chat-done .btn { width: 100%; justify-content: center; text-decoration: none; }
+
+.chat-err { margin: 0 0 10px; }
+/* ao rolar até o fim, deixa espaço para o campo fixo não cobrir a última mensagem */
+.chat-end { scroll-margin-bottom: 130px; }
+
+/* Campo de mensagem fixo no rodapé */
+.chat-input { position: sticky; bottom: 0; display: flex; align-items: flex-end; gap: 8px; padding: 10px 0 calc(10px + env(safe-area-inset-bottom)); background: linear-gradient(to top, var(--fundo) 75%, transparent); }
+.chat-input textarea { flex: 1; min-height: 48px; max-height: 140px; resize: none; padding: 12px 16px; border: 1.5px solid var(--linha); border-radius: 24px; background: #fff; color: var(--tinta); font: 400 16px/1.4 var(--fc); field-sizing: content; }
+.chat-input textarea:focus { border-color: var(--primaria); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--primaria) 20%, transparent); }
+.chat-send { min-height: 48px; padding: 0 20px; flex: none; }
+
+.chat-foot { font-size: 13px; color: var(--tinta-2); line-height: 1.45; padding-top: 4px; }
+.chat-foot a { color: var(--primaria-escura); font-weight: 600; }
+
+@media (min-width: 700px) {
+  .chat-done { grid-template-columns: 1fr 1fr; }
+  .chat-done b, .chat-done p { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) { .typing i { animation: none; } }
