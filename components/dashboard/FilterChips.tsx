@@ -12,7 +12,8 @@ export function FilterChips({ current, counts }: { current: Filter; counts: Reco
           aria-current={current === key ? 'true' : undefined}
           scroll={false}
         >
-          {label} <span>{counts[key]}</span>
+          {label}
+          {counts[key] > 0 && <span>{counts[key]}</span>}
         </Link>
       ))}
     </nav>

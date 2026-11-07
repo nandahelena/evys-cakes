@@ -1,4 +1,4 @@
-import { applyFilter, computeStats, daysSince, followUpMessage, formatDateBR, formatPhone, isStale, parseFilter, sinceLabel, staleOrders, whatsappUrl, DAY } from '../lib/dashboard/logic';
+import { applyFilter, computeStats, contactMessage, daysSince, followUpMessage, formatDateBR, formatPhone, isStale, parseFilter, sinceLabel, staleOrders, whatsappUrl, DAY } from '../lib/dashboard/logic';
 import type { DashOrder } from '../lib/dashboard/types';
 
 let failed = 0;
@@ -73,6 +73,9 @@ const birthday = followUpMessage(mk(), 'https://x/quote/abc');
 ok('mensagem padrão: nome, tipo, sem link', birthday.startsWith('Oi Ana!') && birthday.includes('aniversário') && !birthday.includes('https://'));
 const wedding = followUpMessage(mk({ eventType: 'wedding' }), 'https://x/quote/abc');
 ok('mensagem de casamento: acolhedora e com link', wedding.includes('casamento') && wedding.includes('mostrar mais do meu trabalho') && wedding.includes('https://x/quote/abc'));
+
+const contact = contactMessage(mk());
+ok('mensagem de contato: nome, tipo e data dd/MM/yyyy', contact.startsWith('Oi Ana!') && contact.includes('aniversário') && contact.includes('20/12/2026'));
 
 const s = computeStats(list, NOW);
 ok('stats', s.sent === 5 && s.won === 1 && s.lost === 1 && s.conversionPct === 20 && s.followUps === 2 && s.topLossReason?.reason === 'price');

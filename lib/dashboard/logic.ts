@@ -113,6 +113,12 @@ export function followUpMessage(o: Pick<DashOrder, 'customer' | 'eventType'>, qu
   );
 }
 
+/** Mensagem neutra para falar com a cliente sobre o evento (calendário), qualquer que seja o status. */
+export function contactMessage(o: Pick<DashOrder, 'customer' | 'eventType' | 'eventDate'>): string {
+  const first = o.customer.name.split(' ')[0];
+  return `Oi ${first}! Tudo bem? Aqui é a Evy, da Evys Cakes. Estou entrando em contato sobre o seu ${EVENT_NOUN[o.eventType]} do dia ${formatDateBR(o.eventDate)}.`;
+}
+
 // --- Contadores ---
 
 export type Stats = {
