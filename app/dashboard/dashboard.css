@@ -1,0 +1,30 @@
+/* Estilos do painel da Evy. Reusa os tokens de brand.css (--primaria, --linha, --fundo...) sem alterar nada global. */
+
+/* O botão flutuante de WhatsApp do site não faz sentido dentro do painel. */
+body:has(.dash) .fab { display: none; }
+
+.dash { min-height: 100dvh; background: var(--fundo); color: var(--tinta); }
+.dash-w { width: 100%; max-width: 1120px; margin: 0 auto; padding-left: 16px; padding-right: 16px; }
+
+/* Cabeçalho */
+.dash-top { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid var(--linha); box-shadow: 0 4px 16px color-mix(in srgb, var(--primaria) 6%, transparent); }
+.dash-top-in { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 12px; padding-top: 10px; padding-bottom: 10px; }
+.dash-brand { display: flex; align-items: center; gap: 10px; min-width: 0; font: 700 19px/1.1 var(--ft); font-variation-settings: "SOFT" 100, "WONK" 1; letter-spacing: -0.01em; }
+.dash-brand .logo { width: 38px; height: 38px; flex: none; }
+.dash-brand span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dash .btn-sm { min-height: 44px; }
+
+/* Navegação: abas no celular (segunda linha, largura toda), inline no desktop */
+.dash-nav { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding-bottom: 10px; }
+.dash-nav a { display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: var(--r-pill); background: var(--superficie); color: var(--primaria-escura); font: 600 15px var(--fc); text-decoration: none; }
+.dash-nav a[aria-current="page"] { background: var(--primaria); color: #fff; }
+
+.dash-main { padding-top: 18px; padding-bottom: 56px; }
+.dash-title { font-size: clamp(24px, 5vw, 32px); margin: 0 0 14px; }
+
+@media (min-width: 860px) {
+  .dash-w { padding-left: 24px; padding-right: 24px; }
+  .dash-top-in { grid-template-columns: auto 1fr auto; gap: 24px; }
+  .dash-nav { grid-column: auto; grid-row: auto; display: flex; gap: 8px; padding-bottom: 0; }
+  .dash-nav a { padding: 0 22px; }
+}
