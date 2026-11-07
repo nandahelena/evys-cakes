@@ -1,6 +1,6 @@
 /* Identidade visual da Evys Cakes, portada de docs/guia-de-identidade.html (tokens, botões, orçamento, painel). */
 :root {
-  color-scheme: light;
+  color-scheme: only light; /* "only" é o que bloqueia o escurecimento forçado do Chrome/Samsung no Android */
   --primaria: #b83a73; --primaria-escura: #8f2a58;
   --suave: #f4a9c4; --superficie: #fce4ec; --fundo: #fff8f4;
   --tinta: #33182e; --tinta-2: #7c5568; --linha: #f1d3dd;

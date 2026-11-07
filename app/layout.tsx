@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 // site só tem tema claro: avisa o navegador p/ não escurecer (modo escuro forçado do Android)
-export const viewport: Viewport = { colorScheme: "light", themeColor: "#fff8f4" };
+export const viewport: Viewport = { colorScheme: "only light", themeColor: "#fff8f4" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
