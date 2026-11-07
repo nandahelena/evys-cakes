@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "agent:test": "tsx --env-file=.env.local scripts/test-agent.ts",
+    "agent:cases": "tsx --env-file=.env.local scripts/test-agent-cases.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
