@@ -3,17 +3,22 @@
 import { runAgentTurn, type ChatMessage } from '../lib/agent/run';
 import type { Draft } from '../lib/agent/schema';
 
-const PAUSE_MS = 1500; // respeita os limites do plano gratuito da Groq
+// Cada turno gasta ~2.7k tokens; o plano gratuito da Groq limita tokens por minuto.
+// Ajuste com AGENT_CASE_PAUSE_MS. Para rodar só alguns casos: npm run agent:cases -- b d
+const PAUSE_MS = Number(process.env.AGENT_CASE_PAUSE_MS ?? 20000);
+const ONLY = process.argv.slice(2).map((s) => s.toLowerCase());
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 let failed = 0;
 let lastCallAt = 0;
+let lastResult: { reply: string; draft: Draft } | null = null;
 
 async function turn(messages: ChatMessage[], draft: Draft = {}) {
   const wait = lastCallAt + PAUSE_MS - Date.now();
   if (wait > 0) await sleep(wait);
   const res = await runAgentTurn({ messages, draft });
   lastCallAt = Date.now();
+  lastResult = { reply: res.reply, draft: res.draft };
   return res;
 }
 
@@ -23,7 +28,11 @@ const assistant = (content: string): ChatMessage => ({ role: 'assistant', conten
 function report(name: string, checks: Record<string, boolean>) {
   const bad = Object.entries(checks).filter(([, ok]) => !ok).map(([k]) => k);
   console.log(`${bad.length === 0 ? 'PASS' : 'FAIL'}  ${name}${bad.length ? '  -> ' + bad.join('; ') : ''}`);
-  if (bad.length) failed++;
+  if (bad.length) {
+    failed++;
+    if (lastResult) console.log(`      resposta: ${lastResult.reply}
+      draft: ${JSON.stringify(lastResult.draft)}`);
+  }
 }
 
 /** A resposta nunca pode ter JSON nem o nome da ferramenta. */
@@ -31,6 +40,8 @@ const cleanReply = (r: string) =>
   !/update_order_draft/.test(r) && !/<function/.test(r) && !/[{}]\s*"/.test(r) && !/^\s*[{[]/.test(r);
 
 async function runCase(name: string, fn: () => Promise<Record<string, boolean>>) {
+  const letter = /^\((\w)\)/.exec(name)?.[1];
+  if (ONLY.length && letter && !ONLY.includes(letter)) return;
   try {
     report(name, await fn());
   } catch (err) {

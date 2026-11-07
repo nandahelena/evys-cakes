@@ -17,7 +17,7 @@ import { runTool, updateOrderDraftTool } from './tools';
 export const MAX_MESSAGES = 24;
 const MAX_CONTENT_CHARS = 1000;
 const MAX_TOOL_ROUNDS = 3;
-const DEFAULT_MODEL = 'llama-3.3-70b-versatile';
+const DEFAULT_MODEL = 'openai/gpt-oss-120b';
 
 // --- Erros tipados ---
 
@@ -152,6 +152,7 @@ export async function runAgentTurn(input: {
   // O rascunho vem do cliente: revalida campo a campo antes de usar.
   const today = input.today ?? todayInSaoPaulo();
   let draft: Draft = mergeDraft({}, parsed.data.draft, { today }).draft;
+  const initialNotes = draft.notes;
 
   // 2. Configuração (só no servidor)
   const apiKey = process.env.GROQ_API_KEY;
@@ -256,6 +257,9 @@ export async function runAgentTurn(input: {
         ],
         temperature: 0.3,
         max_tokens: 400,
+        // Modelos gpt-oss "pensam" antes de responder e esse raciocínio conta nos
+        // max_tokens; com esforço padrão ele consome quase tudo e a resposta sai vazia.
+        ...(model.includes('gpt-oss') ? { reasoning_effort: 'low' as const } : {}),
         ...(withTools ? { tools: [updateOrderDraftTool], tool_choice: 'auto' as const } : {}),
       };
 
@@ -302,6 +306,11 @@ export async function runAgentTurn(input: {
     const missing = computeMissing(draft, today);
     if (!finalText || looksLikeLeakedToolCall(finalText)) {
       finalText = defaultReply(draft, missing);
+    }
+    // Garantia em código: observação nova (alergia, pedido urgente etc.) sempre aponta para a Evelyn,
+    // mesmo que o modelo esqueça de mencionar.
+    if (draft.notes && draft.notes !== initialNotes && !/evelyn|whatsapp/i.test(finalText)) {
+      finalText += ' Esse ponto é melhor combinar direto com a Evelyn pelo WhatsApp, tá?';
     }
 
     return {
