@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
 import { CopyLink } from '@/components/dashboard/CopyLink';
+import { OrderActions } from '@/components/dashboard/OrderActions';
 import { StatusBadge } from '@/components/dashboard/StatusBadge';
 import { fetchOrder } from '@/lib/dashboard/data';
 import { daysSince, formatDateBR, formatDateTimeBR, formatPhone, sinceLabel } from '@/lib/dashboard/logic';
@@ -55,6 +56,7 @@ async function Order({ params }: Pick<PageProps<'/dashboard/orders/[id]'>, 'para
         <StatusBadge status={o.status} />
       </div>
       {o.status === 'lost' && o.lossReason && <p className="small">Motivo da perda: {LOSS_REASON_LABEL[o.lossReason]}</p>}
+      <OrderActions orderId={o.id} customerName={o.customer.name} status={o.status} />
 
       <div className="detail-grid">
         <section className="card dcard">

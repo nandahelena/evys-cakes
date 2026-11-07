@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 import { Logo } from '@/components/Logo';
 import { DashNav } from '@/components/dashboard/DashNav';
+import { ToastProvider } from '@/components/ui/Toast';
 import { LogoutButton } from '@/components/dashboard/LogoutButton';
 import './dashboard.css';
 
@@ -10,6 +11,7 @@ export const metadata: Metadata = { title: 'Painel · Evys Cakes', robots: { ind
 
 export default function DashboardLayout({ children }: LayoutProps<'/dashboard'>) {
   return (
+    <ToastProvider>
     <div className="dash">
       <header className="dash-top">
         <div className="dash-w dash-top-in">
@@ -33,5 +35,6 @@ export default function DashboardLayout({ children }: LayoutProps<'/dashboard'>)
       </header>
       <main className="dash-w dash-main">{children}</main>
     </div>
+    </ToastProvider>
   );
 }

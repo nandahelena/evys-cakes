@@ -118,3 +118,19 @@ body:has(.dash) .fab { display: none; }
 @media (min-width: 860px) {
   .attn-list { grid-template-columns: 1fr 1fr; }
 }
+
+/* ---------- Ações de status ---------- */
+.act { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.ord-table .act { margin-top: 0; flex-wrap: nowrap; }
+.ord-table .act .btn { font-size: 14px; padding: 8px 12px; }
+.detail-head + .small, .detail-head + .act { margin-top: 8px; }
+
+/* ---------- Toast e janela de confirmação ---------- */
+.toast-region { position: fixed; left: 0; right: 0; bottom: 20px; z-index: 60; display: flex; justify-content: center; pointer-events: none; }
+.toast-region .toast { position: static; transform: none; max-width: min(92vw, 420px); text-align: center; }
+.dlg { border: 0; border-radius: var(--r-card); padding: 0; width: min(92vw, 440px); color: var(--tinta); background: #fff; box-shadow: 0 20px 60px rgba(51, 24, 46, 0.3); }
+.dlg::backdrop { background: rgba(51, 24, 46, 0.45); }
+.dlg-body { padding: 22px 20px 18px; }
+.dlg-body h2 { font-size: 22px; margin: 0 0 8px; }
+.dlg-body p { color: var(--tinta-2); }
+.dlg-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 18px; }

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { brl, EVENT_TYPE_LABEL } from '@/lib/labels';
 import { daysSince, formatDateBR, sinceLabel, type Filter } from '@/lib/dashboard/logic';
 import type { DashOrder } from '@/lib/dashboard/types';
+import { OrderActions } from './OrderActions';
 import { StatusBadge } from './StatusBadge';
 
 const EMPTY: Record<Filter, string> = {
@@ -42,6 +43,7 @@ export function OrdersList({ orders, now, filter }: { orders: DashOrder[]; now: 
               </th>
               <th scope="col">Status</th>
               <th scope="col">Orçamento enviado</th>
+              <th scope="col">Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -58,6 +60,9 @@ export function OrdersList({ orders, now, filter }: { orders: DashOrder[]; now: 
                   <StatusBadge status={o.status} />
                 </td>
                 <td>{sent(o, now)}</td>
+                <td>
+                  <OrderActions orderId={o.id} customerName={o.customer.name} status={o.status} />
+                </td>
               </tr>
             ))}
           </tbody>
@@ -80,6 +85,7 @@ export function OrdersList({ orders, now, filter }: { orders: DashOrder[]; now: 
               <b>{value(o)}</b>
               <span>Enviado {sent(o, now)}</span>
             </div>
+            <OrderActions orderId={o.id} customerName={o.customer.name} status={o.status} />
           </li>
         ))}
       </ul>
