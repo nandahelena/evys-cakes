@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Suspense } from 'react';
 import { Logo } from '@/components/Logo';
 import { DashNav } from '@/components/dashboard/DashNav';
 import { LogoutButton } from '@/components/dashboard/LogoutButton';
@@ -15,7 +17,17 @@ export default function DashboardLayout({ children }: LayoutProps<'/dashboard'>)
             <Logo variant="m" />
             <span>Evys Cakes · Painel</span>
           </div>
-          <DashNav />
+          {/* usePathname() é dado de requisição: precisa de Suspense. O fallback mostra os mesmos links, sem a aba ativa. */}
+          <Suspense
+            fallback={
+              <nav className="dash-nav" aria-label="Seções do painel">
+                <Link href="/dashboard">Pedidos</Link>
+                <Link href="/dashboard/calendar">Calendário</Link>
+              </nav>
+            }
+          >
+            <DashNav />
+          </Suspense>
           <LogoutButton />
         </div>
       </header>
