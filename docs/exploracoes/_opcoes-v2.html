@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opções v2 — nome e símbolo</title>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Figtree:wght@500;600;700&family=Great+Vibes&family=Parisienne&family=Pinyon+Script&family=Yesteryear&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:#33182E;font:500 16px/1.5 Figtree,system-ui,sans-serif;padding:28px 20px 60px}
+h1{font:700 28px/1.1 Figtree;margin-bottom:6px}
+h2{font:700 20px Figtree;margin:36px 0 4px}
+p.s{color:#6b5b66;margin-bottom:18px;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:18px;max-width:1100px}
+.card{border:1px solid #eee;border-radius:20px;overflow:hidden}
+.card h3{font:700 14px Figtree;padding:10px 16px;background:#faf6f8}
+.two{display:grid;grid-template-columns:1fr 1fr}
+.p{padding:22px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:150px;background:var(--fundo)}
+.rosa{--primaria:#B83A73;--suave:#F4A9C4;--superficie:#FCE4EC;--fundo:#FFF8F4;--tinta:#33182E}
+.marinho{--primaria:#1B2A5C;--suave:#A9BDE8;--superficie:#E3EAF8;--fundo:#F6F8FD;--tinta:#131A3A}
+.wm{color:var(--primaria);line-height:1;white-space:nowrap;text-align:center}
+.wm .E{font-size:1.55em;margin-right:-.04em;vertical-align:-.06em}
+.wm small{display:block;font:600 9px/1 Figtree;letter-spacing:.3em;text-transform:uppercase;color:var(--tinta);margin-top:10px}
+.symgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;max-width:1100px}
+symbol{fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.f{fill:#fff;stroke:none}
+.cut{fill:none;stroke:var(--primaria);stroke-width:2.2;stroke-linecap:round}
+.cutf{fill:var(--primaria);stroke:none}
+</style></head><body>
+<h1>Opções · nome e símbolo</h1>
+<p class="s">Cada opção aparece nas duas paletas: rosa à esquerda, azul marinho à direita. Sem marrom em lugar nenhum.</p>
+
+<h2>A · Letra do nome (cursiva, com "E" maior)</h2>
+<p class="s">"confeitaria artesanal" segue na fonte atual. Aqui o "E" já está em tamanho maior para dar o ar de inicial trabalhada.</p>
+<div class="grid" id="fonts"></div>
+
+<h2>B · Símbolo no selo</h2>
+<p class="s">O primeiro é o monograma com o "E" do nome. Os outros são formas novas de desenhar doce, todas em silhueta cheia (não mais contorno), para ficarem mais fortes e fofas.</p>
+<div class="symgrid" id="syms"></div>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<!-- 1 bolo silhueta cheia, dois andares -->
+<symbol id="y1" viewBox="0 0 100 100">
+  <rect class="f" x="30" y="56" width="40" height="19" rx="6"/><rect class="f" x="37" y="42" width="26" height="15" rx="5"/>
+  <path class="cut" d="M30 64q4 5 8 0q4 5 8 0q4 5 8 0q4 5 8 0q4 5 8 0"/><path class="cut" d="M37 50q3.250 4.500 6.500 0q3.250 4.500 6.500 0q3.250 4.500 6.500 0q3.250 4.500 6.500 0"/>
+  <circle class="cutf" cx="38" cy="70" r="1.300"/><circle class="cutf" cx="46" cy="71" r="1.300"/><circle class="cutf" cx="54" cy="71" r="1.300"/><circle class="cutf" cx="62" cy="70" r="1.300"/>
+  <circle class="f" cx="50" cy="34" r="4.600"/><path d="M50 29.500c0-3 2-4.500 5-5"/></symbol>
+<!-- 2 fatia de bolo -->
+<symbol id="y2" viewBox="0 0 100 100">
+  <path class="f" d="M27 72V52q0-5 5-3.500L67 58.500q5 1.500 5 6.500V72q0 3-3 3H30q-3 0-3-3z"/>
+  <path class="cut" d="M27 61.500h45M27 67.500h45"/>
+  <circle class="f" cx="38" cy="44" r="4.600"/><path d="M38 39.500c0-3 2-4.500 5-5"/>
+  <circle class="f" cx="55" cy="49.500" r="3.200"/></symbol>
+<!-- 3 bolo com chantilly e morangos -->
+<symbol id="y3" viewBox="0 0 100 100">
+  <rect class="f" x="28" y="55" width="44" height="20" rx="7"/>
+  <path class="cut" d="M28 62q5.500 6 11 0q5.500 6 11 0q5.500 6 11 0q5.500 6 11 0"/>
+  <path class="f" d="M30 55q2-8 8-5q3-7 9-3q3-5 9 0q6-3 9 4q6-3 7 4z"/>
+  <circle class="f" cx="40" cy="44" r="4.200"/><circle class="f" cx="50" cy="41" r="4.200"/><circle class="f" cx="60" cy="44" r="4.200"/>
+  <circle class="cutf" cx="40" cy="44" r="1" opacity=".5"/><circle class="cutf" cx="50" cy="41" r="1" opacity=".5"/><circle class="cutf" cx="60" cy="44" r="1" opacity=".5"/></symbol>
+<!-- 4 cupcake cheio -->
+<symbol id="y4" viewBox="0 0 100 100">
+  <path class="f" d="M34 58h32l-4 17H38z"/><path class="cut" d="M42 58l1.500 17M50 58v17M58 58l-1.500 17"/>
+  <path class="f" d="M31 58q-5 0-5-5.500q0-5.500 6-5.500q0-7 8-8q3-7.500 10.500-6q7 1 7.500 8q8 0 8 7q0 6-6 6z"/>
+  <path class="cut" d="M36 53q6 3 12 0M50 53q6 3 12 0" stroke-width="1.800" opacity=".7"/>
+  <circle class="f" cx="50" cy="29" r="4.200"/></symbol>
+<!-- 5 doce na forminha cheio -->
+<symbol id="y5" viewBox="0 0 100 100">
+  <circle class="f" cx="50" cy="44" r="17"/>
+  <path class="cut" d="M42 38l3 2M54 35l2 3M58 46l3 1.500M40 49l3-2M50 52l1 3" stroke-width="2.400"/>
+  <path class="f" d="M30 62q2.500-5.500 5 0q2.500-5.500 5 0q2.500-5.500 5 0q2.500-5.500 5 0q2.500-5.500 5 0q2.500-5.500 5 0q2.500-5.500 5 0q2.500-5.500 5 0L65 76H35z"/>
+  <path class="cut" d="M43 66l1 10M50 66v10M57 66l-1 10" stroke-width="1.800"/></symbol>
+<!-- 6 bolo alto com laço -->
+<symbol id="y6" viewBox="0 0 100 100">
+  <rect class="f" x="32" y="50" width="36" height="25" rx="8"/>
+  <path class="cut" d="M32 59q4.500 5.500 9 0q4.500 5.500 9 0q4.500 5.500 9 0q4.500 5.500 9 0"/>
+  <circle class="cutf" cx="40" cy="68" r="1.300"/><circle class="cutf" cx="50" cy="70" r="1.300"/><circle class="cutf" cx="60" cy="68" r="1.300"/>
+  <path class="f" d="M50 42C43 32 33 34 35.500 41C33 48 43 49 50 42C57 49 67 48 64.500 41C67 34 57 32 50 42z"/>
+  <circle class="cutf" cx="50" cy="41.500" r="2.800"/></symbol>
+</defs></svg>
+
+<script>
+function scallop(n,R,c,k){const ch=2*R*Math.sin(Math.PI/n),b=ch/2*k,p=i=>{const a=-Math.PI/2+2*Math.PI*i/n;return[c+R*Math.cos(a),c+R*Math.sin(a)]};let d='M'+p(0).join(' ');for(let i=1;i<=n;i++)d+=`A${b} ${b} 0 0 1 ${p(i%n).join(' ')}`;return d+'Z'}
+const D=scallop(14,39,50,1.02);
+const fonts=[['Great Vibes','elegante, E clássico'],['Pinyon Script','mais formal, bem ornamentada'],['Parisienne','solta e delicada'],['Allura','fina e fluida'],['Alex Brush','pincel, mais encorpada'],['Yesteryear','retrô, bem fofa']];
+document.getElementById('fonts').innerHTML=fonts.map(([f,d])=>{
+ const wm=`<div class="wm" style="font-family:'${f}',cursive;font-size:42px"><span class="E">E</span>vy's Cake<small>confeitaria artesanal</small></div>`;
+ return `<div class="card"><h3>${f} · ${d}</h3><div class="two"><div class="p rosa">${wm}</div><div class="p marinho">${wm}</div></div></div>`}).join('');
+const seal=(inner,t)=>`<svg width="140" height="140" viewBox="0 0 100 100"><path d="${D}" style="fill:var(--primaria)"/><circle cx="50" cy="50" r="35" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="1.5 4" stroke-linecap="round" opacity=".85"/>${inner}</svg>`;
+const mono=f=>`<text x="50" y="68" text-anchor="middle" font-family="'${f}',cursive" font-size="64" fill="#fff">E</text>`;
+const syms=[['1 · Monograma E (Great Vibes)',mono('Great Vibes')],['2 · Monograma E (Pinyon Script)',mono('Pinyon Script')],['3 · Monograma E (Parisienne)',mono('Parisienne')],
+ ['4 · Bolo, silhueta cheia','<use href="#y1"/>'],['5 · Fatia de bolo','<use href="#y2"/>'],['6 · Bolo com chantilly e morangos','<use href="#y3"/>'],
+ ['7 · Cupcake','<use href="#y4"/>'],['8 · Doce na forminha','<use href="#y5"/>'],['9 · Bolo com laço','<use href="#y6"/>']];
+document.getElementById('syms').innerHTML=syms.map(([t,i])=>`<div class="card"><h3>${t}</h3><div class="two"><div class="p rosa">${seal(i)}</div><div class="p marinho">${seal(i)}</div></div></div>`).join('');
+</script></body></html>

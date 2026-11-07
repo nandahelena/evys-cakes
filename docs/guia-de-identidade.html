@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia de Identidade Visual — Evy's Cake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,500..800,0..100,0..1;1,9..144,500..800,0..100,0..1&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS: copiar este bloco para o produto (link de orçamento + painel) ===== */
+:root{
+  --primaria:#B83A73; --primaria-escura:#8F2A58;
+  --suave:#F4A9C4; --superficie:#FCE4EC; --fundo:#FFF8F4;
+  --tinta:#33182E; --tinta-2:#7C5568; --linha:#F1D3DD;
+  --urg:#D98E4A; --urg-fundo:#FFF0D6; --urg-texto:#7A4B00;   /* prazo, urgência */
+  --ok:#2F6B47; --ok-fundo:#E3F1E7;                          /* reservado, entrada paga */
+  --r-card:22px; --r-pill:999px;
+  --f-titulo:"Fraunces",Georgia,serif; --f-corpo:"Figtree",system-ui,sans-serif; --f-script:"Great Vibes","Segoe Script",cursive;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--fundo);color:var(--tinta);font:400 17px/1.6 var(--f-corpo);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.w{max-width:1040px;margin:0 auto;padding:0 20px;position:relative}
+section{padding:64px 0;position:relative}
+h1,h2,h3{font-family:var(--f-titulo);font-weight:700;line-height:1.1;letter-spacing:-.01em;font-variation-settings:"SOFT" 100,"WONK" 1}
+h2{font-size:clamp(30px,4.4vw,42px);margin-bottom:10px}
+h3{font-size:21px;margin:30px 0 12px}
+.eyebrow{display:flex;align-items:center;gap:8px;font:700 12px/1 var(--f-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--primaria);margin-bottom:14px}
+.eyebrow svg{width:18px;height:18px}
+.lead{color:var(--tinta-2);max-width:66ch;margin-bottom:30px}
+.note{background:var(--urg-fundo);color:var(--urg-texto);border-radius:14px;padding:12px 16px;font-size:15px;max-width:74ch;margin-top:22px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr))}
+.alt{background:var(--superficie)}
+.card{background:#fff;border:1px solid var(--linha);border-radius:var(--r-card);padding:22px;box-shadow:0 6px 22px color-mix(in srgb,var(--primaria) 8%,transparent)}
+code{font:500 13px ui-monospace,Consolas,monospace;color:var(--tinta-2)}
+pre{font:500 12.5px/1.6 ui-monospace,Consolas,monospace;background:var(--tinta);color:var(--superficie);border-radius:var(--r-card);padding:18px;overflow:auto}
+ul.plain{color:var(--tinta-2);padding-left:20px}
+
+/* festonado */
+.fest-c{height:20px;background:radial-gradient(circle at 15px 0,var(--fundo) 14px,transparent 14.6px) 0 0/30px 20px repeat-x;position:absolute;top:0;left:0;right:0}
+.fest-b{height:20px;background:radial-gradient(circle at 15px 0,var(--superficie) 14px,transparent 14.6px) 0 0/30px 20px repeat-x}
+
+/* logo */
+.gv{font-family:var(--f-script);fill:var(--nome,var(--primaria))}
+.tg{font:600 11px var(--f-corpo);letter-spacing:.3em;fill:var(--tag,var(--tinta));text-transform:uppercase}
+.lf{fill:none;stroke:var(--fio,var(--primaria));stroke-linecap:round}
+.fd{fill:var(--fio,var(--primaria))}
+.lb{border-radius:var(--r-card);padding:34px 22px;display:flex;align-items:center;justify-content:center;min-height:210px;position:relative;overflow:hidden;border:1px solid var(--linha)}
+.lb svg{width:100%;height:auto;overflow:visible}
+.lb .cap{position:absolute;left:14px;bottom:10px;font:600 12px var(--f-corpo);opacity:.7}
+.inv{--nome:#fff;--fio:#fff;--tag:var(--superficie);--md-disc:#fff;--md-ring:#fff;--md-ink:var(--primaria)}
+
+/* capa */
+.capa{padding:70px 0 44px;text-align:center;overflow:hidden;position:relative;background:var(--superficie)}
+.capa .bg{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
+.capa .w{z-index:1}
+.capa [data-logo]{max-width:620px;margin:0 auto}
+.capa p{max-width:56ch;margin:18px auto 0;color:var(--tinta-2)}
+.tag{display:inline-block;font:700 12px/1 var(--f-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--primaria-escura);background:#fff;border-radius:var(--r-pill);padding:8px 14px;margin-bottom:22px}
+
+/* cores */
+.sw{border-radius:var(--r-card);overflow:hidden;border:1px solid #0000001a;background:#fff;color:#222}
+.sw i{display:block;height:84px}
+.sw div{padding:10px 12px;font-size:13.5px;line-height:1.4}
+.sw b{display:block;font-size:15px}
+
+/* ícones */
+symbol.i{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ia{fill:var(--ia,var(--superficie))} .ib{fill:var(--ib,var(--suave))} .ic{fill:var(--ic,#fff)} .id{fill:var(--id,var(--primaria));stroke:none}
+.ico{width:48px;height:48px;color:var(--tinta);flex:none}
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px}
+.ig figure{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:16px 8px 12px;text-align:center}
+.ig .ico{width:56px;height:56px;margin:0 auto}
+.ig figcaption{font-size:13px;color:var(--tinta-2);margin-top:6px}
+.ig.dark figure{background:var(--primaria);border-color:var(--primaria)}
+.ig.dark .ico{color:#fff;--ia:none;--ib:none;--ic:none;--id:none}
+.ig.dark figcaption{color:var(--superficie)}
+
+/* padrões */
+.pat{border-radius:var(--r-card);height:190px;border:1px solid var(--linha);position:relative;overflow:hidden;display:flex;align-items:flex-end;background:#fff}
+.pat svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.pat span{position:relative;background:#fff;border-radius:0 14px 0 0;padding:8px 14px;font-size:14px;font-weight:600}
+.gingham{background-color:#fff;background-image:linear-gradient(90deg,color-mix(in srgb,var(--suave) 55%,transparent) 50%,transparent 50%),linear-gradient(color-mix(in srgb,var(--suave) 55%,transparent) 50%,transparent 50%);background-size:30px 30px}
+.dots{background:var(--superficie);background-image:radial-gradient(var(--suave) 3px,transparent 3.5px);background-size:22px 22px}
+.stripes{background:repeating-linear-gradient(90deg,#fff 0 18px,var(--superficie) 18px 36px)}
+
+/* elementos */
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ph{width:190px;height:190px;position:relative;display:block;flex:none}
+.ph .in{position:absolute;inset:0;background-repeat:no-repeat;background-color:var(--suave);background-size:var(--bs);background-position:var(--bp)}
+.ph.ring{background:var(--primaria);clip-path:url(#clip-sc)}
+.ph.ring .in{inset:8px;clip-path:url(#clip-sc)}
+.ph.arch{border-radius:999px 999px 22px 22px;overflow:hidden;border:5px solid var(--primaria);height:220px;width:160px}
+.ph.circ{border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 0 0 3px var(--suave)}
+.ribbon{display:inline-block;background:var(--primaria);color:#fff;font:400 26px/1 var(--f-script);padding:12px 38px;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%,14px 50%)}
+.label{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--urg-fundo);color:var(--urg-texto);font-weight:700;font-size:15px;padding:10px 18px 10px 30px;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%)}
+.label::before{content:"";position:absolute;left:11px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--fundo)}
+.fio{display:flex;align-items:center;gap:10px;max-width:420px;margin:6px 0}
+.fio::before,.fio::after{content:"";flex:1;border-top:1px solid var(--primaria)}
+.fio i{width:9px;height:9px;background:var(--primaria);transform:rotate(45deg);flex:none}
+.btn{font:600 16px var(--f-corpo);border:0;border-radius:var(--r-pill);padding:14px 26px;cursor:pointer;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn .ico{width:22px;height:22px;color:currentColor;--ia:none;--ib:none;--ic:none;--id:none}
+.btn-p{background:var(--primaria);color:#fff;box-shadow:0 4px 0 var(--primaria-escura)}
+.btn-p:hover{background:var(--primaria-escura)}
+.btn-s{background:var(--superficie);color:var(--primaria-escura)}
+.btn:focus-visible{outline:3px solid var(--urg);outline-offset:2px}
+.badge{display:inline-flex;align-items:center;gap:6px;font:600 13px/1 var(--f-corpo);padding:7px 12px;border-radius:var(--r-pill);white-space:nowrap}
+.badge .ico{width:16px;height:16px;--ia:none;--ib:none;--ic:none;--id:none;color:currentColor}
+.b-env{background:var(--superficie);color:var(--primaria-escura)}
+.b-vis{background:color-mix(in srgb,var(--tinta-2) 14%,#fff);color:var(--tinta-2)}
+.b-urg{background:var(--urg-fundo);color:var(--urg-texto)}
+.b-ok{background:var(--ok-fundo);color:var(--ok)}
+.b-perd{background:#fff;color:var(--tinta-2);border:1px solid var(--linha)}
+.stk{position:relative;width:128px;height:128px;display:grid;place-items:center;flex:none}
+.stk svg{position:absolute;inset:0;width:100%;height:100%}
+.stk span{position:relative;text-align:center;color:#fff;font:400 27px/.95 var(--f-script)}
+.stk small{display:block;font:600 8px/1 var(--f-corpo);letter-spacing:.24em;text-transform:uppercase;margin-top:6px}
+.bunting{width:100%;max-width:620px;height:auto}
+
+/* ===== APLICAÇÕES ===== */
+.apps{display:flex;gap:40px 34px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.app{display:flex;flex-direction:column;align-items:center;gap:14px}
+.app>figcaption{font:700 15px var(--f-corpo);color:var(--primaria-escura);text-align:center}
+.app>figcaption small{display:block;font-weight:500;color:var(--tinta-2);font-size:13px}
+.phone{width:340px;background:var(--fundo);border:10px solid var(--tinta);border-radius:46px;overflow:hidden;box-shadow:0 26px 56px color-mix(in srgb,var(--tinta) 24%,transparent);position:relative}
+.phone::before{content:"";position:absolute;top:8px;left:50%;width:84px;height:22px;margin-left:-42px;background:var(--tinta);border-radius:0 0 14px 14px;z-index:3}
+.t-bar{padding:34px 18px 10px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--fundo)}
+.t-bar .no{font:600 11px var(--f-corpo);color:var(--tinta-2);letter-spacing:.08em;text-align:right;line-height:1.3}
+.o-body{padding:6px 18px 18px}
+.o-hi{font:400 44px/1 var(--f-script);color:var(--primaria);margin-top:4px}
+.o-sub{font-size:14.5px;color:var(--tinta-2);margin:4px 0 14px;line-height:1.45}
+.ticket{display:grid;grid-template-columns:1fr 1fr 1fr;background:#fff;border:1px solid var(--linha);border-radius:18px;padding:12px 4px;position:relative}
+.ticket div{text-align:center;padding:0 4px;border-right:1px dashed var(--linha)}
+.ticket div:last-child{border:0}
+.ticket small{display:block;font:600 10px var(--f-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--tinta-2)}
+.ticket b{display:block;font:700 17px/1.2 var(--f-titulo);font-variation-settings:"SOFT" 100;margin-top:3px}
+.sec{display:flex;align-items:center;gap:8px;font:700 11px var(--f-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--primaria);margin:20px 0 4px}
+.sec::after{content:"";flex:1;border-top:1px dashed var(--suave)}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha)}
+.li:last-of-type{border:0}
+.th{width:56px;height:56px;border-radius:50%;flex:none;background-color:var(--suave);background-repeat:no-repeat;box-shadow:0 0 0 2.5px #fff,0 0 0 4px var(--suave)}
+.li b{display:block;font-size:15px;line-height:1.2}
+.li small{display:block;color:var(--tinta-2);font-size:12.5px;margin-top:2px}
+.li .v{margin-left:auto;text-align:right;font:700 15px var(--f-titulo);white-space:nowrap}
+.li .v small{font:500 12px var(--f-corpo)}
+.sum{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:14px 16px;margin-top:10px}
+.sum div{display:flex;justify-content:space-between;gap:8px;font-size:14px;color:var(--tinta-2);padding:3px 0}
+.sum div span:last-child{white-space:nowrap}
+.sum .ent{background:var(--superficie);margin:8px -8px 4px;padding:10px 8px;border-radius:12px;color:var(--primaria-escura);font-weight:700;font-size:14px}
+.sum .tot{border-bottom:1px dashed var(--suave);padding-bottom:8px;align-items:baseline;color:var(--tinta)}
+.sum .tot b{font:700 30px var(--f-titulo);color:var(--primaria);font-variation-settings:"SOFT" 100}
+.valid{margin-top:12px;background:var(--urg-fundo);color:var(--urg-texto);border-radius:16px;padding:12px 14px}
+.valid .h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:13.5px}
+.valid .h .ico{width:24px;height:24px;color:var(--urg-texto);--ia:none;--ib:none}
+.valid .h span:last-child{margin-left:auto;white-space:nowrap}
+.valid .bar{height:7px;border-radius:9px;background:#fff;margin-top:9px;overflow:hidden}
+.valid .bar i{display:block;height:100%;width:70%;background:var(--urg);border-radius:9px}
+.valid p{font-size:12.5px;margin-top:7px;opacity:.9;line-height:1.4}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.steps div{text-align:center;font-size:12px;line-height:1.3;color:var(--tinta-2)}
+.steps b{display:grid;place-items:center;width:32px;height:32px;margin:0 auto 6px;border-radius:50%;background:var(--primaria);color:#fff;font:700 14px var(--f-titulo)}
+.small{font-size:12px;color:var(--tinta-2);margin-top:12px;text-align:center}
+.dock{display:flex;align-items:center;gap:10px;padding:12px 14px 16px;background:#fff;border-top:1px solid var(--linha);box-shadow:0 -10px 24px color-mix(in srgb,var(--primaria) 10%,transparent);position:relative}
+.dock .t small{display:block;font:600 10.5px var(--f-corpo);letter-spacing:.06em;color:var(--tinta-2);text-transform:uppercase}
+.dock .t b{font:700 20px/1.1 var(--f-titulo);color:var(--tinta)}
+.dock .btn{flex:1;padding:12px 14px;font-size:15px;white-space:nowrap}
+.dock .btn .ico{display:none}
+.dock .sq{width:48px;height:48px;border-radius:50%;background:var(--superficie);display:grid;place-items:center;border:0;flex:none}
+.dock .sq .ico{width:24px;height:24px;color:var(--primaria-escura);--ia:none;--ib:none}
+
+.p-head{background:var(--superficie);padding:36px 18px 14px;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
+.p-head .bg{position:absolute;inset:0;width:100%;height:100%;opacity:.3}
+.p-head>*{position:relative}
+.p-head small{display:block;font-size:12px;color:var(--tinta-2)}
+.p-head b{font:700 21px/1.1 var(--f-titulo);font-variation-settings:"SOFT" 100,"WONK" 1}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 14px 4px}
+.stat{background:#fff;border:1px solid var(--linha);border-radius:16px;padding:10px 8px;text-align:center}
+.stat b{display:block;font:700 26px/1 var(--f-titulo);color:var(--primaria)}
+.stat small{display:block;font-size:11px;color:var(--tinta-2);line-height:1.25;margin-top:4px}
+.stat.u{background:var(--urg-fundo);border-color:transparent}.stat.u b{color:var(--urg-texto)}.stat.u small{color:var(--urg-texto)}
+.stat.k{background:var(--ok-fundo);border-color:transparent}.stat.k b{color:var(--ok)}.stat.k small{color:var(--ok)}
+.p-body{padding:0 14px 6px}
+.lead-card{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:12px;margin-top:10px}
+.lead-card.open{border-color:var(--suave);box-shadow:0 8px 22px color-mix(in srgb,var(--primaria) 12%,transparent)}
+.lr{display:flex;align-items:center;gap:10px}
+.lr .av{width:42px;height:42px;border-radius:50%;background:var(--suave);display:grid;place-items:center;font:400 28px/1 var(--f-script);color:var(--primaria-escura);flex:none}
+.lr b{display:block;font-size:14.5px;line-height:1.2}
+.lr small{display:block;font-size:12px;color:var(--tinta-2);margin-top:2px}
+.lr .badge{margin-left:auto}
+.msg{background:var(--fundo);border:1.5px dashed var(--suave);border-radius:14px 14px 14px 4px;padding:10px 12px;font-size:13px;line-height:1.45;margin:10px 0 4px}
+.msg-h{display:flex;align-items:center;gap:6px;font:700 10.5px var(--f-corpo);letter-spacing:.12em;text-transform:uppercase;color:var(--primaria);margin-top:12px}
+.msg-h .ico{width:18px;height:18px;--ia:none;--ib:none}
+.acts{display:flex;gap:8px;margin-top:10px}
+.acts .btn{font-size:13.5px;padding:10px 12px;min-height:42px;box-shadow:none;white-space:nowrap}
+.acts .btn-p{flex:1.4}.acts .btn-s{flex:1}
+.acts .btn .ico{width:18px;height:18px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:12px;background:#fff;border-top:1px solid var(--linha);padding:8px 6px 14px}
+.tabs div{display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:600;color:var(--tinta-2)}
+.tabs div.on{color:var(--primaria)}
+.tabs .ico{width:28px;height:28px;color:currentColor;--ia:none;--ib:none;--id:none}
+.tabs div.on .ico{--ib:var(--superficie)}
+
+.story{width:270px;aspect-ratio:9/16;border-radius:26px;background:var(--fundo);position:relative;overflow:hidden;text-align:center;padding:20px 16px 0;display:flex;flex-direction:column;align-items:center;box-shadow:0 22px 48px color-mix(in srgb,var(--primaria) 20%,transparent);border:1px solid var(--linha)}
+.story .bg{position:absolute;inset:0;width:100%;height:100%;opacity:.28}
+.story>*{position:relative}
+.story .ph.arch{width:176px;height:166px;margin-top:10px;flex:none}
+.story .ttl{font:400 36px/1 var(--f-script);color:var(--primaria);margin-top:10px}
+.story .menu{width:100%;margin-top:6px;text-align:left}
+.story .menu div{display:flex;align-items:baseline;gap:6px;font-size:12.5px;padding:5px 0;border-bottom:1px dashed var(--suave)}
+.story .menu div span:first-child{font-weight:600}
+.story .menu div i{flex:1}
+.story .menu div b{font:700 13.5px var(--f-titulo);color:var(--primaria)}
+.story .cta{margin-top:auto;margin-bottom:0;width:calc(100% + 32px);background:var(--primaria);color:#fff;padding:12px 10px 16px;font:400 24px/1 var(--f-script);position:relative}
+.story .cta small{display:block;font:600 9px var(--f-corpo);letter-spacing:.22em;text-transform:uppercase;margin-top:5px;opacity:.9}
+.why{max-width:760px;margin:40px auto 0}
+.why li{padding:6px 0}
+
+.dd{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.dd ul{list-style:none;padding:0}
+.dd li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--linha);font-size:16px}
+.sim li::before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:700}
+.nao li::before{content:"✕";position:absolute;left:0;color:var(--primaria);font-weight:700}
+.voz{border-left:4px solid var(--suave);padding:4px 0 4px 16px;margin:12px 0;font-size:18px}
+.voz small{display:block;color:var(--tinta-2);font-size:14px}
+.spec{display:grid;grid-template-columns:170px 1fr;gap:6px 20px;padding:14px 0;border-bottom:1px solid var(--linha);align-items:baseline}
+.spec span:first-child{font-size:13px;color:var(--tinta-2)}
+footer{background:var(--primaria-escura);color:var(--superficie);padding:40px 0;font-size:14px}
+@media (max-width:520px){.spec{grid-template-columns:1fr}.phone{width:min(340px,100%)}}
+</style>
+</head>
+<body>
+
+<!-- ================= SPRITE ================= -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <clipPath id="clip-sc" clipPathUnits="objectBoundingBox"><path id="clip-sc-p"/></clipPath>
+
+  <!-- bolinho do logo (traço, usa as cores do medalhão) -->
+  <symbol id="cake-w" viewBox="0 0 100 100">
+    <g fill="none" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round" style="stroke:var(--md-ink,#fff)">
+      <rect x="31" y="58" width="38" height="12" rx="2"/><rect x="37" y="46" width="26" height="12" rx="2"/><rect x="43" y="36" width="14" height="10" rx="2"/>
+      <path d="M31 62q4.750 5 9.500 0q4.750 5 9.500 0q4.750 5 9.500 0q4.750 5 9.500 0M37 50q3.250 4 6.500 0q3.250 4 6.500 0q3.250 4 6.500 0q3.250 4 6.500 0"/>
+      <circle cx="50" cy="31" r="3.200" stroke="none" style="fill:var(--md-ink,#fff)"/><path d="M50 28c0-2.500 1.500-4 4-4.500"/>
+      <path d="M26 70h48M50 70v4M42 76h16"/>
+    </g>
+  </symbol>
+
+  <!-- ícones de 48 -->
+  <symbol class="i" id="i-cake" viewBox="0 0 48 48"><g transform="translate(-11 -11) scale(.7)" stroke-width="3.400">
+    <rect class="ia" x="31" y="58" width="38" height="12" rx="2"/><rect class="ib" x="37" y="46" width="26" height="12" rx="2"/><rect class="ia" x="43" y="36" width="14" height="10" rx="2"/>
+    <path d="M31 62q4.750 5 9.500 0q4.750 5 9.500 0q4.750 5 9.500 0q4.750 5 9.500 0M37 50q3.250 4 6.500 0q3.250 4 6.500 0q3.250 4 6.500 0q3.250 4 6.500 0"/>
+    <circle class="id" cx="50" cy="31" r="3.600"/><path d="M50 27.500c0-2.500 1.500-4 4-4.500"/><path d="M26 70h48M50 70v4M42 76h16"/></g></symbol>
+  <symbol class="i" id="i-cupcake" viewBox="0 0 48 48">
+    <path class="ia" d="M11 25h26l-3 17H14z"/><path d="M19 25l1.200 17M24 25v17M29 25l-1.200 17"/>
+    <path class="ic" d="M10 25C5 25 5 18 11 18C10 13 16 11 19 13C20 8 28 8 29 13C34 11 39 15 36 18C41 19 41 25 37 25z"/>
+    <circle class="id" cx="24" cy="6.500" r="3.400"/><path d="M24 4c0-2 2-3 3.500-3"/></symbol>
+  <symbol class="i" id="i-brig" viewBox="0 0 48 48">
+    <circle class="ib" cx="24" cy="21" r="11.500"/><path d="M18 16l2 1.500M27 14l1.500 2M30 22l2 1M17 24l1.500-1.500M24 27l.5 2.500"/>
+    <path class="ia" d="M9 31q2-4.500 4 0q2-4.500 4 0q2-4.500 4 0q2-4.500 4 0q2-4.500 4 0q2-4.500 4 0q2-4.500 4 0L34.500 43h-21z"/><path d="M18 34l.8 8M24 34v8M30 34l-.8 8"/></symbol>
+  <symbol class="i" id="i-cherry" viewBox="0 0 48 48">
+    <circle class="id" cx="15" cy="34" r="8"/><circle class="id" cx="33" cy="32" r="8"/><path d="M15 26C17 16 22 10 30 6M33 24C33 16 31 10 30 6"/>
+    <path class="ib" d="M30 6c4-3 10-2 13 1c-3 4-9 5-13-1z"/></symbol>
+  <symbol class="i" id="i-pao" viewBox="0 0 48 48">
+    <path class="ib" d="M7 28C7 14 41 14 41 28z"/><path class="ia" d="M9 28h30v3a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3z"/>
+    <path class="ib" d="M12 34h24v1a5 5 0 0 1-5 5H17a5 5 0 0 1-5-5z"/><path d="M16 22q3-3 7-3" stroke="#fff" opacity=".8"/></symbol>
+  <symbol class="i" id="i-topper" viewBox="0 0 48 48">
+    <path class="id" d="M24 3l3.500 8 8.700.8-6.600 5.800 2 8.500L24 21.500 16.400 26l2-8.500-6.600-5.800 8.700-.8z"/><path d="M24 26v17M19 43h10"/></symbol>
+  <symbol class="i" id="i-bow" viewBox="0 0 48 48">
+    <path class="ib" d="M24 24C16 12 5 14 7 24C5 34 16 36 24 24C32 36 43 34 41 24C43 14 32 12 24 24z"/><path class="id" d="M20.500 20h7v8h-7z"/><path d="M22 28l-5 13M26 28l5 13"/></symbol>
+  <symbol class="i" id="i-heart" viewBox="0 0 48 48"><path class="id" d="M24 41C8 29 5 17 13 11.500C18.500 8 23 11 24 15.500C25 11 29.500 8 35 11.500C43 17 40 29 24 41z"/></symbol>
+  <symbol class="i" id="i-spark" viewBox="0 0 48 48">
+    <path class="ib" d="M22 5Q24 20 39 22Q24 24 22 39Q20 24 5 22Q20 20 22 5z"/><path class="id" d="M38 30q1 5 5 6q-4 1-5 6q-1-5-5-6q4-1 5-6z" stroke-width="1.800"/></symbol>
+  <symbol class="i" id="i-cal" viewBox="0 0 48 48">
+    <rect x="7" y="10" width="34" height="31" rx="6"/><path class="ib" d="M7 16a6 6 0 0 1 6-6h22a6 6 0 0 1 6 6v5H7z"/><path d="M16 6v7M32 6v7"/>
+    <path class="id" d="M24 36c-5-3.500-7-6-7-8.500a3.500 3.500 0 0 1 7-1a3.500 3.500 0 0 1 7 1c0 2.500-2 5-7 8.500z" stroke-width="1.800"/></symbol>
+  <symbol class="i" id="i-clock" viewBox="0 0 48 48"><circle class="ia" cx="24" cy="25" r="16"/><path d="M24 15v10l7 4"/><path d="M19 5h10M35 9l3 3"/></symbol>
+  <symbol class="i" id="i-chat" viewBox="0 0 48 48">
+    <path class="ia" d="M24 7C14 7 6 14 6 23c0 4 1.500 7.500 4 10l-2 8 8.500-3c2.300.8 4.700 1.200 7.500 1.200C34 39 42 32 42 23S34 7 24 7z"/><path class="id" d="M16.500 24h.1M24 24h.1M31.500 24h.1" stroke-width="4"/></symbol>
+  <symbol class="i" id="i-box" viewBox="0 0 48 48">
+    <path class="ia" d="M8 20h32v19a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3z"/><rect class="ib" x="5" y="12" width="38" height="8" rx="2.500"/><path d="M24 12v30M24 12c-3-6-10-6-9-1.500M24 12c3-6 10-6 9-1.500"/></symbol>
+  <symbol class="i" id="i-check" viewBox="0 0 48 48"><circle class="ia" cx="24" cy="25" r="17"/><path d="M15.500 25l6 6 11-13"/></symbol>
+  <symbol class="i" id="i-share" viewBox="0 0 48 48"><circle class="ia" cx="12" cy="24" r="6"/><circle class="ia" cx="35" cy="11" r="6"/><circle class="ia" cx="35" cy="37" r="6"/><path d="M17 21l13-7M17 27l13 7"/></symbol>
+  <symbol class="i" id="i-list" viewBox="0 0 48 48"><rect class="ia" x="9" y="6" width="30" height="36" rx="5"/><path d="M16 17h16M16 25h16M16 33h9"/></symbol>
+  <symbol class="i" id="i-menu" viewBox="0 0 48 48"><path class="ia" d="M8 18h32v20a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3z"/><path d="M8 18c0-8 8-12 16-12s16 4 16 12"/><path d="M24 6v-1"/></symbol>
+
+  <pattern id="pat-doodle" width="210" height="210" patternUnits="userSpaceOnUse" style="color:var(--suave);--ia:none;--ib:none;--ic:none;--id:none">
+    <use href="#i-cake" x="12" y="10" width="50" height="50" transform="rotate(-8 37 35)"/>
+    <use href="#i-cupcake" x="118" y="10" width="46" height="46" transform="rotate(10 141 33)"/>
+    <use href="#i-spark" x="70" y="78" width="30" height="30"/>
+    <use href="#i-pao" x="12" y="124" width="46" height="46"/>
+    <use href="#i-brig" x="112" y="112" width="46" height="46" transform="rotate(12 135 135)"/>
+    <use href="#i-topper" x="168" y="62" width="34" height="34" transform="rotate(18 185 79)"/>
+    <use href="#i-heart" x="80" y="164" width="26" height="26" transform="rotate(-12 93 177)"/>
+    <use href="#i-cherry" x="168" y="164" width="32" height="32"/>
+    <use href="#i-bow" x="70" y="24" width="28" height="28" transform="rotate(14 84 38)"/>
+  </pattern>
+  <pattern id="pat-sprinkle" width="90" height="90" patternUnits="userSpaceOnUse">
+    <rect width="90" height="90" fill="#fff"/>
+    <g stroke-width="5" stroke-linecap="round">
+      <path d="M10 14l9-4" style="stroke:var(--suave)"/><path d="M52 8l3 9" style="stroke:var(--primaria)"/><path d="M74 30l8-5" style="stroke:var(--urg)"/>
+      <path d="M26 40l-3 9" style="stroke:var(--primaria)"/><path d="M62 52l9 3" style="stroke:var(--suave)"/><path d="M8 70l8-3" style="stroke:var(--urg)"/>
+      <path d="M40 72l4 8" style="stroke:var(--suave)"/><path d="M78 76l-4 8" style="stroke:var(--primaria)"/><path d="M44 30l7-6" style="stroke:var(--urg)"/>
+    </g>
+  </pattern>
+</defs>
+</svg>
+
+<!-- ================= CAPA ================= -->
+<header class="capa">
+  <svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg>
+  <div class="w">
+    <span class="tag">Guia de identidade visual · rascunho v2</span>
+    <div data-logo="h"></div>
+    <p>Logo, cores, tipografia, ícones, padrões, elementos e aplicações da Evy's Cake.</p>
+  </div>
+</header>
+<div class="fest-b"></div>
+
+<!-- ================= 1 · ESSÊNCIA ================= -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>1 · Essência</div>
+  <h2>Delicada, artesanal, com ar de ateliê</h2>
+  <p class="lead">A Evy faz doces sob encomenda, com atendimento próximo e muita indicação. A identidade precisa passar três coisas logo de cara: <b>cuidado feito à mão</b>, <b>elegância gourmet</b> e <b>carinho</b>. Ela não precisa parecer uma grande marca: precisa parecer a Evy, só mais bem acabada.</p>
+  <div class="grid g4">
+    <div class="card"><svg class="ico"><use href="#i-cake"/></svg><br><b>Artesanal</b><br><span style="color:var(--tinta-2)">Script à mão, bolinho em traço fino, fotos reais.</span></div>
+    <div class="card"><svg class="ico"><use href="#i-spark"/></svg><br><b>Elegante</b><br><span style="color:var(--tinta-2)">Fio fino com losango, muito respiro, poucas cores.</span></div>
+    <div class="card"><svg class="ico"><use href="#i-heart"/></svg><br><b>Carinhosa</b><br><span style="color:var(--tinta-2)">Corações e brilhos como tempero, nunca em excesso.</span></div>
+    <div class="card"><svg class="ico"><use href="#i-cupcake"/></svg><br><b>O doce é a estrela</b><br><span style="color:var(--tinta-2)">Foto real em destaque, interface discreta.</span></div>
+  </div>
+  <h3>De onde viemos</h3>
+  <p style="color:var(--tinta-2);max-width:68ch">A Evy já usava rosa, desenhos de linha rosa clara no fundo do orçamento, uma boneca e fotos em recorte ondulado. Mantivemos o rosa e o desenho de linha, e organizamos tudo num sistema. O marrom saiu por completo. As referências de estúdios e as imagens que a Evy trouxe guiaram a onda das molduras, os corações, os brilhos e o fio com losango.</p>
+</div></section>
+
+<!-- ================= 2 · LOGO ================= -->
+<section class="alt"><div class="fest-c"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>2 · Logo</div>
+  <h2>Medalhão, nome e fio com losango</h2>
+  <p class="lead">O logo principal é horizontal: medalhão com o bolinho de três andares, o nome em Great Vibes, o fio com losango e a descrição "confeitaria artesanal" em caixa alta espaçada, alinhada ao nome. O fio com losango é a assinatura da marca e volta em divisórias pelo guia.</p>
+  <div class="grid g2">
+    <div class="lb" style="background:var(--fundo)"><div data-logo="h" style="width:100%;max-width:380px"></div><span class="cap">Horizontal · versão principal</span></div>
+    <div class="lb" style="background:#fff"><div data-logo="v" style="width:100%;max-width:230px"></div><span class="cap">Vertical · capa, embalagem</span></div>
+    <div class="lb inv" style="background:var(--primaria)"><div data-logo="h" style="width:100%;max-width:380px"></div><span class="cap" style="color:#fff">Sobre a cor da marca</span></div>
+    <div class="lb" style="background:var(--superficie)"><div data-logo="h" style="width:100%;max-width:380px"></div><span class="cap">Sobre fundo suave</span></div>
+  </div>
+  <h3>Medalhão sozinho</h3>
+  <div class="row" style="gap:28px">
+    <div data-logo="m" style="width:110px"></div>
+    <div style="width:92px;height:92px;border-radius:50%;background:var(--superficie);display:grid;place-items:center;border:1px solid var(--linha)"><div data-logo="m" style="width:76px"></div></div>
+    <div data-logo="m" style="width:56px"></div>
+    <div data-logo="m" style="width:32px"></div>
+  </div>
+  <p style="color:var(--tinta-2);font-size:14px;margin-top:8px">Para foto de perfil do WhatsApp e do Instagram, favicon e carimbo. O de 32 px é o tamanho mínimo.</p>
+  <h3>Regras</h3>
+  <ul class="plain">
+    <li>Espaço livre ao redor: a altura do "E" do nome.</li>
+    <li>Tamanho mínimo: logo horizontal 180 px de largura; medalhão 32 px.</li>
+    <li>Somente as combinações mostradas. Sem sombra, contorno, giro ou esticar. O nome nunca em outra fonte.</li>
+    <li>Sobre foto, usar a versão sobre a cor da marca ou colocar o logo sobre um fundo liso.</li>
+  </ul>
+  <p class="note"><b>Em aberto:</b> (1) o nome: "Evy's Cake" é provisório (o cardápio usa "Evy's Cake", o orçamento "Evelyn Guimarães", o projeto "Evys Cakes"). (2) O bolinho é desenho feito por código: para impressão, uma ilustradora deve refinar a partir dele. (3) O nome do logo é texto na fonte Great Vibes: antes de imprimir, converter em curvas. (4) O batedor ("fuê") foi testado como símbolo e a Evy não gostou, então ficou de fora.</p>
+</div></section>
+
+<!-- ================= 3 · COR ================= -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>3 · Cor</div>
+  <h2>Rosa framboesa, sem marrom</h2>
+  <p class="lead">Uma cor forte para ação, uma suave para decoração, uma superfície clara, o fundo e a tinta do texto. A tinta é um vinho bem fechado, no lugar do preto ou do marrom. As cores de apoio têm função fixa: âmbar só para prazo e urgência, verde só para reservado.</p>
+  <div class="grid g4">
+    <div class="sw"><i style="background:#B83A73"></i><div><b>Primária · framboesa</b><code>#B83A73</code><br>Ação, preço, nome do logo. Branco sobre ela: 5,4:1</div></div>
+    <div class="sw"><i style="background:#8F2A58"></i><div><b>Primária escura</b><code>#8F2A58</code><br>Hover, rodapé, texto sobre superfície</div></div>
+    <div class="sw"><i style="background:#F4A9C4"></i><div><b>Suave · algodão-doce</b><code>#F4A9C4</code><br>Decoração, nunca texto</div></div>
+    <div class="sw"><i style="background:#FCE4EC"></i><div><b>Superfície · blush</b><code>#FCE4EC</code><br>Faixas, cabeçalho de tabela</div></div>
+    <div class="sw"><i style="background:#FFF8F4;border-bottom:1px solid #eee"></i><div><b>Fundo · creme</b><code>#FFF8F4</code><br>Fundo de página</div></div>
+    <div class="sw"><i style="background:#33182E"></i><div><b>Tinta</b><code>#33182E</code><br>Texto. Sobre fundo: 15:1</div></div>
+    <div class="sw"><i style="background:#7C5568"></i><div><b>Tinta 2</b><code>#7C5568</code><br>Texto secundário: 6:1</div></div>
+    <div class="sw"><i style="background:#F1D3DD"></i><div><b>Linha</b><code>#F1D3DD</code><br>Divisórias e bordas</div></div>
+    <div class="sw"><i style="background:#FFF0D6"></i><div><b>Urgência · fundo</b><code>#FFF0D6</code><br>Texto <code>#7A4B00</code>: 6,6:1. Validade e prazo</div></div>
+    <div class="sw"><i style="background:#D98E4A"></i><div><b>Urgência · detalhe</b><code>#D98E4A</code><br>Barra e granulado, nunca texto</div></div>
+    <div class="sw"><i style="background:#E3F1E7"></i><div><b>Reservado · fundo</b><code>#E3F1E7</code><br>Texto <code>#2F6B47</code>: 5,4:1</div></div>
+  </div>
+  <p class="note"><b>Cuidado:</b> a primária sobre a superfície rosa dá 4,5:1: vale só para texto grande ou em negrito. Texto corrido é sempre tinta. Contrastes calculados, ainda não testados em tela real.</p>
+</div></section>
+
+<!-- ================= 4 · TIPOGRAFIA ================= -->
+<section class="alt"><div class="fest-c"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>4 · Tipografia</div>
+  <h2>Três vozes</h2>
+  <p class="lead">Todas gratuitas no Google Fonts. A Great Vibes é a assinatura e aparece só em momentos de destaque. A Fraunces (com o eixo "soft") dá títulos macios e números de preço. A Figtree faz todo o trabalho de leitura.</p>
+  <div class="spec"><span>Assinatura · Great Vibes</span><span style="font:400 46px/1.1 var(--f-script);color:var(--primaria)">Evy's Cake</span></div>
+  <div class="spec"><span>Título · Fraunces 700 soft</span><span style="font:700 30px var(--f-titulo);font-variation-settings:'SOFT' 100,'WONK' 1">Seu orçamento está pronto</span></div>
+  <div class="spec"><span>Corpo · Figtree 400, 17 px</span><span>Cento de brigadeiro gourmet, retirada na sexta, entrada de 60% no ato da encomenda.</span></div>
+  <div class="spec"><span>Botão · Figtree 600</span><span style="font-weight:600">Reservar minha data</span></div>
+  <div class="spec"><span>Descrição · Figtree 600, caixa alta, +30% de espaço</span><span style="font:600 12px var(--f-corpo);letter-spacing:.3em;text-transform:uppercase">confeitaria artesanal</span></div>
+  <div class="spec"><span>Preço · Fraunces 700</span><span style="font:700 30px var(--f-titulo);color:var(--primaria)">R$ 1.240,00</span></div>
+  <p style="color:var(--tinta-2);margin-top:14px;font-size:15px">Escala: 12 / 14 / 17 / 20 / 28 / 44. Corpo nunca abaixo de 16 px no celular (12 px só em apoio). Great Vibes só a partir de 24 px, nunca em texto corrido.</p>
+</div></section>
+
+<!-- ================= 5 · ÍCONES ================= -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>5 · Símbolos e ícones</div>
+  <h2>Família de ícones</h2>
+  <p class="lead">Traço fino na cor da tinta, cantos arredondados e um toque de cor chapada. Os produtos são os do cardápio dela: cupcake, doce na forminha, mini pão de mel, topper. O bolinho é o mesmo do logo.</p>
+  <div class="ig">
+    <figure><svg class="ico"><use href="#i-cake"/></svg><figcaption>Bolo</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cupcake"/></svg><figcaption>Cupcake</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-brig"/></svg><figcaption>Doce na forminha</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-pao"/></svg><figcaption>Mini pão de mel</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-topper"/></svg><figcaption>Topper</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cherry"/></svg><figcaption>Cereja</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-bow"/></svg><figcaption>Laço</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-heart"/></svg><figcaption>Coração</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-spark"/></svg><figcaption>Brilho</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cal"/></svg><figcaption>Data do evento</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-clock"/></svg><figcaption>Validade</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-chat"/></svg><figcaption>Conversa</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-box"/></svg><figcaption>Caixa / entrega</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-check"/></svg><figcaption>Reservado</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-share"/></svg><figcaption>Compartilhar</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-list"/></svg><figcaption>Orçamentos</figcaption></figure>
+  </div>
+  <h3>Versão de um tom (sobre a cor da marca)</h3>
+  <div class="ig dark">
+    <figure><svg class="ico"><use href="#i-cake"/></svg><figcaption>Bolo</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cupcake"/></svg><figcaption>Cupcake</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-brig"/></svg><figcaption>Doce</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cal"/></svg><figcaption>Data</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-clock"/></svg><figcaption>Validade</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-check"/></svg><figcaption>Reservado</figcaption></figure>
+  </div>
+  <p class="note">Os ícones foram desenhados por mim em SVG, como direção. Se algum não parecer doce de verdade, dá para refinar ou trocar por ilustração da própria Evy.</p>
+</div></section>
+
+<!-- ================= 6 · PADRÕES ================= -->
+<section class="alt"><div class="fest-c"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>6 · Padrões</div>
+  <h2>Texturas para vestir as peças</h2>
+  <p class="lead">Fundo de story, papel de embalagem, fita de caixa e cabeçalho do orçamento. Regra: um padrão por peça. O de doodles é a evolução do desenho de linha que a Evy já usa no fundo do orçamento.</p>
+  <div class="grid g3">
+    <div class="pat"><svg class="bg"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg><span>Doodles · assinatura</span></div>
+    <div class="pat gingham"><span>Xadrez vichy · caixas e fitas</span></div>
+    <div class="pat"><svg class="bg"><rect width="100%" height="100%" fill="url(#pat-sprinkle)"/></svg><span>Granulado · festa, stories</span></div>
+    <div class="pat dots"><span>Bolinhas · fundos discretos</span></div>
+    <div class="pat stripes"><span>Listras · toalha, forminha</span></div>
+    <div class="pat" style="background:var(--primaria)"><svg class="bg" style="opacity:.4"><defs><pattern id="pat-w" width="210" height="210" patternUnits="userSpaceOnUse" style="color:#fff;--ia:none;--ib:none;--ic:none;--id:none"><use href="#i-cake" x="10" y="10" width="48" height="48"/><use href="#i-cupcake" x="118" y="40" width="42" height="42"/><use href="#i-heart" x="70" y="110" width="30" height="30"/><use href="#i-pao" x="10" y="130" width="44" height="44"/><use href="#i-spark" x="150" y="140" width="34" height="34"/></pattern></defs><rect width="100%" height="100%" fill="url(#pat-w)"/></svg><span>Doodles brancos sobre a cor da marca</span></div>
+  </div>
+</div></section>
+
+<!-- ================= 7 · ELEMENTOS ================= -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>7 · Elementos</div>
+  <h2>Peças de montar</h2>
+  <p class="lead">Molduras para as fotos reais dela, faixa, etiqueta, botões, divisória com losango, selos adesivos e bandeirinhas de festa.</p>
+
+  <h3 style="margin-top:0">Molduras para fotos</h3>
+  <div class="row" style="gap:26px;align-items:flex-end">
+    <div class="ph ring"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/capa.png');--bs:412px auto;--bp:-14px -380px"></div></div>
+    <div class="ph arch"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/doces-gourmet.png');--bs:513px auto;--bp:-274px -328px"></div></div>
+    <div class="ph circ"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/capa.png');--bs:471px auto;--bp:-241px -603px"></div></div>
+  </div>
+  <p style="color:var(--tinta-2);font-size:14px;margin-top:8px">Festonada com anel, arco (a janela de confeitaria) e círculo com borda dupla. Fotos do cardápio dela; o ideal é usar os originais em alta resolução.</p>
+
+  <h3>Divisória, faixa, etiqueta, botões</h3>
+  <div class="fio"><i></i></div>
+  <div class="row" style="gap:18px;margin-top:14px">
+    <span class="ribbon">Cardápio 2026</span>
+    <span class="label"><svg class="ico" style="width:22px;height:22px;color:var(--urg-texto);--ia:none;--ib:none"><use href="#i-clock"/></svg>Válido até 10/12</span>
+    <button class="btn btn-p"><svg class="ico"><use href="#i-cal"/></svg>Reservar minha data</button>
+    <button class="btn btn-s"><svg class="ico"><use href="#i-chat"/></svg>Falar com a Evy</button>
+  </div>
+
+  <h3>Status dos orçamentos (painel dela)</h3>
+  <div class="row">
+    <span class="badge b-env"><svg class="ico"><use href="#i-chat"/></svg>Enviado</span>
+    <span class="badge b-vis">Visto</span>
+    <span class="badge b-urg"><svg class="ico"><use href="#i-clock"/></svg>Vencendo</span>
+    <span class="badge b-ok"><svg class="ico"><use href="#i-check"/></svg>Reservado</span>
+    <span class="badge b-perd">Perdido</span>
+  </div>
+
+  <h3>Selos adesivos (embalagem)</h3>
+  <div class="row" style="gap:22px">
+    <div class="stk" style="transform:rotate(-8deg)"><svg viewBox="0 0 100 100"><path data-sc="1" fill="var(--primaria)"/><circle cx="50" cy="50" r="38" fill="none" stroke="#fff" stroke-width="1.2" stroke-dasharray="1.5 4" stroke-linecap="round" opacity=".85"/></svg><span>feito à mão<small>com carinho</small></span></div>
+    <div class="stk" style="transform:rotate(6deg)"><svg viewBox="0 0 100 100"><path data-sc="1" fill="var(--suave)"/><circle cx="50" cy="50" r="38" fill="none" stroke="var(--primaria)" stroke-width="1.2" stroke-dasharray="1.5 4" stroke-linecap="round"/></svg><span style="color:var(--primaria-escura)">Evy's<small>cake</small></span></div>
+    <div data-logo="m" style="width:128px"></div>
+  </div>
+
+  <h3>Bandeirinhas</h3>
+  <svg id="bunting" class="bunting" viewBox="0 0 620 130" role="img" aria-label="Parabéns"></svg>
+</div></section>
+
+<!-- ================= 8 · APLICAÇÕES ================= -->
+<section class="alt"><div class="fest-c"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>8 · Aplicações</div>
+  <h2>A identidade em uso</h2>
+  <p class="lead">Três peças: o orçamento em link que o cliente abre no celular, o painel da Evy (quem retomar, mensagem pronta para ela aprovar) e a capa de story do cardápio. Os preços por unidade são os do Cardápio 2026; nomes, datas e números do painel são fictícios.</p>
+
+  <div class="apps">
+    <figure class="app">
+      <figcaption>O que o cliente vê<small>link enviado pelo WhatsApp</small></figcaption>
+      <div class="phone">
+        <div class="t-bar"><div data-logo="hm" style="width:150px"></div><div class="no">ORÇAMENTO<br>Nº 0142</div></div>
+        <div class="fest-b" style="height:12px;background:radial-gradient(circle at 9px 0,var(--superficie) 8.4px,transparent 9px) 0 0/18px 12px repeat-x"></div>
+        <div class="o-body">
+          <div class="o-hi">Olá, Ana</div>
+          <p class="o-sub">Preparei este orçamento para o seu aniversário. Qualquer dúvida, é só me chamar.</p>
+          <div class="ticket">
+            <div><small>Data</small><b>14 dez</b></div>
+            <div><small>Convidados</small><b>80</b></div>
+            <div><small>Entrega</small><b>Retirada</b></div>
+          </div>
+
+          <div class="sec">Seu pedido</div>
+          <div class="li"><span class="th" data-th="doces-gourmet.png,470,610,300"></span><div><b>Doces gourmet</b><small>100 un × R$ 1,90</small></div><div class="v">R$ 190,00</div></div>
+          <div class="li"><span class="th" data-th="cupcake-e-surpresa-de-uva.png,450,590,360"></span><div><b>Cupcakes</b><small>24 un × R$ 4,00</small></div><div class="v">R$ 96,00</div></div>
+          <div class="li"><span class="th" data-th="mini-pao-de-mel.png,490,590,330"></span><div><b>Mini pão de mel</b><small>15 un × R$ 4,00</small></div><div class="v">R$ 60,00</div></div>
+
+          <div class="sum">
+            <div class="tot"><span>Total</span><b>R$ 346,00</b></div>
+            <div class="ent"><span>Entrada para reservar (60%)</span><span>R$ 207,60</span></div>
+            <div><span>Restante, na retirada</span><span>R$ 138,40</span></div>
+          </div>
+
+          <div class="valid">
+            <div class="h"><svg class="ico"><use href="#i-clock"/></svg><span>Válido até 10/12</span><span>faltam 3 dias</span></div>
+            <div class="bar"><i></i></div>
+            <p>Dezembro é um mês cheio. Reservando agora, a data de 14/12 fica sua.</p>
+          </div>
+
+          <div class="sec">Como reservar</div>
+          <div class="steps">
+            <div><b>1</b>Pague a entrada de 60%</div>
+            <div><b>2</b>A data fica guardada para você</div>
+            <div><b>3</b>Retire e pague o restante</div>
+          </div>
+          <p class="small">Em caso de desistência, a entrada não é devolvida.</p>
+        </div>
+        <div class="dock">
+          <div class="t"><small>Entrada</small><b>R$ 207,60</b></div>
+          <button class="btn btn-p"><svg class="ico"><use href="#i-cal"/></svg>Reservar data</button>
+          <button class="sq" aria-label="Compartilhar"><svg class="ico"><use href="#i-share"/></svg></button>
+        </div>
+      </div>
+    </figure>
+
+    <div style="display:flex;flex-direction:column;gap:40px;align-items:center">
+      <figure class="app">
+        <figcaption>O que a Evy vê<small>painel para retomar quem sumiu</small></figcaption>
+        <div class="phone">
+          <div class="p-head"><svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg><div data-logo="m" style="width:48px;flex:none"></div><div><small>7 de novembro</small><b>Bom dia, Evy</b></div></div>
+          <div class="stats">
+            <div class="stat"><b>12</b><small>orçamentos em aberto</small></div>
+            <div class="stat u"><b>3</b><small>vencem em breve</small></div>
+            <div class="stat k"><b>9</b><small>reservados no mês</small></div>
+          </div>
+          <div class="p-body">
+            <div class="sec">Retomar hoje</div>
+            <div class="lead-card open">
+              <div class="lr"><span class="av">A</span><div><b>Ana · aniversário</b><small>R$ 346,00 · enviado há 2 dias</small></div><span class="badge b-urg">Vence em 3d</span></div>
+              <div class="msg-h"><svg class="ico"><use href="#i-chat"/></svg>Mensagem sugerida</div>
+              <div class="msg">Oi, Ana! Passando para avisar que seu orçamento vale até 10/12 e ainda tenho a data de 14/12. Quer que eu reserve?</div>
+              <div class="acts"><button class="btn btn-p"><svg class="ico"><use href="#i-check"/></svg>Aprovar e enviar</button><button class="btn btn-s">Editar</button></div>
+            </div>
+            <div class="lead-card"><div class="lr"><span class="av">M</span><div><b>Marina · casamento</b><small>R$ 2.180,00 · visto ontem</small></div><span class="badge b-vis">Visto</span></div></div>
+            <div class="lead-card"><div class="lr"><span class="av">R</span><div><b>Rafa · chá de bebê</b><small>R$ 410,00 · enviado há 4 dias</small></div><span class="badge b-env">Enviado</span></div></div>
+          </div>
+          <div class="tabs">
+            <div class="on"><svg class="ico"><use href="#i-chat"/></svg>Retomar</div>
+            <div><svg class="ico"><use href="#i-list"/></svg>Orçamentos</div>
+            <div><svg class="ico"><use href="#i-menu"/></svg>Cardápio</div>
+          </div>
+        </div>
+      </figure>
+    </div>
+
+    <figure class="app">
+      <figcaption>Capa de story<small>divulgação do cardápio no Instagram</small></figcaption>
+      <div class="story">
+        <svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg>
+        <div data-logo="hm" style="width:136px"></div>
+        <div class="ph arch"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/doces-gourmet.png');--bs:565px auto;--bp:-302px -362px"></div></div>
+        <div class="ttl">Cardápio 2026</div>
+        <div class="fio" style="width:150px;margin:4px 0 0"><i></i></div>
+        <div class="menu">
+          <div><span>Doces tradicionais</span><i></i><b>R$ 145 / 100 un</b></div>
+          <div><span>Doces gourmet</span><i></i><b>R$ 95 / 50 un</b></div>
+          <div><span>Cupcake</span><i></i><b>R$ 4,00 / un</b></div>
+        </div>
+        <div class="cta">Encomende já<small>pelo WhatsApp</small></div>
+      </div>
+    </figure>
+  </div>
+
+  <div class="card why">
+    <b>Por que ficou assim</b>
+    <ul class="plain" style="margin-top:8px">
+      <li><b>Preço por unidade e total</b> aparecem juntos: ela precifica por unidade e o cliente costuma comparar o cento. O total é onde o susto acontece, então ele vem acompanhado do que dá para fazer com ele.</li>
+      <li><b>A entrada de 60%</b> é o destaque do resumo e o botão fixo já mostra o valor: um passo, sem conta de cabeça.</li>
+      <li><b>Validade com barra de tempo</b> mostra a urgência real em vez de repetir "poucas vagas". Só usar a frase da data quando ela for verdadeira para aquele dia.</li>
+      <li><b>Foto real</b> de cada item no lugar de ícone: o doce é a estrela e o orçamento deixa de parecer uma conta.</li>
+      <li><b>"Compartilhar com quem decide"</b> está no próprio rodapé fixo: em casamento, o cliente leva o orçamento para o noivo(a) e some nesse intervalo.</li>
+      <li><b>No painel</b>, o que a Evy faz é aprovar ou editar uma mensagem pronta. Nada sai sem ela. Isso é hipótese da equipe, ainda não validada com a Evy.</li>
+    </ul>
+  </div>
+</div></section>
+
+<!-- ================= 9 · VOZ E REGRAS ================= -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>9 · Voz e regras</div>
+  <h2>Como a marca fala e se comporta</h2>
+  <p class="lead">Próxima e simples, como a Evy já fala no WhatsApp. Sem frase de vendedor.</p>
+  <div class="dd">
+    <div><b>Dizemos</b>
+      <div class="voz">"Reserve sua data com a entrada."<small>direto, diz o que acontece</small></div>
+      <div class="voz">"Este orçamento vale até 10/12."<small>urgência real, com data</small></div>
+    </div>
+    <div><b>Evitamos</b>
+      <div class="voz" style="border-color:var(--linha)">"ÚLTIMAS VAGAS!!! CORRA!"<small>escassez só quando é verdade para aquela data</small></div>
+    </div>
+  </div>
+  <div class="dd" style="margin-top:28px">
+    <div class="card"><b>Fazer</b><ul class="sim"><li>Um padrão por peça, o resto liso</li><li>Tinta em todo texto, framboesa só em destaque</li><li>Âmbar só para prazo e validade</li><li>Foto real do doce numa moldura da marca</li><li>Fio com losango para separar blocos</li></ul></div>
+    <div class="card"><b>Não fazer</b><ul class="nao"><li>Marrom ou preto puro, em qualquer lugar</li><li>Dois padrões na mesma peça</li><li>Great Vibes em texto corrido</li><li>Mexer no logo (cor, proporção, fonte)</li><li>Batedor como símbolo (a Evy não aprovou)</li></ul></div>
+  </div>
+  <h3>Para entregar o produto</h3>
+  <p style="color:var(--tinta-2);max-width:68ch;margin-bottom:10px">Copie o bloco <code>:root</code> do topo deste arquivo para o CSS do link de orçamento e do painel. Estes são os nomes:</p>
+  <pre>--primaria  --primaria-escura  --suave  --superficie
+--fundo     --tinta            --tinta-2  --linha
+--urg  --urg-fundo  --urg-texto   --ok  --ok-fundo</pre>
+</div></section>
+
+<footer><div class="w">
+  Rascunho para validar com a Evy: nome da marca, desenho do bolinho e se mantém a boneca como personagem de apoio. O Pix e o CNPJ dos materiais dela não foram copiados para este guia.
+</div></footer>
+
+<script>
+// contorno de ondas: n arcos para fora; k maior = ondas mais rasas
+function scallop(n,R,k,c){const ch=2*R*Math.sin(Math.PI/n),b=ch/2*k,p=i=>{const a=-Math.PI/2+2*Math.PI*i/n;return[c+R*Math.cos(a),c+R*Math.sin(a)]};let d='M'+p(0).map(v=>v.toFixed(3)).join(' ');for(let i=1;i<=n;i++)d+=`A${b.toFixed(3)} ${b.toFixed(3)} 0 0 1 ${p(i%n).map(v=>v.toFixed(3)).join(' ')}`;return d+'Z'}
+
+// medalhão (centro 0,0, raio 60): anel fino + disco + bolinho
+const medalG=()=>`<circle r="60" fill="none" stroke-width="1" style="stroke:var(--md-ring,var(--primaria))"/><circle r="52" style="fill:var(--md-disc,var(--primaria))"/><use href="#cake-w" x="-60" y="-60" width="120" height="120"/>`;
+const tfio=(cx,y,w)=>`<path class="lf" stroke-width="1.100" d="M${cx-w/2} ${y}H${cx-10}M${cx+10} ${y}H${cx+w/2}"/><path class="fd" d="M${cx} ${y-4.500}L${cx+4.500} ${y}L${cx} ${y+4.500}L${cx-4.500} ${y}z"/>`;
+const LOGOS={
+  // P1 horizontal com o fio do Maison
+  h:()=>`<svg viewBox="0 0 440 150" role="img" aria-label="Evy's Cake, confeitaria artesanal"><g transform="translate(68 75)">${medalG()}</g>
+    <text class="gv" x="150" y="76" font-size="60">Evy's Cake</text>${tfio(262,106,224)}
+    <text class="tg" x="154" y="130">confeitaria artesanal</text></svg>`,
+  hm:()=>`<svg viewBox="0 0 230 70" role="img" aria-label="Evy's Cake"><g transform="translate(35 35) scale(.56)">${medalG()}</g><text class="gv" x="78" y="46" font-size="40">Evy's Cake</text></svg>`,
+  v:()=>`<svg viewBox="0 0 320 340" role="img" aria-label="Evy's Cake, confeitaria artesanal"><g transform="translate(160 66) scale(1.05)">${medalG()}</g>
+    <text class="gv" x="160" y="198" text-anchor="middle" font-size="62">Evy's Cake</text>${tfio(160,228,200)}
+    <text class="tg" x="160" y="260" text-anchor="middle">confeitaria artesanal</text></svg>`,
+  m:()=>`<svg viewBox="-62 -62 124 124" role="img" aria-label="Evy's Cake">${medalG()}</svg>`
+};
+document.querySelectorAll('[data-logo]').forEach(el=>{el.innerHTML=LOGOS[el.dataset.logo]()});
+
+// miniaturas circulares com as fotos do cardápio: arquivo,x,y,lado da região (px da imagem original)
+document.querySelectorAll('[data-th]').forEach(el=>{
+  const [f,x,y,r]=el.dataset.th.split(','),s=el.offsetWidth||56;
+  el.style.backgroundImage=`url('../docs-empreendedora/cardapio-2026/${f}')`;
+  el.style.backgroundSize=`${(899*s/r).toFixed(1)}px auto`;
+  el.style.backgroundPosition=`${(-x*s/r).toFixed(1)}px ${(-y*s/r).toFixed(1)}px`;
+});
+
+// selos adesivos e moldura festonada
+document.querySelectorAll('[data-sc]').forEach(p=>p.setAttribute('d',scallop(14,39,1.02,50)));
+document.getElementById('clip-sc-p').setAttribute('d',scallop(14,.4,1.02,.5));
+
+// bandeirinhas
+(function(){
+  const svg=document.getElementById('bunting'),NS='http://www.w3.org/2000/svg',P0=[10,16],P1=[310,100],P2=[610,16];
+  const q=(t,i)=>(1-t)*(1-t)*P0[i]+2*(1-t)*t*P1[i]+t*t*P2[i];
+  const mk=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+  svg.appendChild(mk('path',{d:`M${P0} Q${P1} ${P2}`,fill:'none',style:'stroke:var(--tinta-2)','stroke-width':2}));
+  const cols=[['var(--primaria)','#fff'],['var(--suave)','var(--tinta)'],['var(--urg)','var(--tinta)'],['var(--superficie)','var(--primaria)']];
+  [...'PARABÉNS'].forEach((ch,i)=>{
+    const t=.09+i*(.82/7),x=q(t,0),y=q(t,1),dx=2*(1-t)*(P1[0]-P0[0])+2*t*(P2[0]-P1[0]),dy=2*(1-t)*(P1[1]-P0[1])+2*t*(P2[1]-P1[1]);
+    const ang=Math.atan2(dy,dx)*180/Math.PI,[bg,fg]=cols[i%4],g=mk('g',{transform:`translate(${x} ${y}) rotate(${ang})`});
+    g.appendChild(mk('path',{d:'M-25 0H25L0 66Z',style:`fill:${bg};stroke:${i%4==3?'var(--suave)':'none'}`,'stroke-width':2,'stroke-linejoin':'round'}));
+    const tx=mk('text',{x:0,y:32,'text-anchor':'middle',style:`fill:${fg};font-family:var(--f-titulo);font-weight:700;font-size:26px`});tx.textContent=ch;g.appendChild(tx);svg.appendChild(g);
+  });
+})();
+</script>
+</body>
+</html>

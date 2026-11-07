@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logo v4 — medalhão e posições</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:#33182E;font:500 16px/1.5 Figtree,system-ui,sans-serif;padding:28px 20px 60px}
+h1{font:700 28px/1.1 Figtree;margin-bottom:6px}
+h2{font:700 20px Figtree;margin:34px 0 4px}
+p.s{color:#6b5b66;margin-bottom:18px;max-width:72ch}
+.grid{display:grid;gap:16px;max-width:1120px}
+.g5{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+.g1{grid-template-columns:1fr}
+.card{border:1px solid #eee;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.card h3{font:700 14px Figtree;padding:10px 16px;background:#faf6f8}
+.card h3 span{font-weight:500;color:#6b5b66}
+.two{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.p{padding:24px 14px;display:flex;align-items:center;justify-content:center;background:var(--fundo)}
+.p svg{width:100%;overflow:visible}
+.rosa{--primaria:#B83A73;--suave:#F4A9C4;--fundo:#FFF8F4;--tinta:#33182E}
+.marinho{--primaria:#1B2A5C;--suave:#A9BDE8;--fundo:#F6F8FD;--tinta:#131A3A}
+.gv{font-family:'Great Vibes',cursive;fill:var(--primaria)}
+.tg{font:600 11px Figtree,sans-serif;letter-spacing:.3em;fill:var(--tinta);text-transform:uppercase}
+.ln{fill:none;stroke:var(--primaria);stroke-linecap:round}
+.fl{fill:var(--primaria)}
+symbol{fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.w{fill:#fff;stroke:none}
+</style></head><body>
+<h1>Logo F evoluído · símbolo de bolo e respiro</h1>
+<p class="s">Mesmo medalhão do F, agora com um bolo elegante em traço fino no lugar do "E". Embaixo, o nome e a descrição com mais espaço e seis posições para testar.</p>
+
+<h2>1 · Símbolo do medalhão</h2>
+<div class="grid g5" id="syms"></div>
+
+<h2>2 · Posição de "confeitaria artesanal"</h2>
+<p class="s">Todas usam o símbolo 1 (bolo de três andares) só para comparar as posições. Depois que escolherem o símbolo, troco.</p>
+<div class="grid g1" id="pos"></div>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<!-- 1 bolo de três andares com festões, cereja e boleira -->
+<symbol id="q1" viewBox="0 0 100 100">
+  <rect x="31" y="58" width="38" height="12" rx="2"/><rect x="37" y="46" width="26" height="12" rx="2"/><rect x="43" y="36" width="14" height="10" rx="2"/>
+  <path d="M31 62q4.750 5 9.500 0q4.750 5 9.500 0q4.750 5 9.500 0q4.750 5 9.500 0M37 50q3.250 4 6.500 0q3.250 4 6.500 0q3.250 4 6.500 0q3.250 4 6.500 0"/>
+  <circle class="w" cx="50" cy="31" r="3.200"/><path d="M50 28c0-2.500 1.500-4 4-4.500"/>
+  <path d="M26 70h48M50 70v4M42 76h16"/></symbol>
+<!-- 2 bolo sob cúpula de vidro -->
+<symbol id="q2" viewBox="0 0 100 100">
+  <path d="M29 68a21 27 0 0 1 42 0"/><circle class="w" cx="50" cy="39.500" r="2"/>
+  <rect x="38" y="57" width="24" height="11" rx="2"/><path d="M38 61.500q3 3.500 6 0q3 3.500 6 0q3 3.500 6 0q3 3.500 6 0"/>
+  <circle class="w" cx="50" cy="53.500" r="3"/>
+  <path d="M25 68h50M34 72.500h32"/><path d="M36 48q-1 5-0.500 9" opacity=".6"/></symbol>
+<!-- 3 fatia de bolo com framboesa e folha -->
+<symbol id="q3" viewBox="0 0 100 100">
+  <path d="M28 70V52q0-4.500 4.500-3.200L68 59.500q4 1.200 4 5.500V70q0 3-3 3H31q-3 0-3-3z"/>
+  <path d="M28 58.500h44M28 65h44"/>
+  <circle class="w" cx="40" cy="45" r="4"/><path d="M40 41c0-2.500 1.500-4 4-4.500"/><path d="M44 36.500c3-3 7-2 8 0c-2 2.500-6 2.500-8 0z"/>
+  <path class="w" d="M62 36q1 4 4.500 5q-3.500 1-4.500 5q-1-4-4.500-5q3.500-1 4.500-5z"/></symbol>
+<!-- 4 bolo com flor e festões -->
+<symbol id="q4" viewBox="0 0 100 100">
+  <rect x="31" y="52" width="38" height="18" rx="3"/>
+  <path d="M31 57q4.750 5.500 9.500 0q4.750 5.500 9.500 0q4.750 5.500 9.500 0q4.750 5.500 9.500 0"/>
+  <circle class="w" cx="39" cy="64.500" r="1.100"/><circle class="w" cx="50" cy="65.500" r="1.100"/><circle class="w" cx="61" cy="64.500" r="1.100"/>
+  <g transform="translate(50 41)"><circle cx="0" cy="-6" r="4.500"/><circle cx="5.700" cy="-1.900" r="4.500"/><circle cx="3.500" cy="4.900" r="4.500"/><circle cx="-3.500" cy="4.900" r="4.500"/><circle cx="-5.700" cy="-1.900" r="4.500"/><circle class="w" cx="0" cy="0" r="2.200"/></g>
+  <path d="M26 70h48M42 74h16"/></symbol>
+<!-- 5 dois andares com laço e brilhos -->
+<symbol id="q5" viewBox="0 0 100 100">
+  <rect x="31" y="56" width="38" height="14" rx="2.500"/><rect x="38" y="44" width="24" height="12" rx="2.500"/>
+  <path d="M31 63h38M38 50h24"/>
+  <path d="M50 44C45 36 38 37.500 39.500 41.500C38 46 45 46 50 44C55 46 62 46 60.500 41.500C62 37.500 55 36 50 44z"/><circle class="w" cx="50" cy="42.500" r="1.800"/>
+  <path class="w" d="M30 36q.8 3.400 3.800 4q-3 .6-3.800 4q-.8-3.400-3.800-4q3-.6 3.800-4zM71 30q.8 3.400 3.800 4q-3 .6-3.800 4q-.8-3.400-3.800-4q3-.6 3.800-4z"/>
+  <path d="M26 70h48M42 74h16"/></symbol>
+</defs></svg>
+
+<script>
+const S='<';
+const medal=(cx,cy,sym)=>`<circle class="ln" stroke-width="1" cx="${cx}" cy="${cy}" r="60"/><circle class="fl" cx="${cx}" cy="${cy}" r="52"/><use href="#${sym}" x="${cx-60}" y="${cy-60}" width="120" height="120"/>`;
+const wm=(x,y,size,a='start')=>`<text class="gv" x="${x}" y="${y}" text-anchor="${a}" font-size="${size}">Evy's Cake</text>`;
+const tag=(x,y,a='start',sz=11,ls=.3,txt='confeitaria artesanal')=>`<text class="tg" x="${x}" y="${y}" text-anchor="${a}" style="font-size:${sz}px;letter-spacing:${ls}em">${txt}</text>`;
+const hl=(x1,x2,y)=>`<path class="ln" stroke-width="1" d="M${x1} ${y}H${x2}"/>`;
+const dia=(x,y,r=3.5)=>`<path class="fl" d="M${x} ${y-r}L${x+r} ${y}L${x} ${y+r}L${x-r} ${y}z"/>`;
+
+const symOpts=[['q1','1 · Bolo de três andares','festões, cereja e boleira'],['q2','2 · Bolo sob cúpula','a vitrine de confeitaria'],['q3','3 · Fatia de bolo','framboesa, folha e brilho'],['q4','4 · Bolo com flor','festões e flor no topo'],['q5','5 · Bolo com laço','dois andares, laço e brilhos']];
+document.getElementById('syms').innerHTML=symOpts.map(([id,t,d])=>{
+ const m=`<svg viewBox="0 0 140 140" style="max-width:150px">${medal(70,70,id)}</svg>`;
+ return `<div class="card"><h3>${t} <span>· ${d}</span></h3><div class="two"><div class="p rosa">${m}</div><div class="p marinho">${m}</div></div></div>`}).join('');
+
+const Y='q1';
+const pos=[
+['P1 · Abaixo, com fio e bastante respiro','nome, fio fino e descrição alinhada ao nome',()=>`<svg viewBox="0 0 420 150">${medal(66,75,Y)}${wm(146,76,60)}${hl(150,372,106)}${tag(150,130)}</svg>`],
+['P2 · Abaixo, centralizada entre traços','a descrição centrada sob o nome',()=>`<svg viewBox="0 0 420 150">${medal(66,75,Y)}${wm(146,76,60)}${hl(150,166,116)}${hl(368,384,116)}${tag(267,120,'middle',9.5,.26)}</svg>`],
+['P3 · Acima do nome','descrição pequena como "chapéu"',()=>`<svg viewBox="0 0 420 150">${medal(66,75,Y)}${tag(150,50)}${hl(150,372,62)}${wm(146,120,60)}</svg>`],
+['P4 · Empilhado, centrado','medalhão em cima, nome, fio com losango, descrição',()=>`<svg viewBox="0 0 300 330">${medal(150,76,Y)}${wm(150,200,62,'middle')}${hl(70,138,238)}${dia(150,238)}${hl(162,230,238)}${tag(150,270,'middle',11,.32)}</svg>`],
+['P5 · Ao lado, em duas linhas','fio vertical separando nome e descrição',()=>`<svg viewBox="0 0 560 150">${medal(66,75,Y)}${wm(146,86,60)}<path class="ln" stroke-width="1" d="M408 46V104"/>${tag(428,70,'start',11,.3,'confeitaria')}${tag(428,92,'start',11,.3,'artesanal')}</svg>`],
+['P6 · Em etiqueta (pílula)','descrição dentro de um contorno fino',()=>`<svg viewBox="0 0 420 150">${medal(66,75,Y)}${wm(146,74,60)}<rect class="ln" stroke-width="1" x="150" y="100" width="220" height="30" rx="15"/>${tag(260,120,'middle',10.5,.3)}</svg>`]
+];
+document.getElementById('pos').innerHTML=pos.map(([t,d,f])=>`<div class="card"><h3>${t} <span>· ${d}</span></h3><div class="two"><div class="p rosa">${f()}</div><div class="p marinho">${f()}</div></div></div>`).join('');
+</script></body></html>

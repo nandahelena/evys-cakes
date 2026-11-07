@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guia de Estilos — Evy's Cake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,500..800,0..100,0..1;1,9..144,500..800,0..100,0..1&display=swap" rel="stylesheet">
+<style>
+/* Tokens: copiar este bloco :root para o produto (link de orçamento + painel). */
+:root{
+  --framboesa:#B83A73; --framboesa-escura:#8F2A58;
+  --algodao:#F4A9C4; --blush:#FCE4EC; --creme:#FFF8F4;
+  --chocolate:#3B2119; --cacau:#7A5A4F;
+  --caramelo:#D98E4A; --caramelo-fundo:#FBE7CF; --caramelo-texto:#8A4B14;
+  --pistache:#2F6B47; --pistache-fundo:#E3F1E7;
+  --linha:#F1D3DD;
+  --r-card:22px; --r-pill:999px;
+  --f-display:"Fraunces",Georgia,serif;
+  --f-corpo:"Figtree",system-ui,sans-serif;
+  --f-mao:"Caveat","Segoe Print",cursive;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--creme);color:var(--chocolate);font:400 17px/1.6 var(--f-corpo);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.w{max-width:1040px;margin:0 auto;padding:0 20px;position:relative}
+section{padding:64px 0;position:relative}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.08;letter-spacing:-.01em;font-variation-settings:"SOFT" 100,"WONK" 1}
+h2{font-size:clamp(30px,4.4vw,42px);margin-bottom:10px}
+h3{font-size:21px;margin:30px 0 12px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:700 12px/1 var(--f-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--framboesa);margin-bottom:14px}
+.eyebrow svg{width:18px;height:18px}
+.lead{color:var(--cacau);max-width:64ch;margin-bottom:30px}
+.note{background:var(--caramelo-fundo);color:var(--caramelo-texto);border-radius:14px;padding:12px 16px;font-size:15px;max-width:72ch;margin-top:22px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr))}
+.wm{white-space:nowrap}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.alt{background:var(--blush)}
+.card{background:#fff;border:1px solid var(--linha);border-radius:var(--r-card);padding:22px;box-shadow:0 6px 22px rgba(184,58,115,.07)}
+code{font:500 13px ui-monospace,Consolas,monospace;color:var(--cacau)}
+
+/* ícones: as formas vêm do sprite, a cor vem daqui */
+symbol.i{fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ia{fill:var(--ia,var(--blush))} .ib{fill:var(--ib,var(--algodao))} .ic{fill:var(--ic,#fff)} .id{fill:var(--id,var(--framboesa));stroke:none}
+.ico{width:48px;height:48px;color:var(--chocolate);flex:none}
+
+/* festonado */
+.fest-b{height:20px;background:radial-gradient(circle at 15px 0,var(--blush) 14px,transparent 14.6px) 0 0/30px 20px repeat-x}
+.fest-t{height:20px;background:radial-gradient(circle at 15px 20px,var(--blush) 14px,transparent 14.6px) 0 0/30px 20px repeat-x}
+.fest-c{height:20px;background:radial-gradient(circle at 15px 0,var(--creme) 14px,transparent 14.6px) 0 0/30px 20px repeat-x}
+
+/* capa */
+.capa{position:relative;background:var(--blush);padding:76px 0 40px;text-align:center;overflow:hidden}
+.capa .bg{position:absolute;inset:0;width:100%;height:100%;opacity:.7}
+.capa .w{z-index:1}
+.capa p{max-width:54ch;margin:16px auto 0;color:var(--cacau)}
+.tag{display:inline-block;font:700 12px/1 var(--f-corpo);letter-spacing:.14em;text-transform:uppercase;color:var(--framboesa-escura);background:#fff;border-radius:var(--r-pill);padding:8px 14px;margin-bottom:22px}
+
+/* logo */
+.wm{font-family:var(--f-display);font-style:italic;font-weight:600;font-variation-settings:"SOFT" 100,"WONK" 1;line-height:.95;letter-spacing:-.01em}
+.wm small{display:block;font:600 11px/1 var(--f-corpo);letter-spacing:.3em;text-transform:uppercase;margin-top:9px;font-style:normal}
+.lock-h{display:flex;align-items:center;gap:14px}
+.lock-v{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+.lock-v .wm small{margin-top:10px}
+.seal{flex:none;display:block}
+.lb{border-radius:var(--r-card);padding:34px 22px;display:flex;align-items:center;justify-content:center;min-height:190px;position:relative;overflow:hidden}
+.lb .cap{position:absolute;left:14px;bottom:10px;font:600 12px var(--f-corpo);opacity:.7}
+.stk{position:relative;width:118px;height:118px;display:grid;place-items:center;transform:rotate(-8deg)}
+.stk svg{position:absolute;inset:0;width:100%;height:100%}
+.stk span{position:relative;font:700 23px/.95 var(--f-mao);color:#fff;text-align:center}
+
+/* cores */
+.sw{border-radius:var(--r-card);overflow:hidden;border:1px solid var(--linha);background:#fff}
+.sw i{display:block;height:88px}
+.sw div{padding:12px 14px;font-size:14px;line-height:1.45}
+.sw b{display:block;font-size:16px}
+
+/* ícones grid */
+.ig{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px}
+.ig figure{background:#fff;border:1px solid var(--linha);border-radius:18px;padding:16px 8px 12px;text-align:center}
+.ig .ico{width:56px;height:56px;margin:0 auto}
+.ig figcaption{font-size:13px;color:var(--cacau);margin-top:6px}
+.ig.dark figure{background:var(--framboesa);border-color:var(--framboesa)}
+.ig.dark .ico{color:#fff;--ia:none;--ib:none;--ic:none}
+.ig.dark figcaption{color:var(--blush)}
+
+/* padrões */
+.pat{border-radius:var(--r-card);height:200px;border:1px solid var(--linha);position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.pat svg.bg{position:absolute;inset:0;width:100%;height:100%}
+.pat span{position:relative;background:#fff;border-radius:0 14px 0 0;padding:8px 14px;font-size:14px;font-weight:600}
+.gingham{background-color:#fff;background-image:linear-gradient(90deg,rgba(244,169,196,.55) 50%,transparent 50%),linear-gradient(rgba(244,169,196,.55) 50%,transparent 50%);background-size:30px 30px}
+.dots{background:var(--blush);background-image:radial-gradient(var(--algodao) 3px,transparent 3.5px);background-size:22px 22px}
+.stripes{background:repeating-linear-gradient(90deg,#fff 0 18px,var(--blush) 18px 36px)}
+
+/* elementos */
+.ph{width:200px;height:200px;position:relative;display:block;flex:none}
+.ph.sc{clip-path:url(#clip-sc)} .ph.sc2{clip-path:url(#clip-sc)}
+.ph .in{position:absolute;inset:0;background-repeat:no-repeat;background-color:var(--algodao)}
+.ph.ring{background:var(--framboesa);clip-path:url(#clip-sc)}
+.ph.ring .in{inset:8px;clip-path:url(#clip-sc)}
+.ph.arch{border-radius:999px 999px 22px 22px;overflow:hidden;border:5px solid var(--framboesa);height:230px}
+.ph.circ{border-radius:50%;overflow:hidden;border:5px solid #fff;box-shadow:0 0 0 3px var(--algodao)}
+.ph .in{background-size:var(--bs);background-position:var(--bp)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.ribbon{display:inline-block;background:var(--framboesa);color:#fff;font:700 17px/1 var(--f-display);font-style:italic;padding:12px 34px;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%,14px 50%);font-variation-settings:"SOFT" 100}
+.label{position:relative;display:inline-flex;align-items:center;gap:8px;background:var(--caramelo-fundo);color:var(--caramelo-texto);font-weight:700;font-size:15px;padding:10px 18px 10px 30px;border-radius:6px 14px 14px 6px;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%)}
+.label::before{content:"";position:absolute;left:11px;top:50%;width:7px;height:7px;margin-top:-3.5px;border-radius:50%;background:var(--creme)}
+.divider{display:flex;align-items:center;gap:14px;color:var(--algodao)}
+.divider::before,.divider::after{content:"";flex:1;height:0;border-top:2.5px dotted var(--algodao)}
+.divider .ico{width:40px;height:40px;color:var(--framboesa)}
+.bunting{width:100%;max-width:620px;height:auto}
+.btn{font:600 16px var(--f-corpo);border:0;border-radius:var(--r-pill);padding:14px 26px;cursor:pointer;min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn .ico{width:22px;height:22px;color:currentColor;--ia:none;--ib:none;--ic:none}
+.btn-p{background:var(--framboesa);color:#fff;box-shadow:0 4px 0 var(--framboesa-escura)}
+.btn-p:hover{background:var(--framboesa-escura);box-shadow:0 4px 0 #6f1f43}
+.btn-s{background:var(--blush);color:var(--framboesa-escura)}
+.btn:focus-visible{outline:3px solid var(--caramelo);outline-offset:2px}
+.badge{display:inline-flex;align-items:center;gap:6px;font:600 13px/1 var(--f-corpo);padding:7px 12px;border-radius:var(--r-pill)}
+.b-env{background:var(--blush);color:var(--framboesa-escura)}
+.b-vis{background:#EFE6E2;color:var(--cacau)}
+.b-urg{background:var(--caramelo-fundo);color:var(--caramelo-texto)}
+.b-ok{background:var(--pistache-fundo);color:var(--pistache)}
+.b-perd{background:#fff;color:var(--cacau);border:1px solid var(--linha)}
+
+/* inspirações */
+.ref a{color:var(--framboesa-escura);font-weight:600}
+.ref .ico{width:44px;height:44px;margin-bottom:8px}
+.ref p{font-size:15px;color:var(--cacau)}
+.ref b.t{font:700 19px var(--f-display);display:block}
+.ref .tk{margin-top:10px;font-size:15px;color:var(--chocolate);border-top:1px dashed var(--linha);padding-top:10px}
+
+/* celular */
+.phones{display:flex;gap:36px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+.phone{width:310px;background:var(--creme);border:9px solid var(--chocolate);border-radius:40px;overflow:hidden;box-shadow:0 22px 50px rgba(59,33,25,.22)}
+.p-top{background:var(--blush);padding:20px 20px 6px;text-align:center;position:relative;overflow:hidden}
+.p-top .bg{position:absolute;inset:0;width:100%;height:100%;opacity:.8}
+.p-top>*{position:relative}
+.p-top .wm{font-size:21px;margin-top:6px}
+.p-body{padding:4px 18px 22px}
+.hi{font:700 26px/1.1 var(--f-display);font-variation-settings:"SOFT" 100,"WONK" 1;margin:10px 0 4px}
+.hi em{color:var(--framboesa)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 14px}
+.chip{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--linha);border-radius:var(--r-pill);padding:5px 10px 5px 6px;font-size:12.5px;font-weight:600;color:var(--cacau)}
+.chip .ico{width:20px;height:20px}
+.it{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--linha)}
+.it .ib2{width:46px;height:46px;border-radius:50%;background:var(--blush);display:grid;place-items:center;flex:none}
+.it .ib2 .ico{width:32px;height:32px}
+.it b{display:block;font-size:15px;line-height:1.2}
+.it small{color:var(--cacau);font-size:12.5px}
+.it span.v{margin-left:auto;font-weight:700;font-size:14.5px;white-space:nowrap}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 2px}
+.tot b{font:700 32px var(--f-display);color:var(--framboesa)}
+.val{display:flex;gap:8px;align-items:center;background:var(--caramelo-fundo);color:var(--caramelo-texto);border-radius:14px;padding:10px 12px;font-size:13px;font-weight:600;margin:12px 0}
+.val .ico{width:26px;height:26px;color:var(--caramelo-texto);--ia:none;--ib:none}
+.phone .btn{width:100%;font-size:15px;padding:13px 16px}
+.p-foot{background:var(--chocolate);color:var(--blush);text-align:center;font-size:12px;padding:14px;position:relative}
+.p-foot::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px;background:radial-gradient(circle at 10px 10px,var(--chocolate) 9px,transparent 9.6px) 0 0/20px 10px repeat-x}
+.lead-row{display:flex;gap:10px;align-items:center;padding:11px 0;border-bottom:1px dashed var(--linha)}
+.lead-row .av{width:38px;height:38px;border-radius:50%;background:var(--algodao);display:grid;place-items:center;font:700 16px var(--f-display);color:var(--framboesa-escura);flex:none}
+.lead-row b{display:block;font-size:14.5px;line-height:1.2}
+.lead-row small{color:var(--cacau);font-size:12px}
+.msg{background:#fff;border:1.5px dashed var(--algodao);border-radius:14px 14px 14px 4px;padding:10px 12px;font-size:13px;color:var(--chocolate);margin:10px 0}
+.msg .ico{width:18px;height:18px;vertical-align:-4px}
+
+.dd{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.dd ul{list-style:none;padding:0}
+.dd li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--linha);font-size:16px}
+.sim li::before{content:"✓";position:absolute;left:0;color:var(--pistache);font-weight:700}
+.nao li::before{content:"✕";position:absolute;left:0;color:var(--framboesa);font-weight:700}
+.voz{border-left:4px solid var(--algodao);padding:4px 0 4px 16px;margin:12px 0;font-size:18px}
+.voz small{display:block;color:var(--cacau);font-size:14px}
+footer{background:var(--chocolate);color:var(--blush);padding:40px 0;font-size:14px;position:relative}
+.spec{display:grid;grid-template-columns:150px 1fr;gap:6px 20px;padding:14px 0;border-bottom:1px solid var(--linha);align-items:baseline}
+.spec span:first-child{font-size:13px;color:var(--cacau)}
+@media (max-width:520px){.spec{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- ============ SPRITE: logo, ícones e padrões ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <clipPath id="clip-sc" clipPathUnits="objectBoundingBox"><path id="clip-sc-p"/></clipPath>
+
+  <!-- ícones: traço 48x48, preenchimentos ia (blush), ib (algodão), ic (branco), id (framboesa) -->
+  <symbol class="i" id="i-cupcake" viewBox="0 0 48 48">
+    <path class="ia" d="M11 25h26l-3 17H14z"/><path d="M19 25l1.2 17M24 25v17M29 25l-1.2 17"/>
+    <path class="ic" d="M10 25C5 25 5 18 11 18C10 13 16 11 19 13C20 8 28 8 29 13C34 11 39 15 36 18C41 19 41 25 37 25z"/>
+    <circle class="id" cx="24" cy="6.5" r="3.4"/><path d="M24 4c0-2 2-3 3.5-3"/></symbol>
+  <symbol class="i" id="i-cake" viewBox="0 0 48 48">
+    <path class="ia" d="M8 29h32v9a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3z"/>
+    <path class="ib" d="M14 19h20a3 3 0 0 1 3 3v7H11v-7a3 3 0 0 1 3-3z"/>
+    <path class="ic" d="M8 29v-1M8 31q4 5 8 0q4 5 8 0q4 5 8 0q4 5 8 0v-2"/>
+    <path d="M24 19v-6"/><path class="id" d="M24 5c3 2.5 3 5.5 0 7.500C21 10.500 21 7.500 24 5z"/><path d="M4 41h40"/></symbol>
+  <symbol class="i" id="i-brig" viewBox="0 0 48 48">
+    <circle class="ib" cx="24" cy="21" r="11.500"/>
+    <path d="M18 16l2 1.500M27 14l1.500 2M30 22l2 1M17 24l1.500-1.500M24 27l.5 2.500"/>
+    <path class="ia" d="M9 31q2-4.500 4-0q2-4.500 4-0q2-4.500 4-0q2-4.500 4-0q2-4.500 4-0q2-4.500 4-0q2-4.500 4-0L34.500 43h-21z"/>
+    <path d="M18 34l.8 8M24 34v8M30 34l-.8 8"/></symbol>
+  <symbol class="i" id="i-cherry" viewBox="0 0 48 48">
+    <circle class="id" cx="15" cy="34" r="8"/><circle class="id" cx="33" cy="32" r="8"/>
+    <path d="M15 26C17 16 22 10 30 6M33 24C33 16 31 10 30 6"/>
+    <path class="ib" d="M30 6c4-3 10-2 13 1c-3 4-9 5-13-1z"/>
+    <path d="M11 32c0-2 1-3.500 3-4M29 30c0-2 1-3.500 3-4" stroke="#fff" opacity=".8"/></symbol>
+  <symbol class="i" id="i-pao" viewBox="0 0 48 48">
+    <path class="ib" d="M7 28C7 14 41 14 41 28z"/>
+    <path class="ia" d="M9 28h30v3a3 3 0 0 1-3 3H12a3 3 0 0 1-3-3z"/>
+    <path class="ib" d="M12 34h24a0 0 0 0 1 0 0v1a5 5 0 0 1-5 5H17a5 5 0 0 1-5-5z"/>
+    <path d="M16 22q3-3 7-3" stroke="#fff" opacity=".8"/></symbol>
+  <symbol class="i" id="i-topper" viewBox="0 0 48 48">
+    <path class="id" d="M24 3l3.500 8 8.700 .8-6.600 5.800 2 8.500L24 21.500 16.400 26l2-8.500-6.600-5.800 8.700-.8z" stroke-width="2.4"/>
+    <path d="M24 26v17"/><path d="M19 43h10"/></symbol>
+  <symbol class="i" id="i-bow" viewBox="0 0 48 48">
+    <path class="ib" d="M24 24C16 12 5 14 7 24C5 34 16 36 24 24C32 36 43 34 41 24C43 14 32 12 24 24z"/>
+    <path class="id" d="M20.500 20h7v8h-7z"/><path d="M22 28l-5 13M26 28l5 13"/></symbol>
+  <symbol class="i" id="i-heart" viewBox="0 0 48 48">
+    <path class="id" d="M24 41C8 29 5 17 13 11.500C18.500 8 23 11 24 15.500C25 11 29.500 8 35 11.500C43 17 40 29 24 41z"/>
+    <path d="M13 17c1-2 3-3 5-3" stroke="#fff" opacity=".8"/></symbol>
+  <symbol class="i" id="i-spark" viewBox="0 0 48 48">
+    <path class="ib" d="M22 5Q24 20 39 22Q24 24 22 39Q20 24 5 22Q20 20 22 5z"/>
+    <path class="id" d="M38 30q1 5 5 6q-4 1-5 6q-1-5-5-6q4-1 5-6z" stroke-width="1.8"/></symbol>
+  <symbol class="i" id="i-cal" viewBox="0 0 48 48">
+    <rect x="7" y="10" width="34" height="31" rx="6"/>
+    <path class="ib" d="M7 16a6 6 0 0 1 6-6h22a6 6 0 0 1 6 6v5H7z"/>
+    <path d="M16 6v7M32 6v7"/><path class="id" d="M24 36c-5-3.500-7-6-7-8.500a3.500 3.500 0 0 1 7-1a3.500 3.500 0 0 1 7 1c0 2.500-2 5-7 8.500z" stroke-width="1.8"/></symbol>
+  <symbol class="i" id="i-clock" viewBox="0 0 48 48">
+    <circle class="ia" cx="24" cy="25" r="16"/><path d="M24 15v10l7 4"/><path d="M19 5h10M35 9l3 3"/></symbol>
+  <symbol class="i" id="i-chat" viewBox="0 0 48 48">
+    <path class="ia" d="M24 7C14 7 6 14 6 23c0 4 1.500 7.500 4 10l-2 8 8.500-3c2.300 .8 4.700 1.200 7.500 1.200C34 39 42 32 42 23S34 7 24 7z"/>
+    <path class="id" d="M16.500 24h.1M24 24h.1M31.500 24h.1" stroke-width="4"/></symbol>
+  <symbol class="i" id="i-box" viewBox="0 0 48 48">
+    <path class="ia" d="M8 20h32v19a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3z"/>
+    <rect class="ib" x="5" y="12" width="38" height="8" rx="2.500"/><path d="M24 12v30"/>
+    <path d="M24 12c-3-6-10-6-9-1.500M24 12c3-6 10-6 9-1.500"/></symbol>
+  <symbol class="i" id="i-check" viewBox="0 0 48 48">
+    <circle class="ia" cx="24" cy="24" r="17"/><path d="M15.500 25l6 6 11-13"/></symbol>
+
+  <!-- selo festonado (símbolo da marca). O caminho é gerado no fim da página -->
+  <symbol id="seal" viewBox="0 0 100 100">
+    <path id="seal-p" style="fill:var(--seal,var(--framboesa))"/>
+    <circle cx="50" cy="50" r="35" fill="none" style="stroke:var(--seal-ink,#fff)" stroke-width="1.4" stroke-dasharray="1.5 4" stroke-linecap="round" opacity=".85"/>
+    <!-- bolo de dois andares, cobertura escorrendo e cereja -->
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--seal-ink,#fff)">
+      <rect x="30" y="56" width="40" height="18" rx="6"/>
+      <rect x="36" y="43" width="28" height="14" rx="5"/>
+      <path fill="currentColor" d="M30 62v-1a5 5 0 0 1 5-5h30a5 5 0 0 1 5 5v1q-4 6-8 0q-4 6-8 0q-4 6-8 0q-4 6-8 0q-4 6-8 0z"/>
+      <path fill="currentColor" d="M36 49v-1a5 5 0 0 1 5-5h18a5 5 0 0 1 5 5v1q-3.500 6-7 0q-3.500 6-7 0q-3.500 6-7 0q-3.500 6-7 0z"/>
+      <g fill="currentColor" stroke="none"><circle cx="38" cy="69" r="1.400"/><circle cx="46" cy="70.500" r="1.400"/><circle cx="55" cy="69" r="1.400"/><circle cx="62" cy="70.500" r="1.400"/><circle cx="50" cy="35" r="4.600"/></g>
+      <path d="M50 30.500c0-3 2-4.500 5-5"/>
+      <circle cx="48.300" cy="33.600" r="1.100" stroke="none" style="fill:var(--seal,var(--framboesa))"/>
+      <path d="M29 78h42"/>
+    </g>
+  </symbol>
+
+  <symbol id="seal0" viewBox="0 0 100 100">
+    <path id="seal-p0" style="fill:var(--seal,var(--framboesa))"/>
+    <circle cx="50" cy="50" r="35" fill="none" style="stroke:var(--seal-ink,#fff)" stroke-width="1.4" stroke-dasharray="1.5 4" stroke-linecap="round" opacity=".85"/>
+  </symbol>
+
+  <!-- padrão de doodles (linha rosa, como o fundo do orçamento atual) -->
+  <pattern id="pat-doodle" width="210" height="210" patternUnits="userSpaceOnUse" style="color:var(--algodao);--ia:none;--ib:none;--ic:none;--id:none">
+    <use href="#i-pao" x="14" y="12" width="44" height="44" transform="rotate(-14 36 34)"/>
+    <use href="#i-cupcake" x="118" y="10" width="46" height="46" transform="rotate(10 141 33)"/>
+    <use href="#i-spark" x="70" y="78" width="30" height="30"/>
+    <use href="#i-cake" x="12" y="120" width="48" height="48" transform="rotate(-8 36 144)"/>
+    <use href="#i-brig" x="112" y="112" width="46" height="46" transform="rotate(12 135 135)"/>
+    <use href="#i-topper" x="168" y="62" width="34" height="34" transform="rotate(18 185 79)"/>
+    <use href="#i-heart" x="80" y="164" width="26" height="26" transform="rotate(-12 93 177)"/>
+    <use href="#i-cherry" x="168" y="164" width="32" height="32"/>
+    <use href="#i-bow" x="70" y="24" width="28" height="28" transform="rotate(14 84 38)"/>
+  </pattern>
+  <!-- granulado -->
+  <pattern id="pat-sprinkle" width="90" height="90" patternUnits="userSpaceOnUse">
+    <rect width="90" height="90" fill="#fff"/>
+    <g stroke-width="5" stroke-linecap="round">
+      <path d="M10 14l9-4" stroke="#F4A9C4"/><path d="M52 8l3 9" stroke="#B83A73"/><path d="M74 30l8-5" stroke="#D98E4A"/>
+      <path d="M26 40l-3 9" stroke="#B83A73"/><path d="M62 52l9 3" stroke="#F4A9C4"/><path d="M8 70l8-3" stroke="#D98E4A"/>
+      <path d="M40 72l4 8" stroke="#F4A9C4"/><path d="M78 76l-4 8" stroke="#B83A73"/><path d="M44 30l7-6" stroke="#D98E4A"/>
+    </g>
+  </pattern>
+</defs>
+</svg>
+
+<!-- ============ CAPA ============ -->
+<header class="capa">
+  <svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg>
+  <div class="w">
+    <span class="tag">Guia de estilos · rascunho v0.2</span>
+    <div class="lock-v" style="gap:16px">
+      <svg class="seal" width="150" height="150" viewBox="0 0 100 100" role="img" aria-label="Símbolo"><use href="#seal"/></svg>
+      <div class="wm" style="font-size:clamp(54px,11vw,96px);color:var(--framboesa)">Evy's Cake<small style="color:var(--chocolate);font-size:clamp(11px,2vw,15px);letter-spacing:.34em">confeitaria artesanal</small></div>
+    </div>
+    <p>Nova identidade visual: símbolo, ícones, padrões e elementos que montam, juntos, uma cara de ateliê de doces. Evoluída do que a Evy já usa.</p>
+  </div>
+</header>
+<div class="fest-b" style="background-image:radial-gradient(circle at 15px 0,var(--blush) 14px,transparent 14.6px)"></div>
+
+<!-- ============ 1 · INSPIRAÇÕES ============ -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>1 · Referências</div>
+  <h2>O que olhamos antes de desenhar</h2>
+  <p class="lead">Pesquisa em estúdios de branding de confeitaria e em guias para doceria no Brasil. Não copiamos nada: cada referência virou uma decisão abaixo. Abra os links para ver as imagens.</p>
+  <div class="grid g3">
+    <div class="card ref"><svg class="ico"><use href="#i-box"/></svg><b class="t">D'Caramel Patisserie</b><p>Um padrão desenhado à mão, de doces e flores, estampa cada caixa e conta a história de um produto feito com cuidado.</p><div class="tk"><b>Levamos:</b> padrão de doodles como assinatura nas caixas e no orçamento. <a href="https://packagingoftheworld.com/2025/05/dcaramel-patisserie-brand-identity-packaging-design.html">Ver caso</a></div></div>
+    <div class="card ref"><svg class="ico"><use href="#i-cupcake"/></svg><b class="t">Luna Petite Dessert Bar</b><p>Rosas pastel, tipografia delicada e detalhes festonados, num tom brincalhão sem perder a elegância.</p><div class="tk"><b>Levamos:</b> a borda festonada (de forminha) como forma da marca. <a href="https://contra.com/p/RF2voBRN-luna-petite-dessert-bar-dessert-cafe-brand-identity">Ver caso</a></div></div>
+    <div class="card ref"><svg class="ico"><use href="#i-cake"/></svg><b class="t">Pema Patisserie</b><p>Ilustrações de bolos, fitas e mãos em movimento, com uma abordagem contida e guiada por símbolo.</p><div class="tk"><b>Levamos:</b> um símbolo simples que funciona pequeno (avatar do WhatsApp). Referência indicada na busca, não vimos a imagem. <a href="https://worldbranddesign.com/?p=454738">Ver</a></div></div>
+    <div class="card ref"><svg class="ico"><use href="#i-heart"/></svg><b class="t">Whipped Wonder</b><p>Rosa blush e bege cremoso, com padrão e estilo de ilustração criados como guia para peças futuras.</p><div class="tk"><b>Levamos:</b> ilustração e padrão tratados como sistema, não enfeite solto. <a href="https://bisoigarima.myportfolio.com/whipped-wonder-brand-identity">Ver caso</a></div></div>
+    <div class="card ref"><svg class="ico"><use href="#i-spark"/></svg><b class="t">Saipos · identidade de doceria</b><p>Em português: identidade é logotipo, paleta, tipografia, ilustrações e ícones. Para doces finos, o público espera elegância e cuidado.</p><div class="tk"><b>Levamos:</b> a lista de ingredientes da marca (é o que este guia entrega). <a href="https://saipos.com/sistema/doceria/identidade-visual-doceria">Ver guia</a></div></div>
+    <div class="card ref" style="background:var(--blush)"><svg class="ico"><use href="#i-bow"/></svg><b class="t">O que a Evy já tem</b><p>Desenhos de linha rosa no fundo do orçamento, o batedor, a boneca, fotos em recorte redondo e ondulado.</p><div class="tk"><b>Mantivemos:</b> tudo isso, só organizado. O fundo de doodles do orçamento é o padrão oficial agora.</div></div>
+  </div>
+  <p class="note"><b>Limite:</b> a busca trouxe páginas e trechos, eu não vi as imagens dos portfólios. As decisões partem das descrições e do material da própria Evy. Vale ela olhar os links e dizer do que gosta.</p>
+</div></section>
+
+<!-- ============ 2 · LOGO ============ -->
+<section class="alt"><div class="fest-c" style="position:absolute;top:0;left:0;right:0"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>2 · Logo</div>
+  <h2>Selo festonado + bolo</h2>
+  <p class="lead">O símbolo é uma forminha vista de cima (a borda ondulada do docinho) com um bolo de dois andares, cobertura escorrendo e cereja no topo. O traço pontilhado lembra costura de ateliê. Funciona sozinho como avatar e favicon.</p>
+  <div class="grid g2">
+    <div class="lb" style="background:var(--creme)"><div class="lock-h"><svg class="seal" width="96" height="96" viewBox="0 0 100 100"><use href="#seal"/></svg><div class="wm" style="font-size:44px;color:var(--framboesa)">Evy's Cake<small style="color:var(--chocolate)">confeitaria artesanal</small></div></div><span class="cap">Horizontal · versão principal</span></div>
+    <div class="lb" style="background:#fff"><div class="lock-v"><svg class="seal" width="104" height="104" viewBox="0 0 100 100"><use href="#seal"/></svg><div class="wm" style="font-size:42px;color:var(--framboesa)">Evy's Cake<small style="color:var(--chocolate)">confeitaria artesanal</small></div></div><span class="cap">Vertical · embalagem, capa</span></div>
+    <div class="lb" style="background:var(--framboesa);--seal:#fff;--seal-ink:var(--framboesa)"><div class="lock-h"><svg class="seal" width="96" height="96" viewBox="0 0 100 100"><use href="#seal"/></svg><div class="wm" style="font-size:44px;color:#fff">Evy's Cake<small style="color:var(--blush)">confeitaria artesanal</small></div></div><span class="cap" style="color:#fff">Sobre framboesa</span></div>
+    <div class="lb" style="background:var(--chocolate);--seal:var(--algodao);--seal-ink:var(--chocolate)"><div class="lock-h"><svg class="seal" width="96" height="96" viewBox="0 0 100 100"><use href="#seal"/></svg><div class="wm" style="font-size:44px;color:var(--algodao)">Evy's Cake<small style="color:var(--blush)">confeitaria artesanal</small></div></div><span class="cap" style="color:var(--blush)">Sobre chocolate</span></div>
+  </div>
+  <h3>Símbolo sozinho e selo adesivo</h3>
+  <div class="row" style="gap:24px;align-items:center">
+    <svg class="seal" width="84" height="84" viewBox="0 0 100 100"><use href="#seal"/></svg>
+    <svg class="seal" width="84" height="84" viewBox="0 0 100 100" style="--seal:var(--chocolate);--seal-ink:var(--algodao)"><use href="#seal"/></svg>
+    <svg class="seal" width="84" height="84" viewBox="0 0 100 100" style="--seal:var(--algodao);--seal-ink:var(--chocolate)"><use href="#seal"/></svg>
+    <div style="width:84px;height:84px;border-radius:50%;background:var(--blush);display:grid;place-items:center;border:1px solid var(--linha)"><svg class="seal" width="62" height="62" viewBox="0 0 100 100"><use href="#seal"/></svg></div>
+    <div class="stk"><svg viewBox="0 0 100 100"><use href="#seal0"/></svg><span>feito<br>à mão</span></div>
+    <div class="stk" style="--seal:var(--caramelo);--seal-ink:var(--chocolate);transform:rotate(7deg)"><svg viewBox="0 0 100 100"><use href="#seal0"/></svg><span style="color:var(--chocolate)">com<br>carinho</span></div>
+  </div>
+  <p style="color:var(--cacau);font-size:14px;margin-top:8px">Da esquerda: principal, chocolate, algodão, avatar redondo (WhatsApp/Instagram) e dois selos adesivos para embalagem.</p>
+  <h3>Regras rápidas</h3>
+  <ul style="color:var(--cacau);padding-left:20px">
+    <li>Espaço livre ao redor: a largura de uma "onda" da borda do selo.</li>
+    <li>Tamanho mínimo: símbolo 32 px; logo horizontal 160 px de largura.</li>
+    <li>Só as combinações mostradas. Sem sombra, contorno ou girar o logo (os adesivos podem girar, o logo não).</li>
+  </ul>
+  <p class="note"><b>Em aberto:</b> (1) o nome: "Evy's Cake" é placeholder, o projeto usa "Evys Cakes" e o orçamento "Evelyn Guimarães". (2) O wordmark é texto na fonte Fraunces; para arte final, converter as letras em curvas e entregar SVG/PNG. (3) A boneca-mascote não entrou no logo, fica como personagem de apoio.</p>
+</div></section>
+
+<!-- ============ 3 · ÍCONES ============ -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>3 · Símbolos</div>
+  <h2>Família de ícones</h2>
+  <p class="lead">Traço de chocolate, cantos arredondados, um toque de cor chapada (blush, algodão, framboesa). Os produtos são os do cardápio dela: cupcake, brigadeiro na forminha, mini pão de mel, topper. Mesmos desenhos viram marcador no site, ícone no painel e doodle no padrão.</p>
+  <div class="ig">
+    <figure><svg class="ico"><use href="#i-cupcake"/></svg><figcaption>Cupcake</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cake"/></svg><figcaption>Bolo</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-brig"/></svg><figcaption>Doce na forminha</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cherry"/></svg><figcaption>Cereja</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-pao"/></svg><figcaption>Mini pão de mel</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-topper"/></svg><figcaption>Topper</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-bow"/></svg><figcaption>Laço</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-heart"/></svg><figcaption>Coração</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-spark"/></svg><figcaption>Brilho</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cal"/></svg><figcaption>Data do evento</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-clock"/></svg><figcaption>Validade</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-chat"/></svg><figcaption>Conversa</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-box"/></svg><figcaption>Caixa / entrega</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-check"/></svg><figcaption>Reservado</figcaption></figure>
+  </div>
+  <h3>Versão de um tom só (sobre framboesa)</h3>
+  <div class="ig dark">
+    <figure><svg class="ico"><use href="#i-cupcake"/></svg><figcaption>Cupcake</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-brig"/></svg><figcaption>Doce</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-cal"/></svg><figcaption>Data</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-clock"/></svg><figcaption>Validade</figcaption></figure>
+    <figure><svg class="ico"><use href="#i-check"/></svg><figcaption>Reservado</figcaption></figure>
+  </div>
+  <p class="note">Ícones desenhados por mim em SVG, para dar direção. Se algum não ficou com cara de doce, é fácil refinar ou trocar por ilustração da própria Evy.</p>
+</div></section>
+
+<!-- ============ 4 · PADRÕES ============ -->
+<section class="alt"><div class="fest-c" style="position:absolute;top:0;left:0;right:0"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>4 · Padrões</div>
+  <h2>Texturas para vestir as peças</h2>
+  <p class="lead">Servem de fundo de story, papel de embalagem, fita da caixa e cabeçalho do orçamento. Regra de ouro: um padrão por peça.</p>
+  <div class="grid g3">
+    <div class="pat" style="background:#fff"><svg class="bg"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg><span>Doodles · assinatura</span></div>
+    <div class="pat gingham"><span>Xadrez vichy · caixas e fitas</span></div>
+    <div class="pat"><svg class="bg"><rect width="100%" height="100%" fill="url(#pat-sprinkle)"/></svg><span>Granulado · festa, stories</span></div>
+    <div class="pat dots"><span>Bolinhas · fundos discretos</span></div>
+    <div class="pat stripes"><span>Listras · toalha, forminha</span></div>
+    <div class="pat" style="background:var(--framboesa)"><svg class="bg" style="opacity:.35;color:#fff"><defs><pattern id="pat-w" width="210" height="210" patternUnits="userSpaceOnUse" style="color:#fff;--ia:none;--ib:none;--ic:none;--id:none"><use href="#i-pao" x="14" y="12" width="40" height="40"/><use href="#i-cupcake" x="118" y="40" width="42" height="42"/><use href="#i-heart" x="70" y="110" width="30" height="30"/><use href="#i-cake" x="10" y="130" width="44" height="44"/><use href="#i-spark" x="150" y="140" width="34" height="34"/></pattern></defs><rect width="100%" height="100%" fill="url(#pat-w)"/></svg><span>Doodles brancos sobre framboesa</span></div>
+  </div>
+</div></section>
+
+<!-- ============ 5 · ELEMENTOS ============ -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>5 · Elementos</div>
+  <h2>Peças de montar</h2>
+  <p class="lead">O que dá o ar de "feito com carinho": molduras festonadas para as fotos reais dela, faixas, etiquetas, bandeirinhas de festa e divisores.</p>
+
+  <h3 style="margin-top:0">Molduras para as fotos dela</h3>
+  <div class="row" style="gap:26px;align-items:flex-end">
+    <div class="ph ring"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/capa.png');--bs:412px auto;--bp:-14px -380px"></div></div>
+    <div class="ph arch" style="width:170px"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/doces-gourmet.png');--bs:513px auto;--bp:-274px -328px"></div></div>
+    <div class="ph circ"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/capa.png');--bs:471px auto;--bp:-241px -603px"></div></div>
+    <div class="ph ring" style="width:150px;height:150px"><div class="in" style="background-image:url('../docs-empreendedora/cardapio-2026/doces-gourmet.png');--bs:580px auto;--bp:-45px -775px"></div></div>
+  </div>
+  <p style="color:var(--cacau);font-size:14px;margin-top:8px">Festonada com anel, arco, círculo com borda dupla. As fotos são as do cardápio dela (baixa resolução, melhor usar os originais).</p>
+
+  <h3>Faixa, etiqueta, botão</h3>
+  <div class="row" style="gap:18px">
+    <span class="ribbon">Cardápio 2026</span>
+    <span class="label"><svg class="ico" style="width:22px;height:22px;--ia:none;--ib:none;color:var(--caramelo-texto)"><use href="#i-clock"/></svg>Válido até 10/12</span>
+    <button class="btn btn-p"><svg class="ico"><use href="#i-cal"/></svg>Reservar minha data</button>
+    <button class="btn btn-s"><svg class="ico"><use href="#i-chat"/></svg>Falar com a Evy</button>
+  </div>
+
+  <h3>Status (painel dela)</h3>
+  <div class="row">
+    <span class="badge b-env"><svg class="ico" style="width:16px;height:16px;--ia:none;--ib:none"><use href="#i-chat"/></svg>Enviado</span>
+    <span class="badge b-vis">Visto</span>
+    <span class="badge b-urg"><svg class="ico" style="width:16px;height:16px;color:var(--caramelo-texto);--ia:none"><use href="#i-clock"/></svg>Vencendo</span>
+    <span class="badge b-ok"><svg class="ico" style="width:16px;height:16px;color:var(--pistache);--ia:none"><use href="#i-check"/></svg>Reservado</span>
+    <span class="badge b-perd">Perdido</span>
+  </div>
+
+  <h3>Bandeirinhas e divisor</h3>
+  <svg id="bunting" class="bunting" viewBox="0 0 620 130" role="img" aria-label="Parabéns"></svg>
+  <div class="divider" style="margin-top:14px;max-width:560px"><svg class="ico"><use href="#i-bow"/></svg></div>
+</div></section>
+
+<!-- ============ 6 · COR E TIPOGRAFIA ============ -->
+<section class="alt"><div class="fest-c" style="position:absolute;top:0;left:0;right:0"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>6 · Cor e tipografia</div>
+  <h2>Paleta</h2>
+  <p class="lead">Rosa forte para ação, rosa claro para superfície, chocolate no lugar do preto. Caramelo (o laranja das flores e confeitos dos bolos dela) é só para prazo e urgência.</p>
+  <div class="grid g4">
+    <div class="sw"><i style="background:var(--framboesa)"></i><div><b>Framboesa</b><code>#B83A73</code><br>Ação, preço. Branco sobre ela: 5,4:1</div></div>
+    <div class="sw"><i style="background:var(--algodao)"></i><div><b>Algodão-doce</b><code>#F4A9C4</code><br>Decoração, nunca texto</div></div>
+    <div class="sw"><i style="background:var(--blush)"></i><div><b>Blush</b><code>#FCE4EC</code><br>Superfícies e faixas</div></div>
+    <div class="sw"><i style="background:var(--creme);border-bottom:1px solid var(--linha)"></i><div><b>Creme</b><code>#FFF8F4</code><br>Fundo de página</div></div>
+    <div class="sw"><i style="background:var(--chocolate)"></i><div><b>Chocolate</b><code>#3B2119</code><br>Texto. Sobre creme: 14:1</div></div>
+    <div class="sw"><i style="background:var(--cacau)"></i><div><b>Cacau</b><code>#7A5A4F</code><br>Texto secundário: 5,9:1</div></div>
+    <div class="sw"><i style="background:var(--caramelo)"></i><div><b>Caramelo</b><code>#D98E4A</code><br>Urgência. Texto: <code>#8A4B14</code></div></div>
+    <div class="sw"><i style="background:var(--pistache)"></i><div><b>Pistache</b><code>#2F6B47</code><br>Reservado, sucesso</div></div>
+  </div>
+  <h2 style="margin-top:46px">Tipografia</h2>
+  <p class="lead">Três vozes, gratuitas no Google Fonts. Fraunces (com o eixo "soft" ligado) dá o macio de confeitaria; Figtree faz o trabalho; Caveat é a letra de bilhete, só em selo e anotação.</p>
+  <div class="spec"><span>Título · Fraunces 700 soft</span><span style="font:700 32px var(--f-display);font-variation-settings:'SOFT' 100,'WONK' 1">Seu orçamento está pronto</span></div>
+  <div class="spec"><span>Destaque · Fraunces itálico</span><span style="font:italic 600 26px var(--f-display);color:var(--framboesa);font-variation-settings:'SOFT' 100,'WONK' 1">reserve sua data</span></div>
+  <div class="spec"><span>Corpo · Figtree 400, 17 px</span><span>Cento de brigadeiro gourmet, retirada na sexta, entrada de 60% no ato da encomenda.</span></div>
+  <div class="spec"><span>Rótulo/botão · Figtree 600</span><span style="font-weight:600">Reservar minha data</span></div>
+  <div class="spec"><span>Anotação · Caveat 700</span><span style="font:700 28px var(--f-mao);color:var(--framboesa-escura)">feito à mão, com carinho</span></div>
+</div></section>
+
+<!-- ============ 7 · INTERFACE ============ -->
+<section><div class="w">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>7 · Interface</div>
+  <h2>O orçamento em link, vestido com a marca</h2>
+  <p class="lead">À esquerda, o que o cliente vê no celular. À direita, o painel da Evy com quem retomar e a mensagem pronta para ela aprovar. Dados fictícios.</p>
+  <div class="phones">
+    <div class="phone">
+      <div class="p-top">
+        <svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-doodle)"/></svg>
+        <svg class="seal" width="62" height="62" viewBox="0 0 100 100" style="margin:0 auto"><use href="#seal"/></svg>
+        <div class="wm" style="color:var(--framboesa)">Evy's Cake<small style="color:var(--chocolate);font-size:8px">confeitaria artesanal</small></div>
+      </div>
+      <div class="fest-b" style="height:14px;background:radial-gradient(circle at 10px 0,var(--blush) 9.4px,transparent 10px) 0 0/20px 14px repeat-x"></div>
+      <div class="p-body">
+        <div class="hi">Oi, <em>Ana</em>! Seu orçamento está pronto.</div>
+        <div class="chips">
+          <span class="chip"><svg class="ico"><use href="#i-cal"/></svg>14 de dezembro</span>
+          <span class="chip"><svg class="ico"><use href="#i-cake"/></svg>Aniversário</span>
+          <span class="chip"><svg class="ico"><use href="#i-heart"/></svg>80 convidados</span>
+        </div>
+        <div class="it"><div class="ib2"><svg class="ico"><use href="#i-brig"/></svg></div><div><b>Doces gourmet</b><small>100 un · forminha</small></div><span class="v">R$ 190,00</span></div>
+        <div class="it"><div class="ib2"><svg class="ico"><use href="#i-cupcake"/></svg></div><div><b>Cupcakes</b><small>24 un</small></div><span class="v">R$ 96,00</span></div>
+        <div class="it"><div class="ib2"><svg class="ico"><use href="#i-topper"/></svg></div><div><b>Topper personalizado</b><small>1 un</small></div><span class="v">R$ 15,00</span></div>
+        <div class="tot"><span>Total</span><b>R$ 301,00</b></div>
+        <div class="val"><svg class="ico"><use href="#i-clock"/></svg><span>Válido até 10/12. A agenda de dezembro tem poucas datas.</span></div>
+        <button class="btn btn-p"><svg class="ico"><use href="#i-cal"/></svg>Reservar com 60% de entrada</button>
+        <div style="height:8px"></div>
+        <button class="btn btn-s"><svg class="ico"><use href="#i-chat"/></svg>Compartilhar com quem decide</button>
+      </div>
+      <div class="p-foot">feito à mão, com carinho</div>
+    </div>
+
+    <div class="phone">
+      <div class="p-top" style="padding-bottom:14px">
+        <div class="row" style="justify-content:space-between;flex-wrap:nowrap">
+          <svg class="seal" width="40" height="40" viewBox="0 0 100 100"><use href="#seal"/></svg>
+          <b style="font:700 18px var(--f-display);font-variation-settings:'SOFT' 100">Painel da Evy</b>
+          <span class="badge b-urg">3 hoje</span>
+        </div>
+      </div>
+      <div class="fest-b" style="height:14px;background:radial-gradient(circle at 10px 0,var(--blush) 9.4px,transparent 10px) 0 0/20px 14px repeat-x"></div>
+      <div class="p-body">
+        <div class="eyebrow" style="margin:8px 0 2px">Para retomar</div>
+        <div class="lead-row"><span class="av">A</span><div><b>Ana · aniversário</b><small>enviado há 2 dias · vence em 3</small></div><span class="badge b-urg" style="margin-left:auto">Vencendo</span></div>
+        <div class="lead-row"><span class="av">M</span><div><b>Marina · casamento</b><small>visto ontem, sem resposta</small></div><span class="badge b-vis" style="margin-left:auto">Visto</span></div>
+        <div class="lead-row"><span class="av">R</span><div><b>Rafa · chá de bebê</b><small>enviado há 4 dias</small></div><span class="badge b-env" style="margin-left:auto">Enviado</span></div>
+        <div class="eyebrow" style="margin:16px 0 2px">Mensagem pronta · Ana</div>
+        <div class="msg">Oi, Ana! Passando para avisar que seu orçamento vale até 10/12 e ainda tenho a data de 14/12. Quer que eu reserve? <svg class="ico" style="color:var(--framboesa)"><use href="#i-heart"/></svg></div>
+        <button class="btn btn-p"><svg class="ico"><use href="#i-check"/></svg>Aprovar e enviar</button>
+        <div style="height:8px"></div>
+        <button class="btn btn-s">Editar mensagem</button>
+      </div>
+      <div class="p-foot">nada sai sem você aprovar</div>
+    </div>
+  </div>
+  <p class="note">Painel e mensagem pronta seguem a ideia do CLAUDE.md (ferramenta que trabalha para ela, ela aprova). É hipótese da equipe, ainda não validada com a Evy. Frase da Ana é só exemplo, o texto real deve soar como a Evy fala.</p>
+</div></section>
+
+<!-- ============ 8 · VOZ ============ -->
+<section class="alt"><div class="fest-c" style="position:absolute;top:0;left:0;right:0"></div><div class="w" style="padding-top:20px">
+  <div class="eyebrow"><svg class="ico" style="width:18px;height:18px"><use href="#i-spark"/></svg>8 · Voz e regras</div>
+  <h2>Como a marca fala e se comporta</h2>
+  <div class="dd">
+    <div><b>Dizemos</b>
+      <div class="voz">"Reserve sua data com a entrada."<small>direto, diz o que acontece</small></div>
+      <div class="voz">"Este orçamento vale até 10/12."<small>urgência real, com data</small></div>
+    </div>
+    <div><b>Evitamos</b>
+      <div class="voz" style="border-color:var(--linha)">"ÚLTIMAS VAGAS!!! CORRA!"<small>escassez só quando é verdade para aquela data</small></div>
+    </div>
+  </div>
+  <div class="dd" style="margin-top:28px">
+    <div class="card"><b>Fazer</b><ul class="sim"><li>Um padrão por peça, o resto liso (creme ou blush)</li><li>Chocolate em todo texto</li><li>Caramelo só para prazo e urgência</li><li>Foto real do doce em moldura festonada</li></ul></div>
+    <div class="card"><b>Não fazer</b><ul class="nao"><li>Preto ou branco puro de fundo</li><li>Dois padrões na mesma peça</li><li>Caveat em texto corrido</li><li>Ícone com cor fora da paleta</li></ul></div>
+  </div>
+</div></section>
+
+<footer><div class="w">
+  Rascunho para validar com a Evy: nome da marca, se aprova o símbolo (selo + bolo), se mantém a boneca como personagem e se gosta do rosa mais fechado (framboesa). O Pix e o CNPJ dos materiais dela não foram copiados.
+</div></footer>
+
+<script>
+// Gera o contorno festonado (n ondas) em coordenadas de 0 a 1 ou 0 a 100
+function scallop(n, R, c, k){
+  const chord = 2*R*Math.sin(Math.PI/n), b = chord/2*k;
+  const p = i => { const a = -Math.PI/2 + 2*Math.PI*i/n; return [c+R*Math.cos(a), c+R*Math.sin(a)]; };
+  let d = 'M' + p(0).map(v=>v.toFixed(4)).join(' ');
+  for(let i=1;i<=n;i++) d += `A${b.toFixed(4)} ${b.toFixed(4)} 0 0 1 ${p(i%n).map(v=>v.toFixed(4)).join(' ')}`;
+  return d + 'Z';
+}
+document.getElementById('seal-p').setAttribute('d', scallop(14, 39, 50, 1.02));
+document.getElementById('seal-p0').setAttribute('d', scallop(14, 39, 50, 1.02));
+document.getElementById('clip-sc-p').setAttribute('d', scallop(14, .4, .5, 1.02));
+
+// Bandeirinhas "PARABÉNS" penduradas numa curva
+(function(){
+  const svg = document.getElementById('bunting'), NS='http://www.w3.org/2000/svg';
+  const P0=[10,16], P1=[310,100], P2=[610,16];
+  const q=(t,i)=>(1-t)*(1-t)*P0[i]+2*(1-t)*t*P1[i]+t*t*P2[i];
+  const mk=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+  svg.appendChild(mk('path',{d:`M${P0} Q${P1} ${P2}`,fill:'none',stroke:'#7A5A4F','stroke-width':2}));
+  const cols=[['#B83A73','#fff'],['#F4A9C4','#3B2119'],['#D98E4A','#3B2119'],['#FCE4EC','#B83A73']];
+  [...'PARABÉNS'].forEach((ch,i)=>{
+    const t=.09+i*(.82/7), x=q(t,0), y=q(t,1);
+    const dx=2*(1-t)*(P1[0]-P0[0])+2*t*(P2[0]-P1[0]), dy=2*(1-t)*(P1[1]-P0[1])+2*t*(P2[1]-P1[1]);
+    const ang=Math.atan2(dy,dx)*180/Math.PI, [bg,fg]=cols[i%4];
+    const g=mk('g',{transform:`translate(${x} ${y}) rotate(${ang})`});
+    g.appendChild(mk('path',{d:'M-25 0H25L0 66Z',fill:bg,stroke:bg==='#FCE4EC'?'#F4A9C4':'none','stroke-width':2,'stroke-linejoin':'round'}));
+    const tx=mk('text',{x:0,y:30,'text-anchor':'middle',fill:fg,'font-family':'Fraunces,Georgia,serif','font-weight':700,'font-size':26});
+    tx.textContent=ch; g.appendChild(tx); svg.appendChild(g);
+  });
+})();
+</script>
+</body>
+</html>

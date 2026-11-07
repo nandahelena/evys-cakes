@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logo v7 — selo com batedor e laço</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:#33182E;font:500 16px/1.5 Figtree,system-ui,sans-serif;padding:28px 20px 60px}
+h1{font:700 28px/1.1 Figtree;margin-bottom:6px}
+h2{font:700 18px Figtree;margin:30px 0 8px}
+p.s{color:#6b5b66;margin-bottom:18px;max-width:74ch}
+.grid{display:grid;gap:16px;max-width:1120px;grid-template-columns:1fr}
+.two{display:grid;grid-template-columns:1fr 1fr;border:1px solid #eee;border-radius:20px;overflow:hidden}
+.p{padding:30px 14px;display:flex;align-items:center;justify-content:center;background:var(--fundo)}
+.p svg{width:100%;max-width:400px;overflow:visible}
+.row3{display:flex;gap:26px;align-items:center;justify-content:center;flex-wrap:wrap}
+.rosa{--primaria:#B83A73;--suave:#F4A9C4;--superficie:#FCE4EC;--fundo:#FFF8F4;--tinta:#33182E}
+.marinho{--primaria:#1B2A5C;--suave:#A9BDE8;--superficie:#E3EAF8;--fundo:#F6F8FD;--tinta:#131A3A}
+.gv{font-family:'Great Vibes',cursive;fill:var(--primaria)}
+.tg{font:600 11px Figtree,sans-serif;letter-spacing:.3em;fill:var(--tinta);text-transform:uppercase}
+.ln{fill:none;stroke:var(--primaria);stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:var(--primaria)}
+.sv{fill:var(--suave)}
+</style></head><body>
+<h1>Logo · selo com batedor e laço</h1>
+<p class="s">Redesenhado em vetor a partir da imagem que ela mandou: mesma ideia, linhas nítidas, simetria, espaçamento regular e o mesmo texto do P1.</p>
+<div class="grid" id="g"></div>
+
+<script>
+const rad=d=>d*Math.PI/180;
+// ondas redondas: n arcos para fora, raio do arco = metade da corda
+function lobed(n,R,k,c){const ch=2*R*Math.sin(Math.PI/n),b=ch/2*k,p=i=>{const a=-Math.PI/2+2*Math.PI*i/n;return[c+R*Math.cos(a),c+R*Math.sin(a)]};let d='M'+p(0).map(v=>v.toFixed(2)).join(' ');for(let i=1;i<=n;i++)d+=`A${b.toFixed(2)} ${b.toFixed(2)} 0 0 1 ${p(i%n).map(v=>v.toFixed(2)).join(' ')}`;return d+'Z'}
+const sparkle=(x,y,r)=>`<path class="fl" d="M${x} ${y-r}Q${x+r*.14} ${y-r*.14} ${x+r} ${y}Q${x+r*.14} ${y+r*.14} ${x} ${y+r}Q${x-r*.14} ${y+r*.14} ${x-r} ${y}Q${x-r*.14} ${y-r*.14} ${x} ${y-r}z"/>`;
+const heart=(x,y,s,cls='sv')=>`<path class="${cls}" stroke="var(--primaria)" stroke-width="${1.4/s}" stroke-linejoin="round" d="M0 6C-10-2-6-9 0-4C6-9 10-2 0 6z" transform="translate(${x} ${y}) scale(${s})"/>`;
+
+// batedor (cabeça para cima) com laço amarrado na cintura
+const bow=()=>{
+  const tail=`<path d="M-1.500 4C-8 14-18 26-27 36L-17 35L-19 45C-8 36-1 22 3 9z" fill="var(--suave)" stroke="var(--primaria)" stroke-width="1.300" stroke-linejoin="round"/>`;
+  const loop=`<path d="M0 0C-8-15-38-19-42-4C-45 11-14 12 0 0z" fill="var(--suave)" stroke="var(--primaria)" stroke-width="1.400" stroke-linejoin="round"/><path d="M-7-2C-16-8-28-8-35-4" fill="none" stroke="var(--primaria)" stroke-width="1" stroke-linecap="round"/>`;
+  return `<g>${tail}<g transform="scale(-1 1)">${tail}</g>${loop}<g transform="scale(-1 1)">${loop}</g><circle cx="0" cy="0" r="5.500" fill="var(--suave)" stroke="var(--primaria)" stroke-width="1.400"/></g>`;
+};
+const whisk=(x,y,rot,s)=>{
+  let w='';for(const f of [-1,-.7,-.4,0,.4,.7,1])w+=`M0 0C${f*28} -12 ${f*32} -72 0 -96`;
+  return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">
+   <path class="ln" stroke-width="2.100" d="${w}"/>
+   <path class="ln" stroke-width="1.400" d="M-24 -26C-10 -23 10 -23 24 -26M-27 -48C-12 -45 12 -45 27 -48" opacity=".7"/>
+   <rect class="fl" x="-5.500" y="-3" width="11" height="9" rx="2.500"/>
+   <path class="fl" d="M-5 6H5L6.500 56Q6.500 64 0 64Q-6.500 64-6.500 56Z"/>
+   <circle cx="0" cy="55" r="1.800" fill="var(--fundo)"/>
+   <g transform="translate(0 8)">${bow()}</g></g>`;
+};
+const text=(cx,yName,size,yFio,wFio,yTag)=>`<text class="gv" x="${cx}" y="${yName}" text-anchor="middle" font-size="${size}"><tspan font-size="${size*1.22}">E</tspan>vy's Cake</text>
+ <path class="ln" stroke-width="1.100" d="M${cx-wFio/2} ${yFio}H${cx-10}M${cx+10} ${yFio}H${cx+wFio/2}"/><path class="fl" d="M${cx} ${yFio-4.500}L${cx+4.500} ${yFio}L${cx} ${yFio+4.500}L${cx-4.500} ${yFio}z"/>
+ <text class="tg" x="${cx}" y="${yTag}" text-anchor="middle" style="font-size:11.500px;letter-spacing:.3em">confeitaria artesanal</text>`;
+
+// selo principal
+const selo=(onColor=false)=>`<svg viewBox="0 0 400 400">
+ ${onColor?'<rect class="fl" width="400" height="400" rx="30"/>':''}
+ <path d="${lobed(30,180,2.6,200)}" fill="var(--suave)" fill-opacity="${onColor?1:.55}" stroke="${onColor?'var(--fundo)':'var(--primaria)'}" stroke-width="4" stroke-linejoin="round"/>
+ <path d="${lobed(30,162,2.6,200)}" fill="${onColor?'var(--fundo)':'var(--superficie)'}" stroke="var(--primaria)" stroke-width="1.300" stroke-linejoin="round"/>
+ ${whisk(204,140,22,.88)}
+ ${sparkle(120,120,11)}${sparkle(284,112,12)}${sparkle(306,146,6)}
+ ${text(200,254,62,276,210,300)}
+ ${heart(200,336,1.600)}</svg>`;
+// versão compacta: só o topo, para avatar
+const compacto=()=>`<svg viewBox="0 0 400 400" style="max-width:200px">
+ <path d="${lobed(30,180,2.6,200)}" fill="var(--suave)" fill-opacity=".55" stroke="var(--primaria)" stroke-width="4" stroke-linejoin="round"/>
+ <path d="${lobed(30,162,2.6,200)}" fill="var(--superficie)" stroke="var(--primaria)" stroke-width="1.300" stroke-linejoin="round"/>
+ ${whisk(214,236,22,1.5)}${sparkle(112,150,16)}${sparkle(300,130,18)}${sparkle(318,190,8)}${heart(132,300,2.200)}</svg>`;
+
+const row=(f)=>`<div class="two"><div class="p rosa">${f}</div><div class="p marinho">${f}</div></div>`;
+document.getElementById('g').innerHTML=
+ `<h2>Principal</h2>${row(selo())}
+  <h2>Sobre cor (stories, avatar quadrado, embalagem)</h2>${row(selo(true))}
+  <h2>Compacta (foto de perfil do WhatsApp e do Instagram)</h2>${row(compacto())}`;
+</script></body></html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Direções de logo v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:#33182E;font:500 16px/1.5 Figtree,system-ui,sans-serif;padding:28px 20px 60px}
+h1{font:700 28px/1.1 Figtree;margin-bottom:6px}
+p.s{color:#6b5b66;margin-bottom:22px;max-width:72ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(520px,1fr));gap:18px;max-width:1120px}
+.card{border:1px solid #eee;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.card .two{flex:1}
+.card h3{font:700 14px Figtree;padding:10px 16px;background:#faf6f8}
+.card h3 span{font-weight:500;color:#6b5b66}
+.two{display:grid;grid-template-columns:1fr 1fr}
+.p{padding:26px 14px;display:flex;align-items:center;justify-content:center;min-height:250px;background:var(--fundo)}
+.p svg{width:100%;max-width:240px;height:auto;overflow:visible}
+.rosa{--primaria:#B83A73;--suave:#F4A9C4;--fundo:#FFF8F4;--tinta:#33182E}
+.marinho{--primaria:#1B2A5C;--suave:#A9BDE8;--fundo:#F6F8FD;--tinta:#131A3A}
+.gv{font-family:'Great Vibes',cursive;fill:var(--primaria)}
+.tg{font:600 11px Figtree,sans-serif;letter-spacing:.32em;fill:var(--tinta);text-transform:uppercase}
+.ln{fill:none;stroke:var(--primaria);stroke-linecap:round}
+.fl{fill:var(--primaria)}
+</style></head><body>
+<h1>Direções de logo · mais chique, mais gourmet</h1>
+<p class="s">Nome em Great Vibes, fio fino e muito respiro, no lugar do selo fofo. Cada direção aparece em rosa (esquerda) e azul marinho (direita).</p>
+<div class="grid" id="g"></div>
+
+<script>
+const wm=(x,y,size,anchor='middle')=>`<text class="gv" x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}"><tspan font-size="${size*1.38}">E</tspan>vy's Cake</text>`;
+const tag=(x,y,anchor='middle',size=11,ls=.32)=>`<text class="tg" x="${x}" y="${y}" text-anchor="${anchor}" style="font-size:${size}px;letter-spacing:${ls}em">confeitaria artesanal</text>`;
+const dia=(x,y,r=4)=>`<path class="fl" d="M${x} ${y-r}L${x+r} ${y}L${x} ${y+r}L${x-r} ${y}z"/>`;
+const sparkle=(x,y,r)=>`<path class="fl" d="M${x} ${y-r}Q${x+r*.15} ${y-r*.15} ${x+r} ${y}Q${x+r*.15} ${y+r*.15} ${x} ${y+r}Q${x-r*.15} ${y+r*.15} ${x-r} ${y}Q${x-r*.15} ${y-r*.15} ${x} ${y-r}z"/>`;
+
+// ramo de louro: folhas ao longo de um arco
+function laurel(cx,cy,R,a0,a1,n,side){
+  const rad=d=>d*Math.PI/180, P=a=>[cx+R*Math.cos(rad(a)),cy+R*Math.sin(rad(a))];
+  const [sx,sy]=P(a0),[ex,ey]=P(a1);
+  let s=`<path class="ln" stroke-width="1.2" d="M${sx.toFixed(1)} ${sy.toFixed(1)}A${R} ${R} 0 0 ${side>0?1:0} ${ex.toFixed(1)} ${ey.toFixed(1)}"/>`;
+  for(let i=0;i<n;i++){
+    const a=a0+(a1-a0)*i/(n-1), [x,y]=P(a), dir=a+(side>0?90:-90)+(i%2?32:-32);
+    const len=i>n-3?7:11-(i/n)*2;
+    s+=`<path class="fl" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${dir.toFixed(1)})" d="M0 0Q${len/2} -${len*.38} ${len} 0Q${len/2} ${len*.38} 0 0z"/>`;
+  }
+  return s;
+}
+let uid=0;
+const logos=[
+['A · Maison','só o nome, fio fino e losango. Menos é mais',()=>`<svg viewBox="0 0 320 150">${wm(160,84,70)}<path class="ln" stroke-width="1" d="M70 104H148M172 104H250"/>${dia(160,104)}${tag(160,134)}</svg>`],
+['B · Monograma com ramos de louro','anel fino, E central, ramos dos dois lados',()=>`<svg viewBox="0 0 300 270"><circle class="ln" stroke-width="1.2" cx="150" cy="112" r="48"/>${laurel(150,112,62,105,245,9,1)}${laurel(150,112,62,75,-65,9,-1)}<text class="gv" x="150" y="140" text-anchor="middle" font-size="88">E</text>${wm(150,232,50)}${tag(150,258,'middle',10)}</svg>`],
+['C · Selo circular com texto em arco','estilo patisserie francesa',()=>{const i=++uid;return `<svg viewBox="0 0 300 270"><defs><path id="t${i}" d="M50 135A100 100 0 0 1 250 135"/><path id="b${i}" d="M40 135A110 110 0 0 0 260 135"/></defs><circle class="ln" stroke-width="1.6" cx="150" cy="135" r="122"/><circle class="ln" stroke-width="1" cx="150" cy="135" r="84"/><text class="tg" style="font-size:15px;font-weight:700;letter-spacing:.3em"><textPath href="#t${i}" startOffset="50%" text-anchor="middle">EVY'S CAKE</textPath></text><text class="tg" style="font-size:11px;letter-spacing:.3em"><textPath href="#b${i}" startOffset="50%" text-anchor="middle">CONFEITARIA ARTESANAL</textPath></text>${dia(35,135,4)}${dia(265,135,4)}<text class="gv" x="150" y="172" text-anchor="middle" font-size="110">E</text></svg>`}],
+['D · Arco','a janela de confeitaria, combina com as molduras de foto',()=>`<svg viewBox="0 0 260 330"><path class="ln" stroke-width="1.6" d="M36 312V140A94 94 0 0 1 224 140V312Z"/><path class="ln" stroke-width=".9" d="M46 302V140A84 84 0 0 1 214 140V302Z"/>${sparkle(130,98,13)}${wm(130,196,40)}<path class="ln" stroke-width="1" d="M72 220H122M138 220H188"/>${dia(130,220,3.5)}${tag(130,248,'middle',8.5,.24)}<path class="ln" stroke-width="1" d="M104 282Q130 270 156 282"/>${dia(130,284,3)}</svg>`],
+['E · Cartucho oval','duplo fio, ornamento nos polos',()=>`<svg viewBox="0 0 320 220"><ellipse class="ln" stroke-width="1.6" cx="160" cy="110" rx="146" ry="92"/><ellipse class="ln" stroke-width=".9" cx="160" cy="110" rx="136" ry="82"/>${wm(160,124,52)}${tag(160,154,'middle',9.5,.3)}<rect x="146" y="12" width="28" height="14" fill="var(--fundo)"/>${dia(160,19,6)}<rect x="146" y="194" width="28" height="14" fill="var(--fundo)"/>${dia(160,201,6)}</svg>`],
+['F · Medalhão E + nome','círculo cheio e liso, E do nome repetido',()=>`<svg viewBox="0 0 400 130"><circle class="ln" stroke-width="1" cx="62" cy="65" r="60"/><circle class="fl" cx="62" cy="65" r="52"/><text x="62" y="92" text-anchor="middle" font-family="Great Vibes,cursive" font-size="84" fill="#fff">E</text><text class="gv" x="140" y="76" font-size="62">Evy's Cake</text>${tag(144,104,'start',10,.3)}</svg>`]
+];
+document.getElementById('g').innerHTML=logos.map(([t,d,f])=>`<div class="card"><h3>${t} <span>· ${d}</span></h3><div class="two"><div class="p rosa">${f()}</div><div class="p marinho">${f()}</div></div></div>`).join('');
+</script></body></html>

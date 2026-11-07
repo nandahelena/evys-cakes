@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Logo v6 — emblemas</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#fff;color:#33182E;font:500 16px/1.5 Figtree,system-ui,sans-serif;padding:28px 20px 60px}
+h1{font:700 28px/1.1 Figtree;margin-bottom:6px}
+p.s{color:#6b5b66;margin-bottom:22px;max-width:74ch}
+.grid{display:grid;gap:16px;max-width:1120px;grid-template-columns:1fr}
+.card{border:1px solid #eee;border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.card h3{font:700 14px Figtree;padding:10px 16px;background:#faf6f8}
+.card h3 span{font-weight:500;color:#6b5b66}
+.two{display:grid;grid-template-columns:1fr 1fr;flex:1}
+.p{padding:26px 14px;display:flex;align-items:center;justify-content:center;background:var(--fundo)}
+.p svg{width:100%;max-width:360px;overflow:visible}
+.rosa{--primaria:#B83A73;--suave:#F4A9C4;--superficie:#FCE4EC;--fundo:#FFF8F4;--tinta:#33182E}
+.marinho{--primaria:#1B2A5C;--suave:#A9BDE8;--superficie:#E3EAF8;--fundo:#F6F8FD;--tinta:#131A3A}
+.gv{font-family:'Great Vibes',cursive;fill:var(--primaria)}
+.tg{font:600 11px Figtree,sans-serif;letter-spacing:.3em;fill:var(--tinta);text-transform:uppercase}
+.ln{fill:none;stroke:var(--primaria);stroke-linecap:round;stroke-linejoin:round}
+.fl{fill:var(--primaria)}
+.sf{fill:var(--superficie)}
+.sv{fill:var(--suave)}
+.bg{fill:var(--fundo)}
+</style></head><body>
+<h1>Emblemas inspirados nas referências</h1>
+<p class="s">Texto igual ao P1 que ela amou (nome em Great Vibes, fio com losango, "confeitaria artesanal" espaçada). O que muda é o emblema em volta e em cima. Cada opção em rosa e azul marinho.</p>
+<div class="grid" id="g"></div>
+
+<script>
+const rad=d=>d*Math.PI/180;
+// ---------- formas base ----------
+function scallop(n,R,c,k){const ch=2*R*Math.sin(Math.PI/n),b=ch/2*k,p=i=>{const a=-Math.PI/2+2*Math.PI*i/n;return[c+R*Math.cos(a),c+R*Math.sin(a)]};let d='M'+p(0).map(v=>v.toFixed(2)).join(' ');for(let i=1;i<=n;i++)d+=`A${b.toFixed(2)} ${b.toFixed(2)} 0 0 1 ${p(i%n).map(v=>v.toFixed(2)).join(' ')}`;return d+'Z'}
+function lobed(n,R,a,c){let d='';for(let i=0;i<=360;i+=2){const t=rad(i),r=R+a*Math.cos(n*t);d+=(i?'L':'M')+(c+r*Math.cos(t)).toFixed(1)+' '+(c+r*Math.sin(t)).toFixed(1)}return d+'Z'}
+const heart=(x,y,s,cls='fl',rot=0)=>`<path class="${cls}" d="M0 6C-10-2-6-9 0-4C6-9 10-2 0 6z" transform="translate(${x} ${y}) rotate(${rot}) scale(${s})" stroke-width="${1.6/s}"/>`;
+const sparkle=(x,y,r)=>`<path class="fl" d="M${x} ${y-r}Q${x+r*.15} ${y-r*.15} ${x+r} ${y}Q${x+r*.15} ${y+r*.15} ${x} ${y+r}Q${x-r*.15} ${y+r*.15} ${x-r} ${y}Q${x-r*.15} ${y-r*.15} ${x} ${y-r}z"/>`;
+// ramo de folhas (só traço), estende para a direita; m=-1 espelha
+function sprig(x,y,rot,len=46,m=1){
+  const P=t=>[ (2*(1-t)*t*len*.5 + t*t*len), (2*(1-t)*t*(-len*.05) + t*t*(-len*.42)) ];
+  let s=`<path class="ln" stroke-width="1.3" d="M0 0Q${len*.5} ${-len*.05} ${len} ${-len*.42}"/>`;
+  for(let i=0;i<6;i++){const t=.18+i*.15,[px,py]=P(t),[qx,qy]=P(t+.02),ang=Math.atan2(qy-py,qx-px)*180/Math.PI,side=i%2?38:-38;
+    s+=`<path class="ln" stroke-width="1.2" transform="translate(${px.toFixed(1)} ${py.toFixed(1)}) rotate(${(ang+side).toFixed(1)})" d="M0 0Q6-4.500 12 0Q6 4.500 0 0z"/>`}
+  const [tx,ty]=P(1);s+=`<path class="ln" stroke-width="1.2" transform="translate(${tx.toFixed(1)} ${ty.toFixed(1)}) rotate(-62)" d="M0 0Q6-4.500 12 0Q6 4.500 0 0z"/>`;
+  return `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${m} 1)">${s}</g>`;
+}
+// ---------- desenhos ----------
+const whisk=(x,y,rot=0,s=1)=>`<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})">
+ <rect class="sv" x="-6" y="22" width="12" height="40" rx="6" stroke="var(--primaria)" stroke-width="2"/>
+ <path class="ln" stroke-width="2" d="M-7.500 22H7.500M-7.500 27H7.500"/>
+ <path class="ln" stroke-width="2" d="M0 22C-30 16-32 -42 0 -56C32 -42 30 16 0 22M0 22C-17 10-18 -38 0 -56M0 22C17 10 18 -38 0 -56M0 22V-56"/></g>`;
+const bowl=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})">
+ <g transform="translate(12 -8) rotate(24)"><path class="ln" stroke-width="2" d="M0 0C-16-6-17-44 0-54C17-44 16-6 0 0M0 0V-54M0 0C-8-8-9-42 0-54M0 0C8-8 9-42 0-54"/><path class="ln" stroke-width="2.4" d="M0 -54V-80" /></g>
+ <path class="sf" stroke="var(--primaria)" stroke-width="2.400" stroke-linejoin="round" d="M-52 -6C-52 34-26 50 0 50C26 50 52 34 52 -6Z"/>
+ <ellipse class="sf" stroke="var(--primaria)" stroke-width="2.400" cx="0" cy="-6" rx="52" ry="9"/>
+ ${heart(0,22,2.5)}</g>`;
+const mixer=(x,y,s=1)=>`<g transform="translate(${x} ${y}) scale(${s})" class="ln" stroke-width="2.200">
+ <path class="sf" d="M-44 46H40Q46 46 46 40V36H-50V40Q-50 46-44 46z"/>
+ <path class="sf" d="M-40 36V-14H-22V36"/>
+ <path class="sf" d="M-46-30Q-46-44-30-44H22Q36-44 36-30V-20Q36-14 28-14H-34Q-46-14-46-24z"/>
+ <path d="M30-44l6-6h8l2 6"/>
+ <path class="sf" d="M-14-6H40Q40 36 12 36Q-14 36-14-6z"/><path d="M-14-6l-6-4"/>
+ <path d="M8-14V0"/><path d="M8 0C0 2-1 24 8 30C17 24 16 2 8 0M8 0V30"/>
+ </g>`;
+// texto: igual ao P1 (nome, fio com losango, descrição)
+const txt=(cx,yName,size,yFio,wFio,yTag,tsz=11.5,ls=.3)=>`<text class="gv" x="${cx}" y="${yName}" text-anchor="middle" font-size="${size}">Evy's Cake</text>
+ <path class="ln" stroke-width="1" d="M${cx-wFio/2} ${yFio}H${cx-10}M${cx+10} ${yFio}H${cx+wFio/2}"/><path class="fl" d="M${cx} ${yFio-4}L${cx+4} ${yFio}L${cx} ${yFio+4}L${cx-4} ${yFio}z"/>
+ <text class="tg" x="${cx}" y="${yTag}" text-anchor="middle" style="font-size:${tsz}px;letter-spacing:${ls}em">confeitaria artesanal</text>`;
+
+// ---------- opções ----------
+const opts=[
+['1 · Anel duplo, corações e batedor','inspirada na 1ª referência',()=>`<svg viewBox="0 0 400 400">
+ <circle class="ln" stroke-width="3" cx="200" cy="200" r="186"/><circle class="ln" stroke-width="1.2" cx="200" cy="200" r="172"/>
+ <circle class="bg" cx="21" cy="200" r="15"/><circle class="bg" cx="379" cy="200" r="15"/>${heart(21,198,1.5)}${heart(379,198,1.5)}
+ ${whisk(214,108,32,.95)}${heart(150,94,1.2,'fl',-10)}${heart(262,70,1,'fl',12)}
+ <path class="ln" stroke-width="1.2" d="M162 100C140 96 130 112 150 118"/>
+ ${txt(200,262,72,286,200,314)}
+ ${sprig(138,362,-8,42)}${sprig(262,362,8,42,-1)}${heart(200,352,1.5)}</svg>`],
+['2 · Selo ondulado creme sobre cor','inspirada na 2ª referência (quadrado de cor, selo claro, anel pontilhado)',()=>`<svg viewBox="0 0 400 400">
+ <rect class="fl" x="0" y="0" width="400" height="400" rx="28"/>
+ <path d="${scallop(30,172,200,1.04)}" fill="var(--fundo)"/>
+ <circle cx="200" cy="200" r="158" fill="none" stroke="var(--suave)" stroke-width="1.6" stroke-dasharray="3 5" stroke-linecap="round"/>
+ ${bowl(206,132,.95)}${heart(142,92,1.2,'fl',-12)}${sprig(110,180,-20,56)}${sprig(290,180,20,56,-1)}
+ ${txt(200,282,70,304,190,330,11,.3)}</svg>`],
+['3 · Selo em flor com batedeira','inspirada na 3ª referência (contorno ondulado, desenho em traço, fio no meio)',()=>`<svg viewBox="0 0 400 400">
+ <path class="sf" stroke="var(--primaria)" stroke-width="4" d="${lobed(9,170,13,200)}"/>
+ ${mixer(204,124,1)}${heart(140,100,1.3,'fl',-12)}${heart(272,86,1,'fl',14)}
+ ${txt(200,262,72,286,190,314)}${heart(200,346,1)}</svg>`],
+['4 · Só arabescos, sem moldura','inspirada na 4ª referência (ornamento clássico em cima e fios)',()=>`<svg viewBox="0 0 400 270">
+ ${heart(200,42,2.4)}
+ <path class="ln" stroke-width="1.6" d="M184 44C170 30 150 28 138 38C128 47 134 60 146 58C156 56 154 44 144 44"/>
+ <path class="ln" stroke-width="1.6" d="M216 44C230 30 250 28 262 38C272 47 266 60 254 58C244 56 246 44 256 44"/>
+ <path class="ln" stroke-width="1.2" d="M176 52C150 66 118 66 94 56M224 52C250 66 282 66 306 56"/>
+ <path class="ln" stroke-width="1.2" d="M94 56C86 53 84 47 90 44M306 56C314 53 316 47 310 44"/>
+ ${txt(200,148,86,176,260,212,12,.32)}
+ <path class="ln" stroke-width="1" d="M52 208H76M324 208H348"/></svg>`],
+['5 · Anel duplo, trio de corações e ramos','a versão 1 sem desenho de utensílio, só carinho',()=>`<svg viewBox="0 0 400 400">
+ <circle class="ln" stroke-width="3" cx="200" cy="200" r="186"/><circle class="ln" stroke-width="1.2" cx="200" cy="200" r="172"/>
+ <circle class="bg" cx="21" cy="200" r="15"/><circle class="bg" cx="379" cy="200" r="15"/>${heart(21,198,1.5)}${heart(379,198,1.5)}
+ ${heart(200,104,3.4)}${heart(150,128,1.6,'fl',-16)}${heart(250,128,1.6,'fl',16)}${sparkle(120,100,8)}${sparkle(284,98,6)}
+ ${sprig(100,180,-40,56)}${sprig(300,180,40,56,-1)}
+ ${txt(200,262,72,286,200,314)}${heart(200,344,1.5)}</svg>`],
+['6 · Arco com ramos e corações','o arco das molduras de foto como emblema',()=>`<svg viewBox="0 0 340 420">
+ <path class="ln" stroke-width="3" d="M26 404V170A144 144 0 0 1 314 170V404Z"/><path class="ln" stroke-width="1.2" d="M40 392V170A130 130 0 0 1 300 170V392Z"/>
+ ${heart(170,92,2.8)}${heart(128,116,1.3,'fl',-14)}${heart(212,116,1.3,'fl',14)}${sparkle(100,92,7)}${sparkle(240,90,5)}
+ ${sprig(80,190,-40,50)}${sprig(260,190,40,50,-1)}
+ ${txt(170,262,64,288,170,316,11,.28)}${sprig(112,366,-6,46)}${sprig(228,366,6,46,-1)}</svg>`]
+];
+document.getElementById('g').innerHTML=opts.map(([t,d,f])=>`<div class="card"><h3>${t} <span>· ${d}</span></h3><div class="two"><div class="p rosa">${f()}</div><div class="p marinho">${f()}</div></div></div>`).join('');
+</script></body></html>
