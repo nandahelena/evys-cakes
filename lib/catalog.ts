@@ -65,9 +65,6 @@ export const PRODUCTS: Product[] = [
   ...bolo('baunilha', 92, ['Ninho trufado', 'Ninho com morangos', 'Brigadeiro branco com morangos']),
   ...bolo('chocolate', 90, ['Maracujá trufado', 'Mousse de chocolate', 'Sensação', 'Brigadeiro', 'Prestígio']),
   ...bolo('chocolate', 95, ['Mousse meio amargo', 'Ninho trufado', 'Dois amores', 'Ninho com morangos', 'Trufado', 'Ovomaltine']),
-  ...group('Toppers', undefined, { price: 10, unit: 'un', min: 1, step: 1 }, ['Topper simples "Parabéns"']),
-  ...group('Toppers', undefined, { price: 15, unit: 'un', min: 1, step: 1 }, ['Topper simples personalizado']),
-  ...group('Toppers', undefined, { price: 25, unit: 'un', min: 1, step: 1 }, ['Topper de flores ou 3D']),
 ];
 
 export const BY_ID = new Map(PRODUCTS.map((p) => [p.id, p]));
@@ -78,7 +75,6 @@ export const CATEGORY_NOTE: Record<string, string | undefined> = {
   'Mini pão de mel': 'Um recheio por pedido. Para sabores misturados, conte nas observações.',
   'Bolos de massa baunilha': 'Decoração e topper a gente combina no WhatsApp.',
   'Bolos de massa chocolate': 'Decoração e topper a gente combina no WhatsApp.',
-  Toppers: 'Pedido com no mínimo 5 dias de antecedência.',
 };
 
 export const CATEGORIES = [...new Set(PRODUCTS.map((p) => p.category))];
@@ -92,7 +88,6 @@ const CATEGORY_DESC: Record<string, string> = {
   'Mini pão de mel': 'Com recheio de ninho, brigadeiro, coco ou doce de leite.',
   'Bolos de massa baunilha': 'Massa baunilha com recheios como maracujá, abacaxi com creme de coco, beijinho e ninho com morangos. Cobrado por kg.',
   'Bolos de massa chocolate': 'Massa chocolate com recheios como mousse de chocolate, prestígio, dois amores e ovomaltine. Cobrado por kg.',
-  Toppers: 'Topper simples "Parabéns", personalizado, ou de flores e 3D.',
 };
 
 export function categoryMeta(cat: string) {

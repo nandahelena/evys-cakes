@@ -1,9 +1,9 @@
+import Image from "next/image";
 import { Icon } from "./Icon";
 import { Doodles } from "./Sprite";
 
 // História contada pela Evy, resumida para o site. A frase em destaque vem do fim do texto dela.
 // Confirmar com ela que está confortável com o que aparece (demissão, sociedade que não deu certo, acidente em 2021).
-// Quando houver uma foto dela, dá para colocar acima do título, centralizada.
 const CHAPTERS = [
   {
     icon: "i-cake",
@@ -36,6 +36,9 @@ export function HistoriaEvy() {
     <section className="story" id="historia">
       <Doodles className="bg" />
       <div className="w narrow">
+        <div className="ph arch portrait reveal">
+          <Image src="/fotos/evy.jpg" alt="Retrato da Evy, de faixa e jaleco rosa" fill sizes="240px" />
+        </div>
         <div className="eyebrow">
           <Icon name="i-heart" />
           Quem faz seus doces
@@ -54,7 +57,7 @@ export function HistoriaEvy() {
           </article>
         ))}
 
-        <div className="sign reveal">Evy</div>
+        <div className="sign reveal">— Evelyn Guimarães</div>
       </div>
     </section>
   );
