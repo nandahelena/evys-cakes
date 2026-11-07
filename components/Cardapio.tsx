@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useCart } from '@/lib/cart';
-import { BY_ID, CATEGORIES, FILTERS, categoryMeta } from '@/lib/catalog';
+import { BY_ID, CATEGORIES, categoryMeta } from '@/lib/catalog';
 import { brl } from '@/lib/labels';
 import { calculateQuote } from '@/lib/pricing';
 import { Icon } from './Icon';
@@ -14,21 +14,11 @@ import { Doodles } from './Sprite';
 export function Cardapio() {
   const { lines } = useCart();
   const [open, setOpen] = useState<string | null>(null);
-  const [filter, setFilter] = useState(0);
   const valid = lines.filter((l) => BY_ID.has(l.id));
   const total = calculateQuote(valid, { partial: true }).total;
-  const shown = CATEGORIES.filter((c) => !FILTERS[filter].cats || FILTERS[filter].cats.includes(c));
 
   return (
     <>
-      <nav className="chips" aria-label="Filtrar o cardápio">
-        {FILTERS.map((f, i) => (
-          <button key={f.label} type="button" aria-pressed={filter === i} onClick={() => setFilter(i)}>
-            {f.label}
-          </button>
-        ))}
-      </nav>
-
       <div className="w menu-page">
         <div className="menu-head">
           <div className="eyebrow"><Icon name="i-menu" />Cardápio 2026</div>
@@ -39,7 +29,7 @@ export function Cardapio() {
         </div>
 
         <div className="mgrid">
-          {shown.map((c) => {
+          {CATEGORIES.map((c) => {
             const m = categoryMeta(c);
             const count = valid.filter((l) => m.items.some((p) => p.id === l.id)).reduce((s, l) => s + l.qty, 0);
             return (

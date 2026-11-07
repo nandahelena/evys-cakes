@@ -83,15 +83,6 @@ export const CATEGORY_NOTE: Record<string, string | undefined> = {
 
 export const CATEGORIES = [...new Set(PRODUCTS.map((p) => p.category))];
 
-// Filtros do cardápio (cats nulo = tudo). Toda categoria precisa estar em algum filtro.
-export const FILTERS: { label: string; cats: string[] | null }[] = [
-  { label: 'Todos', cats: null },
-  { label: 'Doces', cats: ['Doces tradicionais', 'Doces gourmet', 'Surpresa de uva'] },
-  { label: 'Cupcakes e pão de mel', cats: ['Cupcake', 'Mini pão de mel'] },
-  { label: 'Bolos', cats: ['Bolos de massa baunilha', 'Bolos de massa chocolate'] },
-  { label: 'Toppers', cats: ['Toppers'] },
-];
-
 // Descrições só com o que está no cardápio da Evy (sabores, massas, recheios, mínimos). TODO: trocar pelas descrições dela.
 const CATEGORY_DESC: Record<string, string> = {
   'Doces tradicionais': 'Brigadeiro, beijinho, ninho, dois amores e prestígio. Os doces acompanham caixinhas nas cores tradicionais.',

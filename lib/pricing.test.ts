@@ -1,12 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { CATEGORIES, FILTERS } from './catalog.ts';
 import { calculateQuote, daysUntil, eventDateError } from './pricing.ts';
-
-test('toda categoria do cardápio aparece em algum filtro', () => {
-  const filtered = FILTERS.flatMap((f) => f.cats ?? []);
-  assert.deepEqual([...CATEGORIES].sort(), [...filtered].sort());
-});
 
 const trad = 'doces-tradicionais-brigadeiro';
 const gourmet = 'doces-gourmet-oreo';

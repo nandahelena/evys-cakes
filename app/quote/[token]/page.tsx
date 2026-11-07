@@ -139,11 +139,11 @@ async function Quote({ params, searchParams }: Pick<PageProps<"/quote/[token]">,
         )}
 
         <div className="sec">Como reservar</div>
-        <div className="steps">
-          <div><b>1</b>Pague a entrada de {Math.round(entradaPct * 100)}%</div>
-          <div><b>2</b>Combine a decoração com a Evy</div>
-          <div><b>3</b>Retire e pague o restante</div>
-        </div>
+        <ol className="how">
+          <li><b>Pague a entrada de {Math.round(entradaPct * 100)}%</b><span>Pix, cartão ou dinheiro, como combinar com a Evy.</span></li>
+          <li><b>Combine os detalhes</b><span>Decoração, cores e topper direto no WhatsApp.</span></li>
+          <li><b>Retire e pague o restante</b><span>No dia combinado, com a Evy.</span></li>
+        </ol>
         <p className="small">Em caso de desistência, a entrada não é devolvida. A entrega só ocorre com o pedido 100% pago.</p>
 
         <TalkButton code={code} />

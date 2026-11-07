@@ -3,6 +3,7 @@ import { Doodles } from "./Sprite";
 
 // História contada pela Evy, resumida para o site. A frase em destaque vem do fim do texto dela.
 // Confirmar com ela que está confortável com o que aparece (demissão, sociedade que não deu certo, acidente em 2021).
+// Quando houver uma foto dela, dá para colocar acima do título, centralizada.
 const CHAPTERS = [
   {
     icon: "i-cake",
@@ -34,39 +35,26 @@ export function HistoriaEvy() {
   return (
     <section className="story" id="historia">
       <Doodles className="bg" />
-      <div className="w story-grid">
-        <div className="portrait reveal">
-          <div className="ph arch">
-            <div className="fake">
-              <Doodles className="bg" />
-              <Icon name="i-heart" />
-              <span>Foto da Evy</span>
-            </div>
-          </div>
-          <p className="cap-s">Evelyn Guimarães</p>
+      <div className="w narrow">
+        <div className="eyebrow">
+          <Icon name="i-heart" />
+          Quem faz seus doces
         </div>
+        <h2>A história da Evy</h2>
+        <blockquote className="quote-script reveal">“Uma história de coragem e constante reinvenção na confeitaria.”</blockquote>
 
-        <div>
-          <div className="eyebrow">
-            <Icon name="i-heart" />
-            Quem faz seus doces
-          </div>
-          <h2>A história da Evy</h2>
-          <blockquote className="quote-script reveal">“Uma história de coragem e constante reinvenção na confeitaria.”</blockquote>
+        {CHAPTERS.map((c) => (
+          <article className="chap reveal" key={c.k}>
+            <span className="dot">
+              <Icon name={c.icon} />
+            </span>
+            <span className="k">{c.k}</span>
+            <h3>{c.title}</h3>
+            <p>{c.text}</p>
+          </article>
+        ))}
 
-          {CHAPTERS.map((c) => (
-            <article className="chap reveal" key={c.k}>
-              <span className="dot">
-                <Icon name={c.icon} />
-              </span>
-              <span className="k">{c.k}</span>
-              <h3>{c.title}</h3>
-              <p>{c.text}</p>
-            </article>
-          ))}
-
-          <div className="sign reveal">Evy</div>
-        </div>
+        <div className="sign reveal">Evy</div>
       </div>
     </section>
   );
