@@ -71,7 +71,7 @@ export function OrdersList({ orders, now, filter }: { orders: DashOrder[]; now: 
 
       <ul className="ord-cards">
         {orders.map((o) => (
-          <li key={o.id} className="ord-card">
+          <li key={o.id} className={`ord-card ord-${o.status}`}>
             <div className="ord-card-top">
               <Link href={`/dashboard/orders/${o.id}`} className="ord-name">
                 {o.customer.name}

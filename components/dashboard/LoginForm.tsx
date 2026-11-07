@@ -8,14 +8,10 @@ export function LoginForm() {
   const [state, action, pending] = useActionState(login, {} as LoginState);
 
   return (
-    <form action={action} className="card" style={{ marginTop: 48 }}>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
-        <Logo variant="hm" />
-      </div>
-      <h1 style={{ textAlign: 'center', fontSize: 28, margin: '8px 0 4px' }}>Painel da Evy</h1>
-      <p className="small" style={{ textAlign: 'center' }}>
-        Área restrita. Digite a senha para continuar.
-      </p>
+    <form action={action} className="login-card">
+      <Logo variant="hm" className="login-logo" />
+      <h1>Painel da Evy</h1>
+      <p className="login-lead">Área restrita. Digite a senha para continuar.</p>
 
       <label className="field">
         Senha
@@ -36,7 +32,7 @@ export function LoginForm() {
         </p>
       )}
 
-      <button className="btn btn-p" type="submit" disabled={pending} style={{ width: '100%', marginTop: 18 }}>
+      <button className="btn btn-p" type="submit" disabled={pending}>
         {pending ? 'Entrando…' : 'Entrar'}
       </button>
     </form>
