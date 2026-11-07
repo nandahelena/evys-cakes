@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Figtree, Fraunces, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import "./brand.css";
@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Evys Cakes · confeitaria artesanal",
   description: "Monte seu pedido de doces, veja o valor na hora e reserve a data.",
 };
+
+// site só tem tema claro: avisa o navegador p/ não escurecer (modo escuro forçado do Android)
+export const viewport: Viewport = { colorScheme: "light", themeColor: "#fff8f4" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

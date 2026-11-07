@@ -28,13 +28,6 @@
   --font-script: var(--f-script), cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 /* brand.css (global, fora de @layer) estiliza p/h1-h3 e anularia as classes do deck */
 .deck :is(h1, h2, h3, p) {
   margin: revert-layer;
